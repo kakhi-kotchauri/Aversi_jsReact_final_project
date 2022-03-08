@@ -1,5 +1,6 @@
 import './home.css'
-import { useState, useEffect } from 'react'
+import { Liveproduct } from '../live-product/liveproduct'
+import { Liveoffer } from '../live-offers/liveoffer'
 import cart from './pictures/cart.png'
 import calendar from './pictures/calendar.png'
 import doctor from './pictures/doctor.png'
@@ -16,54 +17,12 @@ import salad from './pictures/salad.png'
 import phone from './pictures/s22.png'
 import play from './pictures/play.png'
 import apple from './pictures/apple.png'
-import right from './pictures/arrow-right.png'
-import left from './pictures/arrow-left.png'
 
 
 
 export function Home(props) {
 
-    // console.log(props.data)
-
-    const [productarr, setproductarr] = useState([])
-    const [start, setstart] = useState(0)
-    const [end, setend] = useState(4)
-
-    useEffect(() => {
-
-      
-    function promise(data) {
-        return new Promise(resolve => {
-           resolve(data)
-        })
-     }
-  
-     async function getdata() {
-        await promise(props.data)
-        .then(data => {
-           setproductarr(data.slice(start, end))
-        })
-    }
-
-    getdata()
-
-    }, [props.data, start, end])
-
-
-    function moveright() {
-        if(end < props.data.length) {
-            setstart(start + 4)
-            setend(end + 4)
-        }
-    }
-
-    function moveleft() {
-        if(start > 0) {
-            setstart(start - 4)
-            setend(end - 4)
-        }
-    }
-    
+   
 
     return (
     <div>
@@ -101,41 +60,8 @@ export function Home(props) {
       </div>
 
 
-    <section className='live-product-par'>
-
-    <div className='product-head-wrapper'>
-              <p className='product-head-p'>ლიდერები გაყიდვაში</p>
-              <div className='arrow-wrapper'>
-                 <img onClick={moveleft} className='arrows' src={left} alt="left" /> 
-                 <img onClick={moveright} className='arrows' src={right} alt="right" /> 
-              </div>
-          </div>
-
-      <div className='live-product'>
-
-        {
-            productarr? 
-            productarr.map((item, index) => {
-                return(
-                  <div key={index} className='product-slot'>
-                      <div className='picture-wrapper'>
-                        <img className='product-img' src={item.img} alt="item-pic" />  
-                      </div>
-                      <p className='product-title'>{item.title}</p>
-                      <p className='product-category'>{item.Category}</p>
-                      <div className='price-wrapper'>
-                         <p className='price'>{item.price} ლარი</p> 
-                         <button className='buy'>ყიდვა</button>
-                      </div>
-
-                  </div>
-                )
-            })
-            : <div>no</div>
-        }
-      </div>
-
-      </section>
+   <Liveproduct data={props.data}/>
+   <Liveoffer data={props.data2}/>
 
 
       <div className='catalog-title'>პროდუქციის კატალოგი</div>

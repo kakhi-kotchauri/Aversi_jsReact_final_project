@@ -13,7 +13,7 @@ export function Footer() {
        
        <div className='content-wrapper'>
 
-        <img className='logo' src={logo} alt="logo" />
+        <img className='footer-logo' src={logo} alt="logo" />
 
        <div className='center-text'>
 
