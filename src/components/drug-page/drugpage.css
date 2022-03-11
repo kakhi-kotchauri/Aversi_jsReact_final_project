@@ -1,0 +1,280 @@
+
+
+
+
+.drugpage-filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.drugpage-filters {
+    width: 262px;
+    height: 450px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.drugpage-lowfilter {
+    width: 262px;
+    height: 132px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+
+.drugpage-content-par {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.drug-wrapper-par {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    margin-bottom: 180px;
+}
+
+
+.drugs-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 30px;
+    width: 95%;
+}
+
+
+.drug-product-slot {
+    position: relative;
+    width: 267px;
+    height: 263px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drug-product-slot:hover {
+    background-color: rgb(233, 234, 240);
+    outline: solid;
+    outline-color: #b5b5be;
+    outline-width: 2px;
+}
+
+
+.fade {
+  display: none;
+}
+
+
+.callfade{
+    animation: fadeout 0.2s;
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes fadeout {
+    0%{background-color: rgba(255, 255, 255, 0);}
+    100%{background-color: rgba(241, 242, 243, 0.774);}
+}
+
+.drug-rating-par {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+.drug-rating {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.drug-star-wrapper {
+  position: relative;
+} 
+
+.drug-stars {
+    position: absolute;
+    top: 0;
+}
+
+.drug-star {
+    width: 15px;
+}
+
+
+
+.drug-graystar {
+    width: 15px;
+}
+
+
+.drug-hearth {
+    width: 25px;
+    cursor: pointer;
+}
+
+
+
+.drug-picture-wrapper {
+    width: 160px;
+    height: 90px;
+    overflow: hidden;
+    margin-top: 13px;
+}
+
+
+.drug-product-img {
+    width: 160px;
+}
+
+.drug-product-title {
+    color:#2E2A2A;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+.drug-product-text-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.drug-product-category {
+    font-size: 15px;
+    margin-top: 10px;
+    color: #6A6A68;
+}
+
+.drug-price-wrapper {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.drug-price {
+    font-size: 20px;
+    color: #EA3339;
+}
+
+.drug-buy {
+    width: 110px;
+    height: 35px;
+    border-radius: 15px;
+    border-color: #e93339b7;
+    border-width: 1.5px;
+    cursor: pointer;
+}
+
+.drug-buy:hover {
+    background-color: rgba(203, 219, 210, 0.829);
+}
+
+
+.drug-input-par {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+.drug-input {
+    width: 130px;
+}
+
+
+
+
+@media only screen and (max-width: 1515px) {
+
+    
+    .drug-product-slot {
+        width: 240px;
+        height: 250px;
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    
+    .drug-picture-wrapper {
+        width: 160px;
+        height: 90px;
+        overflow: hidden;
+    }
+    
+    
+    .drug-product-img {
+        width: 245px;
+    }
+    
+    .drug-product-title {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    
+    
+    .drug-product-category {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+    
+    .drug-price-wrapper {
+        display: flex;
+        margin-top: 15px;
+    }
+    
+    .drug-price {
+        font-size: 20px;
+    }
+    
+    .drug-buy {
+        width: 130px;
+        height: 40px;
+        border-radius: 15px;
+        border-color: #e93339b7;
+        border-width: 1.5px;
+    }
+    
+
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+
+    .drugs-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        row-gap: 30px;
+        width: 95%;
+    }
+
+}
+

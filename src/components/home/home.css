@@ -40,6 +40,10 @@
     cursor: pointer;
 }
 
+.button:hover {
+    background: #86818121;
+}
+
 .slot-wrapper-par {
     width: 100%;
     display: flex;
@@ -66,7 +70,7 @@
 }
 
 .slot:hover {
-    background-color: rgba(226, 225, 233, 0.904);
+    background-color: rgb(223, 225, 245);
 }
 
 
@@ -143,6 +147,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.catalog-slot:hover {
+    outline: solid;
+    outline-color: #b5b5be;
+    outline-width: 2px;
 }
 
 .catalog-img {

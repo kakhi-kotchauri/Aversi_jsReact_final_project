@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
 import { Home } from './components/home/home';
+import { Pagehead } from './components/product-head/pagehead';
+import { Drugpage } from './components/drug-page/drugpage';
+import { Productpage } from './components/product-page/productpage';
+import { About } from './components/about/about';
+import { Routes, Route, Link } from 'react-router-dom';
 
 
 
@@ -35,11 +40,15 @@ useEffect(() => {
 
   return (
     <div className='app-par'>
-      <Header/>
-      <Home data={data} data2={data2}/>
-      <Footer/>
+    <Header/>
+      <Routes>
+        <Route path='/' element={ <Home data={data} data2={data2}/> }/>
+        <Route path='drugpage' element={  <Drugpage data={data}/> }/>
+        <Route path='about' element={ <About/> }/>
+        <Route path='/:index' element={ <Productpage data ={data}/> }/>
+      </Routes>
+    <Footer/>
     </div>
   );
 }
-
 export default App;

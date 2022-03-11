@@ -18,6 +18,7 @@ import phone from './pictures/s22.png'
 import play from './pictures/play.png'
 import apple from './pictures/apple.png'
 
+    
 
 
 export function Home(props) {

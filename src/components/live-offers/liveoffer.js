@@ -12,6 +12,9 @@ export function Liveoffer(props) {
   const [start, setstart] = useState(0)
   const [end, setend] = useState(4)
   const [callfade, setcallfade] = useState('')
+  const [status, setstatus] = useState(1)
+  const step = 4
+
     
     useEffect(() => {
 
@@ -36,8 +39,9 @@ export function Liveoffer(props) {
 
         function moveright() {
             if(end < props.data.length) {
-                setstart(start + 4)
-                setend(end + 4)
+                setstart(start + step)
+                setend(end + step)
+                setstatus(status + 1)
                 setcallfade('offerfade')
                 setTimeout(() => {
                   setcallfade('')
@@ -47,8 +51,9 @@ export function Liveoffer(props) {
     
         function moveleft() {
             if(start > 0) {
-                setstart(start - 4)
-                setend(end - 4)
+                setstart(start - step)
+                setend(end - step)
+                setstatus(status - 1)
                 setcallfade('offerfade')
                 setTimeout(() => {
                   setcallfade('')
@@ -66,6 +71,7 @@ export function Liveoffer(props) {
                   <p className='offer-head-p'>მიმდინარე აქციები</p>
                   <div className='offer-arrow-wrapper'>
                      <img onClick={moveleft} className='offer-arrows' src={left} alt="left" /> 
+                     <p>{`${status} / ${Math.ceil(props.data.length / step)}`}</p>
                      <img onClick={moveright} className='offer-arrows' src={right} alt="right" /> 
                   </div>
               </div>
