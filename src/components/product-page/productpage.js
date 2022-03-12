@@ -3,6 +3,8 @@ import { Pagehead } from "../product-head/pagehead";
 import testimg from './pictures/testpic.png'
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import Cartcontext from '../../cartcontext';
 
 
 
@@ -11,6 +13,16 @@ import { useState, useEffect } from 'react';
 export function Productpage(props) {
 
 let params = useParams()
+
+const {cartitem, setcartitem} = useContext(Cartcontext)
+
+
+function addtocart(id) {
+    const find = props.data.find(element => element.id === id)
+    setcartitem([...cartitem, find])
+ }
+
+
 
 
 const productdata = props.data[params.index - 1]
@@ -125,7 +137,7 @@ useEffect(() => {
 
                     <div className='dummy'></div>
 
-                    <button className='des-add'>კალათაში ჩამატება</button>
+                    <button onClick={() => addtocart(productdata.id)} className='des-add'>კალათაში ჩამატება</button>
 
                 </div>
 

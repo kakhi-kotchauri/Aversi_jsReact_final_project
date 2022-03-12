@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 
+
 export function Liveproduct(props) {
 
     const [start, setstart] = useState(0)
@@ -85,7 +86,7 @@ export function Liveproduct(props) {
                 productarr.map((item, index) => {
                     return(
                     <Link key={index} to={`/${item.id}`}>
-                        <Productslot key={index} item={item} callfade={callfade}/>
+                        <Productslot data={productarr} key={index} item={item} callfade={callfade}/>
                     </Link>
                     )
                 })

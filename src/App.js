@@ -9,6 +9,7 @@ import { Productpage } from './components/product-page/productpage';
 import { About } from './components/about/about';
 import { Routes, Route, Link } from 'react-router-dom';
 import Cartcontext from './cartcontext';
+import { Cartpage } from './components/cart-page/cartpage';
 
 
 
@@ -57,6 +58,7 @@ console.log(cartitem)
           <Route path='/' element={ <Home data={data} data2={data2}/> }/>
           <Route path='drugpage' element={  <Drugpage data={data}/> }/>
           <Route path='about' element={ <About/> }/>
+          <Route path='cart' element={ <Cartpage data={cartitem}/> }/>
           <Route path='/:index' element={ <Productpage data ={data}/> }/>
         </Routes>
       <Footer/>

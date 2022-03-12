@@ -138,17 +138,10 @@ export function Drugpage(props) {
 
 
 
-    function test(id) {
+    function addtocart(id) {
        const find = props.data.find(element => element.id === id)
        setcartitem([...cartitem, find])
     }
-
-    function remove(id) {
-      const removeitem = cartitem.filter(item => item.id !== id)
-      setcartitem(removeitem)
-   }
-  
-
 
 
 
@@ -188,7 +181,7 @@ export function Drugpage(props) {
               <input className='drug-input' onChange={(e) => mini(e)} value={min} type="number" placeholder="min" />
               <input className='drug-input' onChange={(e) => maxi(e)} value={max} type="number" placeholder="max" />  
               </div>
-              <button onClick={alldata}>all</button>          
+              <button onClick={alldata}>მაჩვენე ყველაფერი</button>          
               {/* <button onClick={filter}>medical devices</button>     */}
               {
                  props.data ? 
@@ -219,7 +212,7 @@ export function Drugpage(props) {
 
                      <div key={index} className='link-wrap'>
 
-                  <Link  to={`/${item.id}`}>
+                  <Link to={`/${item.id}`}>
 
 
                     <div className='drug-product-slot'>
@@ -262,8 +255,7 @@ export function Drugpage(props) {
 
               <div className='drug-price-wrapper'>
                 <p className='drug-price'>{item.price} ლარი</p> 
-                <button onClick={() => test(item.id)} className='drug-buy'>ყიდვა</button>
-                <button onClick={() => remove(item.id)} className='drug-buy'>delete</button>
+                <button onClick={() => addtocart(item.id)} className='drug-buy'>ყიდვა</button>
                </div>
 
 

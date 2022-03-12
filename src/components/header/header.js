@@ -29,7 +29,9 @@ export function Header() {
           <div className='icon-wrap'>
               <img className='icons' src={hearth} alt="hearth" />
               <img className='icons' src={person} alt="person" />
+              <Link to={'cart'}>
               <img className='icons' src={cart} alt="cart" />
+              </Link>
           </div>
         </div>
 
