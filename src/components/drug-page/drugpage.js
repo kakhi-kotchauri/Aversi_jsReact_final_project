@@ -6,10 +6,15 @@ import graystar from './pictures/gray-star.png'
 import hearth from './pictures/hearth.png'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Cartcontext from '../../cartcontext';
+import { useContext } from 'react';
 
 
 
 export function Drugpage(props) {
+
+  const {cartitem, setcartitem} = useContext(Cartcontext)
+   
 
 
 
@@ -130,8 +135,19 @@ export function Drugpage(props) {
        filterprice()
       
     }, [max, min])
- 
-    
+
+
+
+    function test(id) {
+       const find = props.data.find(element => element.id === id)
+       setcartitem([...cartitem, find])
+    }
+
+    function remove(id) {
+      const removeitem = cartitem.filter(item => item.id !== id)
+      setcartitem(removeitem)
+   }
+  
 
 
 
@@ -140,6 +156,8 @@ export function Drugpage(props) {
 
 
         <div className="drugpage-wrapper">
+
+           <div></div>
             <Pagehead 
             title={'წამალი'} 
             adress={
@@ -189,6 +207,8 @@ export function Drugpage(props) {
             
         </div>
 
+
+
      <div className='drug-wrapper-par'>
        <div className="drugs-wrapper">
 
@@ -196,7 +216,12 @@ export function Drugpage(props) {
             props.data ? 
             drugpagedata.map((item, index) => {
                 return (
-                  <Link key={index} to={`/${index}`}>
+
+                     <div key={index} className='link-wrap'>
+
+                  <Link  to={`/${item.id}`}>
+
+
                     <div className='drug-product-slot'>
                     {/* <div className={`fade ${callfade}`}></div> */}
                     <div className='drug-rating-par'>
@@ -231,14 +256,19 @@ export function Drugpage(props) {
                 <p className='drug-product-title'>{item.title}</p>
                 <p className='drug-product-category'>{item.Category}</p>
                 </div>
-                <div className='drug-price-wrapper'>
-                <p className='drug-price'>{item.price} ლარი</p> 
-                <button className='drug-buy'>ყიდვა</button>
-                </div>
         
             </div>
-
             </Link>
+
+              <div className='drug-price-wrapper'>
+                <p className='drug-price'>{item.price} ლარი</p> 
+                <button onClick={() => test(item.id)} className='drug-buy'>ყიდვა</button>
+                <button onClick={() => remove(item.id)} className='drug-buy'>delete</button>
+               </div>
+
+
+            </div>
+
 
 
                 )

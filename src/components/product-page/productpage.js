@@ -13,7 +13,8 @@ export function Productpage(props) {
 let params = useParams()
 
 
-const productdata = props.data[params.index]
+const productdata = props.data[params.index - 1]
+
 const [img1, setimg1] = useState('')
 const [img2, setimg2] = useState('')
 const [bigimg, setbigimg] = useState('')
@@ -89,13 +90,13 @@ useEffect(() => {
                 <div className='des-smallimages'>
 
                     <div className="des-smallimage-wrapper">
-                        <div onClick={() => setbigimg(img1)} className="des-smallimage-par">
+                        <div onMouseEnter={() => setbigimg(img1)} className="des-smallimage-par">
                             <img className="des-smallimage-pic" src={img1} alt="" />
                         </div>
                     </div>
 
                     <div className="des-smallimage-wrapper">
-                        <div  onClick={() => setbigimg(img2)} className="des-smallimage-par">
+                        <div  onMouseEnter={() => setbigimg(img2)} className="des-smallimage-par">
                             <img className="des-smallimage-pic" src={img2} alt="" />
                         </div>
                     </div>
@@ -103,7 +104,7 @@ useEffect(() => {
                 </div>
 
                     <div className="des-bigimage-wrapper">
-                        <div onClick={() => setbigimg(productdata.img)} className="des-big-image-par">
+                        <div onMouseEnter={() => setbigimg(productdata.img)} className="des-big-image-par">
                         <img className="des-bigimage" src={bigimg} alt="" />
                         </div>
                     </div>

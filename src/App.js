@@ -8,6 +8,7 @@ import { Drugpage } from './components/drug-page/drugpage';
 import { Productpage } from './components/product-page/productpage';
 import { About } from './components/about/about';
 import { Routes, Route, Link } from 'react-router-dom';
+import Cartcontext from './cartcontext';
 
 
 
@@ -17,6 +18,7 @@ function App() {
 
 const [data, setdata] = useState([])
 const [data2, setdata2] = useState([])
+const [cartitem, setcartitem] = useState([])
   
 useEffect(() => {
 
@@ -37,18 +39,29 @@ useEffect(() => {
 }, [])
 
 
+console.log(cartitem)
+
+
 
   return (
-    <div className='app-par'>
-    <Header/>
-      <Routes>
-        <Route path='/' element={ <Home data={data} data2={data2}/> }/>
-        <Route path='drugpage' element={  <Drugpage data={data}/> }/>
-        <Route path='about' element={ <About/> }/>
-        <Route path='/:index' element={ <Productpage data ={data}/> }/>
-      </Routes>
-    <Footer/>
-    </div>
+    <Cartcontext.Provider value= {
+       {
+         cartitem : cartitem,
+         setcartitem : setcartitem
+       }
+    }
+    >
+      <div className='app-par'>
+      <Header/>
+        <Routes>
+          <Route path='/' element={ <Home data={data} data2={data2}/> }/>
+          <Route path='drugpage' element={  <Drugpage data={data}/> }/>
+          <Route path='about' element={ <About/> }/>
+          <Route path='/:index' element={ <Productpage data ={data}/> }/>
+        </Routes>
+      <Footer/>
+      </div>
+    </Cartcontext.Provider>
   );
 }
 export default App;

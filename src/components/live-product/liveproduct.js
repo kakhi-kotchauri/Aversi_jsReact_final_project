@@ -84,7 +84,7 @@ export function Liveproduct(props) {
                 productarr? 
                 productarr.map((item, index) => {
                     return(
-                    <Link key={index} to={`/${index + start}`}>
+                    <Link key={index} to={`/${item.id}`}>
                         <Productslot key={index} item={item} callfade={callfade}/>
                     </Link>
                     )
