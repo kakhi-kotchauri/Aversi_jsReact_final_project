@@ -4,6 +4,8 @@ import right from './pictures/arrow-right.png'
 import left from './pictures/arrow-left.png'
 import { Productslot } from '../product-slot/productslot'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import Cartcontext from '../../cartcontext'
 
 
 
@@ -65,6 +67,22 @@ export function Liveproduct(props) {
     }
 
 
+    
+    const {cartitem, setcartitem} = useContext(Cartcontext)
+
+
+    function addtocart(id) {
+        const find = props.data.find(element => element.id === id)
+        const findcart = cartitem.find(element => element.id === id)
+        if(find !== findcart) {
+            find['productcount'] = 1  
+            setcartitem([...cartitem, find])
+        } else {
+            setcartitem([...cartitem])
+        }
+    }
+
+
 
     return (
         <section className='live-product-par'>
@@ -85,9 +103,19 @@ export function Liveproduct(props) {
                 productarr? 
                 productarr.map((item, index) => {
                     return(
-                    <Link key={index} to={`/${item.id}`}>
-                        <Productslot data={productarr} key={index} item={item} callfade={callfade}/>
-                    </Link>
+
+                    <div className='liveproduct-slot-par' key={index}>
+                        <Link to={`/${item.id}`}>
+                        <Productslot data={productarr} key={index} item={item} callfade={callfade}/> 
+                        </Link>
+
+                        <div className='price-wrapper'>
+                        <p className='price'>{item.price} ლარი</p> 
+                        <button onClick={() => addtocart(item.id)} className='buy'>ყიდვა</button>
+                        </div>
+
+                        </div>
+                        
                     )
                 })
                 : <div>no</div>

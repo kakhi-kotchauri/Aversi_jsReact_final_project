@@ -19,9 +19,16 @@ const {cartitem, setcartitem} = useContext(Cartcontext)
 
 function addtocart(id) {
     const find = props.data.find(element => element.id === id)
-    setcartitem([...cartitem, find])
- }
-
+    const findcart = cartitem.find(element => element.id === id)
+    const replace = cartitem.filter(item => item.id !== id)
+    if(find !== findcart) {
+        find['productcount'] = productcount
+        setcartitem([...cartitem, find])
+    } else {
+        find['productcount'] = productcount
+        setcartitem([...replace, find])
+    }
+}
 
 
 
@@ -30,8 +37,18 @@ const productdata = props.data[params.index - 1]
 const [img1, setimg1] = useState('')
 const [img2, setimg2] = useState('')
 const [bigimg, setbigimg] = useState('')
+const [productcount, setproductcount] = useState(1)
 
 
+function count(ctype) {
+    if(ctype === '+') {
+        setproductcount(productcount + 1)
+    }
+
+    if(ctype === '-' && productcount > 1) {
+        setproductcount(productcount - 1)
+    }
+}
 
 
 
@@ -39,7 +56,7 @@ const [bigimg, setbigimg] = useState('')
 useEffect(() => {
 
     window.scrollTo({
-        top: 100, 
+        top: 10, 
     });
     
 }, [])
@@ -135,7 +152,11 @@ useEffect(() => {
                     <p className='side-texts'>ოდენობა : {productdata.amount}</p>
                     <p className='side-texts'>კატეგორია : {productdata.Category}</p>
 
-                    <div className='dummy'></div>
+                    <div className='dummy'>
+                        <button onClick={() => count('-')} className='count-button'>-</button>
+                        <div>{productcount}</div>
+                        <button onClick={() => count('+')} className='count-button'>+</button>
+                    </div>
 
                     <button onClick={() => addtocart(productdata.id)} className='des-add'>კალათაში ჩამატება</button>
 

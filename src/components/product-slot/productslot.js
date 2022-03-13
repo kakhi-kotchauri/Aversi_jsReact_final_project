@@ -2,8 +2,7 @@ import './productslot.css'
 import star from './pictures/star.png'
 import graystar from './pictures/gray-star.png'
 import hearth from './pictures/hearth.png'
-import { useContext } from 'react'
-import Cartcontext from '../../cartcontext'
+
 
     
 
@@ -11,13 +10,6 @@ import Cartcontext from '../../cartcontext'
 export function Productslot({data, item, callfade}) {
 
 
-    const {cartitem, setcartitem} = useContext(Cartcontext)
-
-
-    function addtocart(id) {
-        const find = data.find(element => element.id === id)
-        setcartitem([...cartitem, find])
-    }
 
 
     return (
@@ -57,10 +49,7 @@ export function Productslot({data, item, callfade}) {
         <p className='product-title'>{item.title}</p>
         <p className='product-category'>{item.Category}</p>
         </div>
-        <div className='price-wrapper'>
-        <p className='price'>{item.price} ლარი</p> 
-        <button onClick={() => addtocart(item.id)} className='buy'>ყიდვა</button>
-        </div>
+
 
     </div>
 

@@ -1,7 +1,7 @@
 
 
 .page-head-wrapper {
-    height: 90px;
+    height: 70px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@
 
 .page-head-par {
     width: 85%;
-    height: 90px;
+    height: 70px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

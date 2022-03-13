@@ -114,29 +114,6 @@
     margin-top: 10px;
 }
 
-.price-wrapper {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.price {
-    font-size: 20px;
-}
-
-.buy {
-    width: 130px;
-    height: 40px;
-    border-radius: 15px;
-    border-color: #E93338;
-    cursor: pointer;
-}
-
-.buy:hover {
-    background-color: rgba(203, 219, 210, 0.829);
-}
 
 
 

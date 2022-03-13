@@ -63,10 +63,16 @@
 }
 
 .drug-product-slot:hover {
-    background-color: rgb(233, 234, 240);
     outline: solid;
     outline-color: #b5b5be;
     outline-width: 2px;
+}
+
+
+.drug-product-slot:hover .drug-product-img {
+
+    transform: scale(1.05);
+
 }
 
 
@@ -145,6 +151,7 @@
 
 .drug-product-img {
     width: 160px;
+    transition: transform 0.3s ease;
 }
 
 .drug-product-title {

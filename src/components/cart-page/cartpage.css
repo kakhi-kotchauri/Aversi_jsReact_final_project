@@ -52,21 +52,28 @@
 .cart-delete {
     cursor: pointer;
     color: #EA3339;
+    margin-top: 25px;
+    text-decoration: underline 1px #EA3339;
 }
 
 .cart-right-product {
     height: 148px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+    margin-top: 135px;
 }
 
+.cart-product-prices {
+    color: #6A6A68;
+    font-size: 18px;
+}
 
 .cart-product-left {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    width: 270px;
 }
 
 .cart-image-par {
@@ -93,5 +100,6 @@
 .cart-product-text {
     font-size: 15px;
     margin-bottom: 5px;
+    line-height: 1.2;
     color: #6A6A68;
 }

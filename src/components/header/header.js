@@ -6,12 +6,18 @@ import person from './images/person.png'
 import cart from './images/shopping-cart.png'
 import burger from './images/burger.png'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react';
+import Cartcontext from '../../cartcontext';
+
 
 
 
 
 
 export function Header() {
+
+const {cartitem, setcartitem} = useContext(Cartcontext)
+
 
     return (
         <header>
@@ -30,7 +36,15 @@ export function Header() {
               <img className='icons' src={hearth} alt="hearth" />
               <img className='icons' src={person} alt="person" />
               <Link to={'cart'}>
+                <div className='header-cart-wrapper'>
               <img className='icons' src={cart} alt="cart" />
+              {
+                cartitem.length >= 1 ? 
+                <div className='header-cart-number'>{cartitem.length}</div> 
+                : null
+              }
+              
+              </div>
               </Link>
           </div>
         </div>

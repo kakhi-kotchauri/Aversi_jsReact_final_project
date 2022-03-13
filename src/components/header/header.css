@@ -30,10 +30,32 @@
 
 .search-wrap {
     position: relative;
+    
+}
+
+.header-cart-wrapper {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: relative;
+}
+
+.header-cart-number {
+    position: absolute;
+    /* margin-bottom: ; */
+    font-size: 17px;
+    /* z-index: 5; */
+    color: white;
+    bottom: 18px;
+    left: 20px;
+    background-color: #EA3339;
+    width: 17px;
+    text-align: center;
+    border-radius: 30px;
 }
 
 .icons {
-  height: 25px;
+  height: 30px;
 }
 
 .icon-wrap {
@@ -46,9 +68,10 @@
 }
 
 .line-wrapper {
-    margin-top: 29px;
+    margin-top: 7px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     height: 80px;
 }
 

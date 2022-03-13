@@ -137,11 +137,16 @@ export function Drugpage(props) {
     }, [max, min])
 
 
-
     function addtocart(id) {
-       const find = props.data.find(element => element.id === id)
-       setcartitem([...cartitem, find])
-    }
+      const find = props.data.find(element => element.id === id)
+      const findcart = cartitem.find(element => element.id === id)
+      if(find !== findcart) {
+          find['productcount'] = 1  
+          setcartitem([...cartitem, find])
+      } else {
+          setcartitem([...cartitem])
+      }
+  }
 
 
 
