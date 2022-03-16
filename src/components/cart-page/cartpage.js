@@ -3,6 +3,7 @@ import { Pagehead } from '../product-head/pagehead'
 import { useContext, useState } from 'react'
 import Cartcontext from '../../cartcontext'
 import Itemstatus from '../../itemstatus'
+import {Liveproduct} from '../live-product/liveproduct'
 import './cartpage.css'
 
 
@@ -13,9 +14,32 @@ export function Cartpage(props) {
 
 
   const {cartitem, setcartitem} = useContext(Cartcontext)
+  // const {sortarr, setsortarr} = useContext([])
   const {itemstatus, setitemstatus} = useContext(Itemstatus)
 
 
+
+  function counter(id, type) {
+    setitemstatus(false)
+    const findcart = cartitem.find(element => element.id === id)
+    const replace = cartitem.filter(item => item.id !== id)
+
+
+    if(type === '+') {
+      findcart['productcount'] = findcart.productcount + 1
+      setcartitem([...replace, findcart].sort(function (a, b) {
+        return a.id - b.id;
+      }))
+    } else if (type === '-' && findcart.productcount > 1) {
+        findcart['productcount'] = findcart.productcount - 1
+        setcartitem([...replace, findcart].sort(function (a, b) {
+          return a.id - b.id;
+        }))
+    }
+
+}
+
+    
 
     function remove(id) {
         const removeitem = cartitem.filter(item => item.id !== id)
@@ -74,7 +98,10 @@ export function Cartpage(props) {
         />
 
       <div className='cart-product-wrapper'>
-      <p>{ssd(cartitem)}</p>
+
+
+
+<div>
  
       <div className='cart-product-par'>
 
@@ -88,51 +115,77 @@ export function Cartpage(props) {
 
           {   props.data.length >= 1 ?
               props.data.map((item, index) => {
-                  return (
-                    <div key={index} className='cart-product'>
-                    <div className='cart-product-left'>
+            return (
+              <div key={index} className='cart-product'>
+              <div className='cart-product-left'>
 
-                      <Link  to={`/${item.id}`}>
-                        <div className='cart-image-par'>
-                            <img className='cart-img' src={item.img} alt="cartimage" />
-                        </div>
-                     </Link>
-                      
-                      <div className='left-product-text-par'>
-                        <div className='cart-product-title'>{item.title}</div>
-                        <div className='cart-product-text'>{item.usage}</div>
-                        <div className='cart-product-text'> ოდენობა {item.amount}</div>
-                      </div>
-      
-                    </div>
-
-                     <p className='cart-product-prices'>{tofloat(item.price, 1)} ლ</p>
-
-                     <p className='cart-product-prices'>{item.productcount}</p>
-                     
-                     <div className='cart-right-product'>
-                     <p className='cart-product-prices'>{tofloat(item.price * item.productcount, 2)} ლ</p>
-                        <p className='cart-delete' onClick={() => remove(item.id)}>წაშლა</p>
-                     </div>
-
+                <Link  to={`/${item.id}`}>
+                  <div className='cart-image-par'>
+                      <img className='cart-img' src={item.img} alt="cartimage" />
+                  </div>
+                </Link>
+                
+                <div className='left-product-text-par'>
+                  <div className='cart-product-title'>{item.title}</div>
+                  <div className='cart-product-text'>{item.usage}</div>
+                  <div className='cart-product-text'> ოდენობა {item.amount}</div>
                 </div>
-                  )
-              })
-              
-              :
-              
-              <div className='cart-empty'>
-                 <p>კალათა ცარიელია</p>
+
               </div>
-          }
+
+                <p className='cart-product-prices'>{tofloat(item.price, 1)} ლ</p>
+                
+                <div className='cart-counter-par'>
+                <button className='cart-counter-button' onClick={ () => counter(item.id, '-')}>-</button>
+                <p className='cart-product-prices'>{item.productcount}</p>
+                <button className='cart-counter-button' onClick={ () => counter(item.id, '+')}>+</button>
+                </div>
+
+                
+                <div className='cart-right-product'>
+                <p className='cart-product-prices'>{tofloat(item.price * item.productcount, 2)} ლ</p>
+                  <p className='cart-delete' onClick={() => remove(item.id)}>წაშლა</p>
+                </div>
+
+          </div>
+            )
+        })
+        
+        :
+        
+        <div className='cart-empty'>
+            <p>კალათა ცარიელია</p>
+        </div>
+    }
           
 
 
+          </div>
+
       </div>
+
+      <div className='cart-sum'>
+        <div className='cart-sum-div'>
+          <div className='cart-sum-slots'>
+            <p>პროდუქცია</p>
+            <p>{ssd(cartitem)} ლ</p>
+          </div>
+          <div className='cart-sum-slots'>
+            <p>მიტანის საკომისიო</p>
+            <p>0 ლ</p>
+          </div>
+          <div className='cart-sum-slots'>
+            <p>გაქვს ვაუჩერი ?</p>
+          </div>
+        </div>
+      </div>
+
       </div>
 
         
-
+      <p className='cart-caution'>გაყიდული პროდუქცია დაბრუნებას ან/და შეცვლას არ ექვემდებარება</p>
+     
+     <Liveproduct data={props.originaldata}/>
 
 
  </div>

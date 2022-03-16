@@ -11,6 +11,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Cartcontext from './cartcontext';
 import { Cartpage } from './components/cart-page/cartpage';
 import Itemstatus from './itemstatus';
+import Globalcat from './globalcat';
 
 
 
@@ -23,7 +24,7 @@ import Itemstatus from './itemstatus';
     const [cartitem, setcartitem] = useState([])
     const [itemstatus, setitemstatus] = useState(true)
     const [alert, setalert] = useState('')
-    const [globalcount, setglobalcount] = useState(1)
+    const [globalcat, setglobalcat] = useState('')
       
     useEffect(() => {
 
@@ -73,7 +74,21 @@ import Itemstatus from './itemstatus';
       
     }
 
+
+    // console.log(globalcat)
+
       return (
+
+
+        <Globalcat.Provider value= {
+          {
+            globalcat : globalcat,
+            setglobalcat : setglobalcat
+          }
+        }
+        >
+
+
         <Itemstatus.Provider value= {
           {
             itemstatus : itemstatus,
@@ -96,8 +111,9 @@ import Itemstatus from './itemstatus';
             <Routes>
               <Route path='/' element={ <Home data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
+              <Route path='drugpage-cat' element={  <Drugpage category={globalcat} data={data}/> }/>
               <Route path='about' element={ <About/> }/>
-              <Route path='cart' element={ <Cartpage data={cartitem}/> }/>
+              <Route path='cart' element={ <Cartpage originaldata={data} data={cartitem}/> }/>
               <Route path='/:index' element={ <Productpage data ={data}/> }/>
             </Routes>
           <Footer/>
@@ -116,6 +132,7 @@ import Itemstatus from './itemstatus';
 
         </Cartcontext.Provider>
         </Itemstatus.Provider>
+        </Globalcat.Provider>
       );
     }
     export default App;

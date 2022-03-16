@@ -17,12 +17,19 @@ import salad from './pictures/salad.png'
 import phone from './pictures/s22.png'
 import play from './pictures/play.png'
 import apple from './pictures/apple.png'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import Globalcat from '../../globalcat'
 
 
 
 
 
 export function Home(props) {
+
+
+const {globalcat, setglobalcat} = useContext(Globalcat)
+
 
 
 
@@ -70,15 +77,20 @@ export function Home(props) {
       <div className='catalog-par'>
       <div className='catalog'>
 
-        <div className='catalog-slot'>
+
+      <Link to={`/${'drugpage-cat'}`}>
+        <div onClick={() => setglobalcat('ჰიგიენა')} className='catalog-slot'>
             <img className='catalog-img' src={pill} alt="pill" />
             <p className='catalog-p'>წამლები</p>
-        </div>     
+        </div>  
+      </Link>   
 
-        <div className='catalog-slot'>
+      <Link to={`/${'drugpage-cat'}`}>
+        <div onClick={() => setglobalcat('კოსმეტიკა')} className='catalog-slot'>
             <img className='catalog-img' src={cosmetic} alt="pill" />
             <p className='catalog-p'>კოსმეტიკა</p>
-        </div>     
+        </div>  
+        </Link>   
 
         <div className='catalog-slot'>
             <img className='catalog-img' src={feeder} alt="pill" />
@@ -95,10 +107,12 @@ export function Home(props) {
             <p className='catalog-p'>ოპტიკა</p>
         </div>  
 
-            <div className='catalog-slot'>
+      <Link to={`/${'drugpage-cat'}`}>
+        <div onClick={() => setglobalcat('ჰიგიენა')} className='catalog-slot'>
             <img className='catalog-img' src={sanit} alt="pill" />
             <p className='catalog-p'>ჰიგიენა</p>
-        </div>     
+        </div>  
+        </Link>   
 
         <div className='catalog-slot'>
             <img className='catalog-img' src={tray} alt="pill" />
