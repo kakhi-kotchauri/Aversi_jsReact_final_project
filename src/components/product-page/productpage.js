@@ -22,11 +22,12 @@ function addtocart(id) {
     const findcart = cartitem.find(element => element.id === id)
     const replace = cartitem.filter(item => item.id !== id)
     if(find !== findcart) {
-        find['productcount'] = productcount
-        setcartitem([...cartitem, find])
+            find['time'] = Date.now()  
+            find['productcount'] = productcount
+        setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
     } else {
         find['productcount'] = productcount
-        setcartitem([...replace, find])
+        setcartitem([...replace, find].sort(function (a, b) {return a.time - b.time;}))
     }
 }
 

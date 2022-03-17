@@ -4,11 +4,14 @@ import { Productslot } from "../product-slot/productslot";
 import star from './pictures/star.png'
 import graystar from './pictures/gray-star.png'
 import hearth from './pictures/hearth.png'
+import redhearth from './pictures/redhearth.png'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Cartcontext from '../../cartcontext';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import Itemstatus from '../../itemstatus';
+import Favoritecontext from '../../favoritecontext';
 
 
 
@@ -27,6 +30,9 @@ let ssd = useParams()
 // console.log(ssd)
 
 const {cartitem, setcartitem} = useContext(Cartcontext)
+const {itemstatus, setitemstatus} = useContext(Itemstatus)
+const {favorite, setfavorite} = useContext(Favoritecontext)
+
    
 
 
@@ -54,8 +60,8 @@ const {cartitem, setcartitem} = useContext(Cartcontext)
       async function getdata() {
          await promise(props.data)
          .then(data => {
-            setdrugpagedata(data)
-            setdrugpagedata2(data)
+            setdrugpagedata(data.sort(function (a, b) {return a.id - b.id;}))
+            setdrugpagedata2(data.sort(function (a, b) {return a.id - b.id;}))
             setdatastatus(true)
          })
 
@@ -67,8 +73,6 @@ const {cartitem, setcartitem} = useContext(Cartcontext)
 
 
          useEffect(() => {
-
-            //  console.log('ih musei veq')
       
       if(props.category && drugpagedata.length > 0) {
          console.log(props.category)
@@ -79,37 +83,6 @@ const {cartitem, setcartitem} = useContext(Cartcontext)
       
    
    
-
-   
-
-   // useEffect(() => {
-
-   //    props.data.forEach(element => {
-   //       // console.log(element.title)
-   //       setcategory([...category, element.title])
-   //    });
-
-   // }, [props.data])
-   
-   //  console.log(category)
-
-
-
-
-   //  if(category.length > 0) {
-
-   //    props.data.forEach(element => {
-
-   //       // category.forEach(element2 => {
-   //       //    if(element.category !==  element2.category) {
-   //       //       console.log(element)
-   //       //    }
-   //       // })
-
-   //       // console.log(category)
-   // });
-
-   //  }
 
 
 
@@ -141,7 +114,7 @@ function alldata() {
    }
 
 
-   console.log(drugpagedata)
+   // console.log(drugpagedata)  
 
 
    function filterprice() {
@@ -180,39 +153,35 @@ function alldata() {
       const find = props.data.find(element => element.id === id)
       const findcart = cartitem.find(element => element.id === id)
       if(find !== findcart) {
-         find['productcount'] = 1  
-         setcartitem([...cartitem, find])
+            find['time'] = Date.now()  
+            find['productcount'] = 1  
+         setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
       } else {
-         setcartitem([...cartitem])
+         setcartitem([...cartitem].sort(function (a, b) {return a.time - b.time;}))
       }
    }
 
 
-// useEffect(() => {
-//    alldata()
-//    console.log('reset')
-// }, [])
 
-
-// let params = useParams()
-
-
-// useEffect(() => {
-//       if(Object.keys(params).length === 0) {
-//          console.log('empty')
-//       } else {
-//          console.log(params.cat)
-//          filtercat(params.cat)
-//       }
-
-//    }, [params])
+   function hearting(id) {
+      const removeitem = favorite.filter(item => item.id !== id)
+      const find = props.data.find(element => element.id === id)
+      const replace = props.data.filter(element => element.id !== id)
+      if(find['hearted'] === true) {
+         find['hearted'] = false
+         setfavorite(removeitem)
+      } else {
+         find['hearted'] = true
+         setfavorite([...favorite, find])
+      }
+      setdrugpagedata([...replace, find].sort(function (a, b) {return a.id - b.id;})) 
+   }
 
 
 
    const uniquecategory = [...new Set(props.data.map(item => item.Category))];
 
    
-   //   console.log(uniquecategory)
 
 
    return (
@@ -289,7 +258,7 @@ function alldata() {
 
                      <div key={index} className='link-wrap'>
 
-                  <Link to={`/${item.id}`}>
+                  {/* <Link to={`/${item.id}`}> */}
 
 
                   <div className='drug-product-slot'>
@@ -315,7 +284,7 @@ function alldata() {
                   </div>
       
                         </div>
-                        <img className='drug-hearth' src={hearth} alt="hearth" />
+                        <img onClick={() => hearting(item.id)} className='drug-hearth' src={item.hearted ? redhearth : hearth} alt="hearth" />
                   </div>
                </div>
                
@@ -324,12 +293,12 @@ function alldata() {
                </div>
                <div className='drug-product-text-wrapper'>
                <p className='drug-product-title'>{item.title}</p>
-               <p className='drug-product-title'>{item.amount}</p>
+               {/* <p className='drug-product-title'>{item.amount}</p> */}
                <p className='drug-product-category'>{item.Category}</p>
                </div>
       
             </div>
-            </Link>
+            {/* </Link> */}
 
             <div className='drug-price-wrapper'>
                <p className='drug-price'>{item.price} ლარი</p> 

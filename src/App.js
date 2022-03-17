@@ -12,6 +12,8 @@ import Cartcontext from './cartcontext';
 import { Cartpage } from './components/cart-page/cartpage';
 import Itemstatus from './itemstatus';
 import Globalcat from './globalcat';
+import Favoritecontext from './favoritecontext'
+import { Favorite } from './favorite-page/favorite';
 
 
 
@@ -22,6 +24,7 @@ import Globalcat from './globalcat';
     const [data, setdata] = useState([])
     const [data2, setdata2] = useState([])
     const [cartitem, setcartitem] = useState([])
+    const [favorite, setfavorite] = useState([])
     const [itemstatus, setitemstatus] = useState(true)
     const [alert, setalert] = useState('')
     const [globalcat, setglobalcat] = useState('')
@@ -75,9 +78,16 @@ import Globalcat from './globalcat';
     }
 
 
-    // console.log(globalcat)
 
       return (
+
+        <Favoritecontext.Provider value= {
+          {
+            favorite : favorite,
+            setfavorite : setfavorite
+          }
+        }
+        >
 
 
         <Globalcat.Provider value= {
@@ -114,6 +124,7 @@ import Globalcat from './globalcat';
               <Route path='drugpage-cat' element={  <Drugpage category={globalcat} data={data}/> }/>
               <Route path='about' element={ <About/> }/>
               <Route path='cart' element={ <Cartpage originaldata={data} data={cartitem}/> }/>
+              <Route path='favorites' element={ <Favorite data={data}/> }/>
               <Route path='/:index' element={ <Productpage data ={data}/> }/>
             </Routes>
           <Footer/>
@@ -133,6 +144,7 @@ import Globalcat from './globalcat';
         </Cartcontext.Provider>
         </Itemstatus.Provider>
         </Globalcat.Provider>
+        </Favoritecontext.Provider>
       );
     }
     export default App;

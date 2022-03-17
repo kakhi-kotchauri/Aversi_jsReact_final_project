@@ -33,7 +33,9 @@ const {cartitem, setcartitem} = useContext(Cartcontext)
           <img className='search' src={search} alt="search" />
           </div>
           <div className='icon-wrap'>
+            <Link to={'favorites'}>
               <img className='icons' src={hearth} alt="hearth" />
+            </Link>
               <img className='icons' src={person} alt="person" />
               <Link to={'cart'}>
                 <div className='header-cart-wrapper'>

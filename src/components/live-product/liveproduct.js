@@ -66,21 +66,28 @@ export function Liveproduct(props) {
         }
     }
 
-
     
     const {cartitem, setcartitem} = useContext(Cartcontext)
+
+
+    console.log(cartitem)
+
 
 
     function addtocart(id) {
         const find = props.data.find(element => element.id === id)
         const findcart = cartitem.find(element => element.id === id)
         if(find !== findcart) {
+            find['time'] = Date.now()  
             find['productcount'] = 1  
-            setcartitem([...cartitem, find])
+            setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
         } else {
-            setcartitem([...cartitem])
+            setcartitem([...cartitem].sort(function (a, b) {return a.time - b.time;}))
         }
     }
+
+
+    
 
 
 
@@ -105,9 +112,9 @@ export function Liveproduct(props) {
                     return(
 
                     <div className='liveproduct-slot-par' key={index}>
-                        <Link to={`/${item.id}`}>
-                        <Productslot data={productarr} key={index} item={item} callfade={callfade}/> 
-                        </Link>
+                        {/* <Link to={`/${item.id}`}> */}
+                        <Productslot data={props.data} key={index} item={item} callfade={callfade}/> 
+                        {/* </Link> */}
 
                         <div className='price-wrapper'>
                         <p className='price'>{item.price} ლარი</p> 

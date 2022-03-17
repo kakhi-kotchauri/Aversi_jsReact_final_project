@@ -27,16 +27,11 @@ export function Cartpage(props) {
 
     if(type === '+') {
       findcart['productcount'] = findcart.productcount + 1
-      setcartitem([...replace, findcart].sort(function (a, b) {
-        return a.id - b.id;
-      }))
+      setcartitem([...replace, findcart].sort(function (a, b) {return a.time - b.time;}))
     } else if (type === '-' && findcart.productcount > 1) {
         findcart['productcount'] = findcart.productcount - 1
-        setcartitem([...replace, findcart].sort(function (a, b) {
-          return a.id - b.id;
-        }))
+        setcartitem([...replace, findcart].sort(function (a, b) {return a.id - b.time;}))
     }
-
 }
 
     
