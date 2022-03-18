@@ -25,7 +25,7 @@ export function Drugpage(props) {
 
 
    
-let ssd = useParams()
+// let ssd = useParams()
 
 // console.log(ssd)
 
@@ -258,12 +258,28 @@ function alldata() {
 
                      <div key={index} className='link-wrap'>
 
-                  {/* <Link to={`/${item.id}`}> */}
+                  <Link to={`/${item.id}`}>
 
 
                   <div className='drug-product-slot'>
                   {/* <div className={`fade ${callfade}`}></div> */}
-                  <div className='drug-rating-par'>
+               
+               <div className='drug-picture-wrapper'>
+               <img className='drug-product-img' src={item.img} alt="item-pic" />  
+               </div>
+               <div className='drug-product-text-wrapper'>
+               <p className='drug-product-title'>{item.title}</p>
+               {/* <p className='drug-product-title'>{item.amount}</p> */}
+               <p className='drug-product-category'>{item.Category}</p>
+               </div>
+      
+            </div>
+            
+            </Link>
+
+
+
+            <div className='drug-rating-par'>
                   <div className='drug-rating'>
                   <div className='drug-star-wrapper'>
       
@@ -287,18 +303,9 @@ function alldata() {
                         <img onClick={() => hearting(item.id)} className='drug-hearth' src={item.hearted ? redhearth : hearth} alt="hearth" />
                   </div>
                </div>
-               
-               <div className='drug-picture-wrapper'>
-               <img className='drug-product-img' src={item.img} alt="item-pic" />  
-               </div>
-               <div className='drug-product-text-wrapper'>
-               <p className='drug-product-title'>{item.title}</p>
-               {/* <p className='drug-product-title'>{item.amount}</p> */}
-               <p className='drug-product-category'>{item.Category}</p>
-               </div>
-      
-            </div>
-            {/* </Link> */}
+
+
+
 
             <div className='drug-price-wrapper'>
                <p className='drug-price'>{item.price} ლარი</p> 

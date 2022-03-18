@@ -13,7 +13,7 @@ import { Cartpage } from './components/cart-page/cartpage';
 import Itemstatus from './itemstatus';
 import Globalcat from './globalcat';
 import Favoritecontext from './favoritecontext'
-import { Favorite } from './favorite-page/favorite';
+import { Favorite } from './components/favorite-page/favorite';
 
 
 

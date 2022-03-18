@@ -162,17 +162,23 @@ export function Cartpage(props) {
       <div className='cart-sum'>
         <div className='cart-sum-div'>
           <div className='cart-sum-slots'>
-            <p>პროდუქცია</p>
-            <p>{ssd(cartitem)} ლ</p>
+            <p className='sum-title'>პროდუქცია</p>
+            <p className='sum-title'>{ssd(cartitem)} ლარი</p>
           </div>
           <div className='cart-sum-slots'>
-            <p>მიტანის საკომისიო</p>
-            <p>0 ლ</p>
+            <p className='sum-title'>მიტანის საკომისიო</p>
+            <p className='sum-title'>0 ლარი</p>
           </div>
           <div className='cart-sum-slots'>
-            <p>გაქვს ვაუჩერი ?</p>
+            <p className='sum-title'>გაქვს ვაუჩერი ?</p>
+          </div>
+          <div className='sum-line'></div>
+          <div className='cart-sum-slots'>
+            <p className='sum-title'>სულ</p>
+            <p className='sum-title-1'>{ssd(cartitem)} ლარი</p>
           </div>
         </div>
+        <button className='sum-buy'>ყიდვა</button>
       </div>
 
       </div>

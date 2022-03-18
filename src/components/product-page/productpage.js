@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import Cartcontext from '../../cartcontext';
+import white from './pictures/white.png'
+import gray from './pictures/gray.png'
+import Favoritecontext from '../../favoritecontext';
 
 
 
@@ -14,6 +17,7 @@ export function Productpage(props) {
 
 let params = useParams()
 
+const {favorite, setfavorite} = useContext(Favoritecontext)
 const {cartitem, setcartitem} = useContext(Cartcontext)
 
 
@@ -35,6 +39,7 @@ function addtocart(id) {
 
 const productdata = props.data[params.index - 1]
 
+const [style, setstyle] = useState(false)
 const [img1, setimg1] = useState('')
 const [img2, setimg2] = useState('')
 const [bigimg, setbigimg] = useState('')
@@ -73,7 +78,20 @@ useEffect(() => {
 }, [props.data])
 
 
-// console.log(img1)
+function hearthing(id) {
+    // setstyle(!style)
+    const removeitem = favorite.filter(item => item.id !== id)
+    const find = props.data.find(element => element.id === id)
+    // const replace = props.data.filter(element => element.id !== id)
+    if(find['hearted'] === true) {
+       find['hearted'] = false
+       setfavorite(removeitem)
+    } else {
+       find['hearted'] = true
+       setfavorite([...favorite, find])
+    }
+    // setdrugpagedata([...replace, find].sort(function (a, b) {return a.id - b.id;})) 
+}
 
 
     return(
@@ -159,7 +177,15 @@ useEffect(() => {
                         <button onClick={() => count('+')} className='count-button'>+</button>
                     </div>
 
+                    <div className='des-add-par'>
+
                     <button onClick={() => addtocart(productdata.id)} className='des-add'>კალათაში ჩამატება</button>
+
+                    <div onClick={() => hearthing(productdata.id)} className={productdata.hearted ? 'des-hearth-par-a' : 'des-hearth-par'}>
+                        <img className='des-hearth-img' src={productdata.hearted ? white : gray} alt="hearth" />
+                    </div>
+
+                    </div>
 
                 </div>
 

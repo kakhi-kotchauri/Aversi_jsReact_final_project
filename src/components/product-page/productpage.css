@@ -157,6 +157,45 @@
     border-color: #EA3339;
 }
 
+
+.des-add-par {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.des-hearth-par {
+    width: 81px;
+    height: 60px;
+    background-color: #EA3339;
+    background-color: transparent;
+    outline: solid 1px #EA3339;
+    border-radius: 10px;
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.des-hearth-par-a {
+    width: 81px;
+    height: 60px;
+    background-color: #EA3339;
+    outline: solid 1px #EA3339;
+    border-radius: 10px;
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.des-hearth-img {
+    width: 28px;
+    height: 26px;
+}
+
+
 .des-anotation-wrapper {
   display: flex;
   justify-content: flex-start;
@@ -181,7 +220,10 @@
    line-height: 3;
    margin-top: 30px;
    margin-bottom: 30px;
+   
 }
+
+
 
 
 

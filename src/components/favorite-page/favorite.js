@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react'
 // import {Liveproduct} from '../live-product/liveproduct'
 import './favorite.css'
-import Favoritecontext from '../favoritecontext'
+import Favoritecontext from '../../favoritecontext'
 
 
 
@@ -47,42 +47,42 @@ function remove(id) {
         /> */}
         
 
-      <div className='cart-product-wrapper'>
+      <div className='fav-product-wrapper'>
 
 <div>
  
-      <div className='cart-product-par'>
+      <div className='fav-product-par'>
 
-          <div className='cart-titles'>
-              <p className='cart-title-text'>პროდუქციის დასახელება</p>
-              <p className='cart-title-text'>ფასი</p>
-              <p className='cart-title-text'>რაოდენობა</p>
-              <p className='cart-title-text'>ჯამი</p>
+          <div className='fav-titles'>
+              <p className='fav-title-text'>პროდუქციის დასახელება</p>
+              <p className='fav-title-text'>ფასი</p>
+              <p className='fav-title-text'>რაოდენობა</p>
+              <p className='fav-title-text'>ჯამი</p>
           </div>
 
 
           {   favorite.length >= 1 ?
               favorite.map((item, index) => {
             return (
-              <div key={index} className='cart-product'>
-              <div className='cart-product-left'>
+              <div key={index} className='fav-product'>
+              <div className='fav-product-left'>
 
                 <Link  to={`/${item.id}`}>
-                  <div className='cart-image-par'>
-                      <img className='cart-img' src={item.img} alt="cartimage" />
+                  <div className='fav-image-par'>
+                      <img className='fav-img' src={item.img} alt="favimage" />
                   </div>
                 </Link>
                 
-                <div className='left-product-text-par'>
-                  <div className='cart-product-title'>{item.title}</div>
-                  <div className='cart-product-text'>{item.usage}</div>
-                  <div className='cart-product-text'> ოდენობა {item.amount}</div>
+                <div className='fav-product-text-par'>
+                  <div className='fav-product-title'>{item.title}</div>
+                  <div className='fav-product-text'>{item.usage}</div>
+                  <div className='fav-product-text'> ოდენობა {item.amount}</div>
                 </div>
 
               </div>
        
-              <div className='cart-right-product'>
-                  <p className='cart-delete' onClick={() => remove(item.id)}>წაშლა</p>
+              <div className='fav-right-product'>
+                  <p className='fav-delete' onClick={() => remove(item.id)}>წაშლა</p>
                 </div>
     
           </div>
@@ -91,7 +91,7 @@ function remove(id) {
         
         :
         
-        <div className='cart-empty'>
+        <div className='fav-empty'>
             <p>ფავორიტი პროდუქტები არ არის დამატებული</p>
         </div>
     }
