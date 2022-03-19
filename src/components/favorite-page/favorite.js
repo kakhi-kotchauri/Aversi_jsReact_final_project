@@ -17,8 +17,8 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
 
 
 function remove(id) {
-    const removeitem = favorite.filter(item => item.id !== id)
-    const find = props.data.find(element => element.id === id)
+    const removeitem = favorite.filter(item => item.customid !== id)
+    const find = props.data.find(element => element.customid === id)
     find['hearted'] = false
     setfavorite(removeitem)
  }
@@ -82,7 +82,7 @@ function remove(id) {
               </div>
        
               <div className='fav-right-product'>
-                  <p className='fav-delete' onClick={() => remove(item.id)}>წაშლა</p>
+                  <p className='fav-delete' onClick={() => remove(item.customid)}>წაშლა</p>
                 </div>
     
           </div>

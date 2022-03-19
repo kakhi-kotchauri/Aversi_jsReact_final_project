@@ -12,6 +12,20 @@ import graystar from './pictures/gray-star.png'
 import hearth from './pictures/hearth.png'
 import redhearth from './pictures/redhearth.png'
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import "..//.././styles.css";
+
+// import required modules
+import { Pagination, Navigation } from "swiper";
+
+
 
 
 
@@ -19,12 +33,7 @@ export function Liveproduct(props) {
 
     const {cartitem, setcartitem} = useContext(Cartcontext)
     const {favorite, setfavorite} = useContext(Favoritecontext)
-    const [start, setstart] = useState(0)
-    const [end, setend] = useState(4)
-    const [callfade, setcallfade] = useState('')
     const [productarr, setproductarr] = useState([])
-    const [status, setstatus] = useState(1)
-    const step = 4
 
 
     useEffect(() => {
@@ -39,52 +48,26 @@ export function Liveproduct(props) {
      async function getdata() {
         await promise(props.data)
         .then(data => {
-           setproductarr(data.slice(start, end))
+              if(data.length > 0) {
+               let best = data.filter(item => item.rating.length >= 4)
+               setproductarr(best)     
+              }
         })
     }
 
     getdata()
 
-    }, [props.data, start, end])
+    }, [props.data])
 
 
 
-    function moveright() {
-        if(end < props.data.length) {
-            setstart(start + step)
-            setend(end + step)
-            setstatus(status + 1)
-            setcallfade('callfade')
-            setTimeout(() => {
-              setcallfade('')
-            }, 200);
-        }
-    }
-
-    function moveleft() {
-        if(start > 0) {
-            setstart(start - step)
-            setend(end - step)
-            setstatus(status - 1)
-            setcallfade('callfade')
-            setTimeout(() => {
-              setcallfade('')
-            }, 200);
-        }
-    }
-
-    
-   
-
-
-
-    console.log(cartitem)
+    // console.log(cartitem)
 
 
 
     function addtocart(id) {
-        const find = props.data.find(element => element.id === id)
-        const findcart = cartitem.find(element => element.id === id)
+        const find = props.data.find(element => element.customid === id)
+        const findcart = cartitem.find(element => element.customid === id)
         if(find !== findcart) {
             find['time'] = Date.now()  
             find['productcount'] = 1  
@@ -101,9 +84,9 @@ export function Liveproduct(props) {
         
     function hearting(id) {
         console.log('test')
-    const removeitem = favorite.filter(item => item.id !== id)
-    const find = props.data.find(element => element.id === id)
-    const replace = props.data.filter(element => element.id !== id)
+    const removeitem = favorite.filter(item => item.customid !== id)
+    const find = props.data.find(element => element.customid === id)
+    const replace = props.data.filter(element => element.customid !== id)
     if(find['hearted'] === true) {
         find['hearted'] = false
         setfavorite(removeitem)
@@ -126,29 +109,39 @@ export function Liveproduct(props) {
 
         <div className='product-head-wrapper'>
                   <p className='product-head-p'>ლიდერები გაყიდვაში</p>
-                  <div className='arrow-wrapper'>
-                     <img onClick={moveleft} className='arrows' src={left} alt="left" /> 
-                     <p>{`${status} / ${Math.ceil(props.data.length / step)}`}</p>
-                     <img onClick={moveright} className='arrows' src={right} alt="right" /> 
-                  </div>
               </div>
+
+
+              <div className='liveproduct-par'>
               
     
           <div className='live-product'>
+
+              
+          <Swiper
+                slidesPerView={4}
+                spaceBetween={1}
+                slidesPerGroup={4}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="mySwiper"
+            >
     
             {
                 productarr? 
                 productarr.map((item, index) => {
                     return(
 
-                    <div className='liveproduct-slot-par' key={index}>
-                        <Link to={`/${item.id}`}>
-                        <Productslot data={props.data} key={index} item={item} callfade={callfade}/> 
+                <SwiperSlide key={index}>  
+    
+                    <div className='liveproduct-slot-par'>
+                        <Link to={`/${item.customid}`}>
+                        <Productslot data={props.data} key={index} item={item}/> 
                         </Link>
 
                         <div className='price-wrapper'>
                         <p className='price'>{item.price} ლარი</p> 
-                        <button onClick={() => addtocart(item.id)} className='buy'>ყიდვა</button>
+                        <button onClick={() => addtocart(item.customid)} className='buy'>ყიდვა</button>
                         </div>
 
                         <div className='rating-par'>
@@ -174,7 +167,7 @@ export function Liveproduct(props) {
                         </div>
 
                          <img 
-                         onClick={() => hearting(item.id)} 
+                         onClick={() => hearting(item.customid)} 
                          className='hearth' 
                          src={item.hearted ? redhearth : hearth} alt="hearth"
                           />
@@ -183,11 +176,18 @@ export function Liveproduct(props) {
                     </div>
 
                  </div>
+
+            </SwiperSlide>
+
                         
                     )
                 })
-                : <div>no</div>
+                : null
             }
+
+            </Swiper>
+
+          </div>
           </div>
     
           </section>

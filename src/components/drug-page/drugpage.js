@@ -12,6 +12,8 @@ import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Itemstatus from '../../itemstatus';
 import Favoritecontext from '../../favoritecontext';
+import right from './pictures/arrow-right.png'
+import left from './pictures/arrow-left.png'
 
 
 
@@ -36,7 +38,7 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
    
 
 
-
+   const step = 16
    const [category, setcategory] = useState([])
    const [drugpagedata, setdrugpagedata] = useState([])
    const [drugpagedata2, setdrugpagedata2] = useState([])
@@ -45,6 +47,16 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
    const [max, setmax] = useState('')
    const [mindose, setmindose] = useState('')
    const [maxdose, setmaxdose] = useState('')
+   const [start, setstart] = useState(0)
+   const [end, setend] = useState(step)
+   const [callfade, setcallfade] = useState('')
+   const [status, setstatus] = useState(1)
+   // const [test, settest] = useState([])
+
+
+   // console.log(test)
+
+
 
    // console.log(max)
    // console.log(min)
@@ -60,13 +72,16 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
       async function getdata() {
          await promise(props.data)
          .then(data => {
-            setdrugpagedata(data.sort(function (a, b) {return a.id - b.id;}))
-            setdrugpagedata2(data.sort(function (a, b) {return a.id - b.id;}))
+            setdrugpagedata(data.sort(function (a, b) {return a.customid - b.customid;}))
+            setdrugpagedata2(data.sort(function (a, b) {return a.customid - b.customid;}))
+            // settest(drugpagedata.slice(start, end))
             setdatastatus(true)
          })
 
       }
       getdata()
+
+      // console.log('test')      
 
    }, [props.data])
 
@@ -84,8 +99,6 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
    
    
 
-
-
    useEffect(() => {
 
       window.scrollTo({
@@ -95,20 +108,61 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
   }, [])
 
 
+
+
+
+
+  function moveright() {
+     
+   if(end < props.data.length && drugpagedata.slice(start, end).length >= step) {
+       setstart(start + step)
+       setend(end + step)
+       setstatus(status + 1)
+       setcallfade('offerfade')
+       setTimeout(() => {
+         setcallfade('')
+       }, 200);
+   }
+}
+
+
+function moveleft() {
+   if(start > 0) {
+       setstart(start - step)
+       setend(end - step)
+       setstatus(status - 1)
+       setcallfade('offerfade')
+       setTimeout(() => {
+         setcallfade('')
+       }, 200);
+   }
+}
    
+
+console.log(drugpagedata.length)
+console.log(drugpagedata.slice(start, end).length)
+console.log(props.data.length)
 
    
 
 
 function alldata() {
+   setmin('')
+   setmax('')
+   setstart(0)
+   setend(step)
+   setstatus(1)
    setdrugpagedata(props.data)
    setdrugpagedata2(props.data)
 }
 
    function filtercat(category) {
+      setstart(0)
+      setend(step)
+      setstatus(1)
       // console.log('test')
       let filteredData = props.data.filter(item => item.Category === category )
-      console.log(filteredData)
+      // console.log(filteredData)
       setdrugpagedata(filteredData)
       setdrugpagedata2(filteredData)
    }
@@ -118,6 +172,10 @@ function alldata() {
 
 
    function filterprice() {
+
+      setstart(0)
+      setend(step)
+      setstatus(1)
 
       if(min && !max) {
          console.log('test')
@@ -146,12 +204,12 @@ function alldata() {
 
       filterprice()
       
-   }, [max, min])
+   }, [max, min, drugpagedata2])
 
 
    function addtocart(id) {
-      const find = props.data.find(element => element.id === id)
-      const findcart = cartitem.find(element => element.id === id)
+      const find = props.data.find(element => element.customid === id)
+      const findcart = cartitem.find(element => element.customid === id)
       if(find !== findcart) {
             find['time'] = Date.now()  
             find['productcount'] = 1  
@@ -164,9 +222,9 @@ function alldata() {
 
 
    function hearting(id) {
-      const removeitem = favorite.filter(item => item.id !== id)
-      const find = props.data.find(element => element.id === id)
-      const replace = props.data.filter(element => element.id !== id)
+      const removeitem = favorite.filter(item => item.customid !== id)
+      const find = props.data.find(element => element.customid === id)
+      const replace = props.data.filter(element => element.customid !== id)
       if(find['hearted'] === true) {
          find['hearted'] = false
          setfavorite(removeitem)
@@ -174,7 +232,7 @@ function alldata() {
          find['hearted'] = true
          setfavorite([...favorite, find])
       }
-      setdrugpagedata([...replace, find].sort(function (a, b) {return a.id - b.id;})) 
+      // setdrugpagedata2([...replace, find].sort(function (a, b) {return a.customid - b.customid;})) 
    }
 
 
@@ -211,8 +269,9 @@ function alldata() {
 
    <div className='drugpage-content-par'>
 
-
       <div className='drugpage-filter-wrapper'>
+
+         <div className='test'>
             
             <div className='drugpage-filters'>
             <p className='drugpage-filters-title'>filtrebi</p> 
@@ -223,8 +282,8 @@ function alldata() {
             </div>
 
             <div className='drug-input-par'>
-            <input className='drug-input' onChange={(e) => setmindose(e.target.value)} value={mindose} type="number" placeholder="mindose" />
-            <input className='drug-input' onChange={(e) => setmaxdose(e.target.value)} value={maxdose} type="number" placeholder="maxdose" />  
+            {/* <input className='drug-input' onChange={(e) => setmindose(e.target.value)} value={mindose} type="number" placeholder="mindose" /> */}
+            {/* <input className='drug-input' onChange={(e) => setmaxdose(e.target.value)} value={maxdose} type="number" placeholder="maxdose" />   */}
             </div>
 
             <button onClick={alldata}>მაჩვენე ყველაფერი</button>          
@@ -243,6 +302,9 @@ function alldata() {
             <div className='drugpage-lowfilter'>
                
             </div>
+
+       </div>
+         
             
       </div>
 
@@ -253,12 +315,14 @@ function alldata() {
 
       {
             props.data ? 
-            drugpagedata.map((item, index) => {
+            drugpagedata.slice(start, end).map((item, index) => {
                return (
 
                      <div key={index} className='link-wrap'>
+                    <div className={`offerfade0 ${callfade}`}></div>
 
-                  <Link to={`/${item.id}`}>
+
+                  <Link to={`/${item.customid}`}>
 
 
                   <div className='drug-product-slot'>
@@ -300,7 +364,7 @@ function alldata() {
                   </div>
       
                         </div>
-                        <img onClick={() => hearting(item.id)} className='drug-hearth' src={item.hearted ? redhearth : hearth} alt="hearth" />
+                        <img onClick={() => hearting(item.customid)} className='drug-hearth' src={item.hearted ? redhearth : hearth} alt="hearth" />
                   </div>
                </div>
 
@@ -309,7 +373,7 @@ function alldata() {
 
             <div className='drug-price-wrapper'>
                <p className='drug-price'>{item.price} ლარი</p> 
-               <button onClick={() => addtocart(item.id)} className='drug-buy'>ყიდვა</button>
+               <button onClick={() => addtocart(item.customid)} className='drug-buy'>ყიდვა</button>
                </div>
 
 
@@ -322,6 +386,22 @@ function alldata() {
             : null
       }
       </div> 
+
+   <div  className='drug-switch'>
+               
+               {
+                  drugpagedata.length > step ?
+
+                  <div className='offer-arrow-wrapper'>
+                  <img onClick={moveleft} className='offer-arrows' src={left} alt="left" /> 
+                  <p>{`${status} / ${Math.ceil(drugpagedata.length / step)}`}</p>
+                  <img onClick={moveright} className='offer-arrows' src={right} alt="right" /> 
+                 </div>
+
+                   : null
+               }
+   </div>
+  
    </div>
 
 

@@ -21,8 +21,8 @@ export function Cartpage(props) {
 
   function counter(id, type) {
     setitemstatus(false)
-    const findcart = cartitem.find(element => element.id === id)
-    const replace = cartitem.filter(item => item.id !== id)
+    const findcart = cartitem.find(element => element.customid === id)
+    const replace = cartitem.filter(item => item.customid !== id)
 
 
     if(type === '+') {
@@ -30,14 +30,14 @@ export function Cartpage(props) {
       setcartitem([...replace, findcart].sort(function (a, b) {return a.time - b.time;}))
     } else if (type === '-' && findcart.productcount > 1) {
         findcart['productcount'] = findcart.productcount - 1
-        setcartitem([...replace, findcart].sort(function (a, b) {return a.id - b.time;}))
+        setcartitem([...replace, findcart].sort(function (a, b) {return a.time - b.time;}))
     }
 }
 
     
 
     function remove(id) {
-        const removeitem = cartitem.filter(item => item.id !== id)
+        const removeitem = cartitem.filter(item => item.customid !== id)
         setitemstatus(false)
         setcartitem(removeitem)
      }
@@ -131,15 +131,15 @@ export function Cartpage(props) {
                 <p className='cart-product-prices'>{tofloat(item.price, 1)} ლ</p>
                 
                 <div className='cart-counter-par'>
-                <button className='cart-counter-button' onClick={ () => counter(item.id, '-')}>-</button>
+                <button className='cart-counter-button' onClick={ () => counter(item.customid, '-')}>-</button>
                 <p className='cart-product-prices'>{item.productcount}</p>
-                <button className='cart-counter-button' onClick={ () => counter(item.id, '+')}>+</button>
+                <button className='cart-counter-button' onClick={ () => counter(item.customid, '+')}>+</button>
                 </div>
 
                 
                 <div className='cart-right-product'>
                 <p className='cart-product-prices'>{tofloat(item.price * item.productcount, 2)} ლ</p>
-                  <p className='cart-delete' onClick={() => remove(item.id)}>წაშლა</p>
+                  <p className='cart-delete' onClick={() => remove(item.customid)}>წაშლა</p>
                 </div>
 
           </div>

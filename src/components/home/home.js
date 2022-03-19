@@ -79,7 +79,7 @@ const {globalcat, setglobalcat} = useContext(Globalcat)
 
 
       <Link to={`/${'drugpage-cat'}`}>
-        <div onClick={() => setglobalcat('ჰიგიენა')} className='catalog-slot'>
+        <div onClick={() => setglobalcat('მედიკამენტი')} className='catalog-slot'>
             <img className='catalog-img' src={pill} alt="pill" />
             <p className='catalog-p'>წამლები</p>
         </div>  

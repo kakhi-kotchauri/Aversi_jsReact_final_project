@@ -19,6 +19,7 @@ import { Favorite } from './components/favorite-page/favorite';
 
 
 
+
     function App() {
 
     const [data, setdata] = useState([])
@@ -33,7 +34,10 @@ import { Favorite } from './components/favorite-page/favorite';
 
       fetch('https://kakhi-kotchauri.github.io/fakedata.github.io/fakedata.json')
       .then( response => response.json())
-      .then(response2 => setdata(response2.Products))
+      .then(response2 => {
+        const finaldata = response2.Products.map((item, index) => ({...item, customid : index}))
+        setdata(finaldata)
+      })
       .catch((error) => {
         console.log(error)
       })
@@ -48,7 +52,7 @@ import { Favorite } from './components/favorite-page/favorite';
     }, [])
 
 
-    // console.log(cartitem)
+    // console.log(data)
 
 
 
@@ -88,8 +92,6 @@ import { Favorite } from './components/favorite-page/favorite';
           }
         }
         >
-
-
         <Globalcat.Provider value= {
           {
             globalcat : globalcat,
@@ -97,8 +99,6 @@ import { Favorite } from './components/favorite-page/favorite';
           }
         }
         >
-
-
         <Itemstatus.Provider value= {
           {
             itemstatus : itemstatus,
@@ -106,8 +106,6 @@ import { Favorite } from './components/favorite-page/favorite';
           }
         }
         >
-
-
         <Cartcontext.Provider value= {
           {
             cartitem : cartitem,
@@ -117,6 +115,7 @@ import { Favorite } from './components/favorite-page/favorite';
         >
 
           <div ref={someref} className='app-par'>
+
           <Header/>
             <Routes>
               <Route path='/' element={ <Home data={data} data2={data2}/> }/>
@@ -128,6 +127,9 @@ import { Favorite } from './components/favorite-page/favorite';
               <Route path='/:index' element={ <Productpage data ={data}/> }/>
             </Routes>
           <Footer/>
+
+
+
           {
             alert !== '' ? <div onClick={(e) => tt(e)} ref={someref2} className='custom-alert'>
               <div onClick={tt} className='alert-content'>

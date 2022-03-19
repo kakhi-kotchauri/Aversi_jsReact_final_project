@@ -16,15 +16,15 @@ import Favoritecontext from '../../favoritecontext';
 export function Productpage(props) {
 
 let params = useParams()
-
+const productdata = props.data.find(item => item.customid === parseInt(params.index))
 const {favorite, setfavorite} = useContext(Favoritecontext)
 const {cartitem, setcartitem} = useContext(Cartcontext)
 
 
 function addtocart(id) {
-    const find = props.data.find(element => element.id === id)
-    const findcart = cartitem.find(element => element.id === id)
-    const replace = cartitem.filter(item => item.id !== id)
+    const find = props.data.find(element => element.customid === id)
+    const findcart = cartitem.find(element => element.customid === id)
+    const replace = cartitem.filter(item => item.customid !== id)
     if(find !== findcart) {
             find['time'] = Date.now()  
             find['productcount'] = productcount
@@ -36,8 +36,6 @@ function addtocart(id) {
 }
 
 
-
-const productdata = props.data[params.index - 1]
 
 const [style, setstyle] = useState(false)
 const [img1, setimg1] = useState('')
@@ -80,8 +78,8 @@ useEffect(() => {
 
 function hearthing(id) {
     // setstyle(!style)
-    const removeitem = favorite.filter(item => item.id !== id)
-    const find = props.data.find(element => element.id === id)
+    const removeitem = favorite.filter(item => item.customid !== id)
+    const find = props.data.find(element => element.customid === id)
     // const replace = props.data.filter(element => element.id !== id)
     if(find['hearted'] === true) {
        find['hearted'] = false
@@ -179,9 +177,9 @@ function hearthing(id) {
 
                     <div className='des-add-par'>
 
-                    <button onClick={() => addtocart(productdata.id)} className='des-add'>კალათაში ჩამატება</button>
+                    <button onClick={() => addtocart(productdata.customid)} className='des-add'>კალათაში ჩამატება</button>
 
-                    <div onClick={() => hearthing(productdata.id)} className={productdata.hearted ? 'des-hearth-par-a' : 'des-hearth-par'}>
+                    <div onClick={() => hearthing(productdata.customid)} className={productdata.hearted ? 'des-hearth-par-a' : 'des-hearth-par'}>
                         <img className='des-hearth-img' src={productdata.hearted ? white : gray} alt="hearth" />
                     </div>
 

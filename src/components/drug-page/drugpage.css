@@ -18,6 +18,12 @@
     flex-direction: column;
 }
 
+.test {
+    position: sticky;
+    top: 20px;
+    margin-bottom: 30px;
+}
+
 
 .drugpage-lowfilter {
     width: 262px;
@@ -30,6 +36,7 @@
 .drugpage-content-par {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 
@@ -37,7 +44,8 @@
 .drug-wrapper-par {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 70px;
     margin-bottom: 180px;
 }
@@ -229,6 +237,38 @@
     height: 250px;
 }
 
+
+
+.drug-switch {
+    margin-top: 30px;
+    /* background-color: #EA3339; */
+    width: 95%;
+    height: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.offer-arrow-wrapper {
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 120px;
+}
+
+.offer-arrows {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+}
 
 
 

@@ -1,10 +1,16 @@
 
+.liveproduct-par {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 
 .live-product {
-    width: 100%;
+    width: 95%;
+    /* display: flex;
+    justify-content: center; */
     margin-bottom: 100px;
-    display: flex;
-    justify-content: space-around;
 }
 
 
