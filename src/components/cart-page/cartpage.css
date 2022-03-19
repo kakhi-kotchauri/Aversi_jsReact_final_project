@@ -153,7 +153,11 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    width: 270px;
+    /* width: 270px; */
+}
+
+.left-product-text-par {
+    width: 130px;
 }
 
 .cart-image-par {

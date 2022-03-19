@@ -114,7 +114,8 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
 
   function moveright() {
      
-   if(end < props.data.length && drugpagedata.slice(start, end).length >= step) {
+   if(end < props.data.length && drugpagedata.slice(start + step, end + step).length !== 0 ) {
+       window.scrollTo(0, 0)
        setstart(start + step)
        setend(end + step)
        setstatus(status + 1)
@@ -127,6 +128,7 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
 
 
 function moveleft() {
+   window.scrollTo(0, 0)
    if(start > 0) {
        setstart(start - step)
        setend(end - step)
@@ -138,10 +140,9 @@ function moveleft() {
    }
 }
    
-
+console.log(props.data.length)
 console.log(drugpagedata.length)
 console.log(drugpagedata.slice(start, end).length)
-console.log(props.data.length)
 
    
 
@@ -267,6 +268,8 @@ function alldata() {
 
 
 
+
+
    <div className='drugpage-content-par'>
 
       <div className='drugpage-filter-wrapper'>
@@ -311,6 +314,8 @@ function alldata() {
 
 
    <div className='drug-wrapper-par'>
+   {/* <div className='drug-invis'></div> */}
+
       <div className="drugs-wrapper">
 
       {

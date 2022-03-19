@@ -89,7 +89,11 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    width: 270px;
+    /* width: 270px; */
+}
+
+.fav-product-text-par {
+    width: 130px;
 }
 
 .fav-image-par {
