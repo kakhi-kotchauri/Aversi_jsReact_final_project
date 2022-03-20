@@ -15,6 +15,16 @@
     height: 575px;
 }
 
+.banner2 {
+    background-image: url('./pictures/banner2.png');
+    background-color: #be1010;
+    background-size:     cover;      
+    background-repeat:   no-repeat;
+    background-position: center center; 
+    width: 100%;
+    height: 575px;
+}
+
 .ban-text {
     width: 564px;
     height: 147px;
@@ -23,6 +33,7 @@
     position: absolute;
     top: 123px;
     left: 90px;
+    text-align: start;
 }
 
 .button {

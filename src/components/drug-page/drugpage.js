@@ -41,6 +41,7 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
    const step = 16
    const [category, setcategory] = useState([])
    const [drugpagedata, setdrugpagedata] = useState([])
+   const [pricedata, setpricedata] = useState([])
    const [drugpagedata2, setdrugpagedata2] = useState([])
    const [datastatus, setdatastatus] = useState(false)
    const [min, setmin] = useState('')
@@ -74,6 +75,7 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
          .then(data => {
             setdrugpagedata(data.sort(function (a, b) {return a.customid - b.customid;}))
             setdrugpagedata2(data.sort(function (a, b) {return a.customid - b.customid;}))
+            setpricedata(data.sort(function (a, b) {return a.customid - b.customid;}))
             // settest(drugpagedata.slice(start, end))
             setdatastatus(true)
          })
@@ -128,8 +130,8 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
 
 
 function moveleft() {
-   window.scrollTo(0, 0)
    if(start > 0) {
+       window.scrollTo(0, 0)
        setstart(start - step)
        setend(end - step)
        setstatus(status - 1)
@@ -140,14 +142,14 @@ function moveleft() {
    }
 }
    
-console.log(props.data.length)
-console.log(drugpagedata.length)
-console.log(drugpagedata.slice(start, end).length)
 
-   
+// console.log(props.data.length)
+// console.log(drugpagedata.length)
+// console.log(drugpagedata.slice(start, end).length)
 
 
 function alldata() {
+   window.scrollTo(0, 0)
    setmin('')
    setmax('')
    setstart(0)
@@ -158,6 +160,7 @@ function alldata() {
 }
 
    function filtercat(category) {
+      window.scrollTo(0, 0)
       setstart(0)
       setend(step)
       setstatus(1)
@@ -179,26 +182,55 @@ function alldata() {
       setstatus(1)
 
       if(min && !max) {
-         console.log('test')
       let filteredData = drugpagedata2.filter(item => item.price >= min )
-      setdrugpagedata(filteredData)
+      setpricedata(filteredData)
       }
 
       if(max && !min) {
          let filteredData = drugpagedata2.filter(item => item.price <= max )
-         setdrugpagedata(filteredData)
+         setpricedata(filteredData)
          }
 
       if(max && min) {
          let filteredData = drugpagedata2.filter(item => item.price <= max && item.price >= min )
-         setdrugpagedata(filteredData)
+         setpricedata(filteredData)
          }
 
       if(!max && !min) {
-         setdrugpagedata(drugpagedata2)
+         setpricedata(drugpagedata2)
          } 
 
    }
+
+
+
+   function fil() {
+
+      setstart(0)
+      setend(step)
+      setstatus(1)
+
+      if(mindose && !maxdose) {
+      let filteredData = pricedata.filter(item => item.amount >= mindose )
+      setdrugpagedata(filteredData)
+      }
+
+      if(maxdose && !mindose) {
+         let filteredData = pricedata.filter(item => item.amount <= maxdose )
+         setdrugpagedata(filteredData)
+         }
+
+      if(maxdose && mindose) {
+         let filteredData = pricedata.filter(item => item.amount <= maxdose && item.amount >= mindose )
+         setdrugpagedata(filteredData)
+         }
+
+      if(!maxdose && !mindose) {
+         setdrugpagedata(pricedata)
+         } 
+
+   }
+
 
 
    useEffect(() => {
@@ -206,6 +238,13 @@ function alldata() {
       filterprice()
       
    }, [max, min, drugpagedata2])
+
+
+   useEffect(() => {
+
+      fil()
+      
+   }, [maxdose, mindose, pricedata])
 
 
    function addtocart(id) {
@@ -238,9 +277,7 @@ function alldata() {
 
 
 
-   const uniquecategory = [...new Set(props.data.map(item => item.Category))];
-
-   
+   const uniquecategory = [...new Set(props.data.map(item => item.Category))]
 
 
    return (
@@ -271,8 +308,11 @@ function alldata() {
 
 
    <div className='drugpage-content-par'>
+      
 
       <div className='drugpage-filter-wrapper'>
+
+
 
          <div className='test'>
             
@@ -285,8 +325,8 @@ function alldata() {
             </div>
 
             <div className='drug-input-par'>
-            {/* <input className='drug-input' onChange={(e) => setmindose(e.target.value)} value={mindose} type="number" placeholder="mindose" /> */}
-            {/* <input className='drug-input' onChange={(e) => setmaxdose(e.target.value)} value={maxdose} type="number" placeholder="maxdose" />   */}
+            <input className='drug-input' onChange={(e) => setmindose(e.target.value)} value={mindose} type="number" placeholder="mindose" />
+            <input className='drug-input' onChange={(e) => setmaxdose(e.target.value)} value={maxdose} type="number" placeholder="maxdose" />  
             </div>
 
             <button onClick={alldata}>მაჩვენე ყველაფერი</button>          
@@ -338,7 +378,7 @@ function alldata() {
                </div>
                <div className='drug-product-text-wrapper'>
                <p className='drug-product-title'>{item.title}</p>
-               {/* <p className='drug-product-title'>{item.amount}</p> */}
+               <p className='drug-product-title'>{item.amount}</p>
                <p className='drug-product-category'>{item.Category}</p>
                </div>
       

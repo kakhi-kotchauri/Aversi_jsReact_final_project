@@ -21,6 +21,19 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import Globalcat from '../../globalcat'
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import "..//.././styles.css";
+
+// import required modules
+import { Pagination, Navigation } from "swiper";
+
 
 
 
@@ -37,9 +50,26 @@ const {globalcat, setglobalcat} = useContext(Globalcat)
     <div>
 
       <div className='banner-wrapper'>
-        <div className='banner'></div>
-        <h1 className='ban-text'>შექმენით თქვენი პირადი სააფთიაქო თარო</h1>
-        <button className='button'>გაიგეთ მეტი..</button>
+          <Swiper 
+            loop={true}
+            pagination={{
+            clickable: true,
+            }}
+            modules={[Pagination]}
+          >
+
+              <SwiperSlide>
+            <div className='banner'></div>
+            <h1 className='ban-text'>შექმენით თქვენი პირადი სააფთიაქო თარო</h1>
+            <button className='button'>გაიგეთ მეტი..</button>
+           </SwiperSlide>
+           <SwiperSlide>
+            <div className='banner2'></div>
+            <h1 className='ban-text'>ავერსში გულების აქცია გრძელდება</h1>
+            <button className='button'>ნახვა</button>
+           </SwiperSlide>
+
+        </Swiper>
       </div>
 
 
