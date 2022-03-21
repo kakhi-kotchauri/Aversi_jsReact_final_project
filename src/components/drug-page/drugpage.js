@@ -14,7 +14,7 @@ import Itemstatus from '../../itemstatus';
 import Favoritecontext from '../../favoritecontext';
 import right from './pictures/arrow-right.png'
 import left from './pictures/arrow-left.png'
-
+import { Dropdown } from './dropdown';
 
 
 
@@ -152,6 +152,8 @@ function alldata() {
    window.scrollTo(0, 0)
    setmin('')
    setmax('')
+   setmindose('')
+   setmaxdose('')
    setstart(0)
    setend(step)
    setstatus(1)
@@ -211,17 +213,17 @@ function alldata() {
       setstatus(1)
 
       if(mindose && !maxdose) {
-      let filteredData = pricedata.filter(item => item.amount >= mindose )
+      let filteredData = pricedata.filter(item => parseInt(item.amount) >= mindose )
       setdrugpagedata(filteredData)
       }
 
       if(maxdose && !mindose) {
-         let filteredData = pricedata.filter(item => item.amount <= maxdose )
+         let filteredData = pricedata.filter(item => parseInt(item.amount) <= maxdose )
          setdrugpagedata(filteredData)
          }
 
       if(maxdose && mindose) {
-         let filteredData = pricedata.filter(item => item.amount <= maxdose && item.amount >= mindose )
+         let filteredData = pricedata.filter(item => parseInt(item.amount) <= maxdose && parseInt(item.amount) >= mindose )
          setdrugpagedata(filteredData)
          }
 
@@ -230,6 +232,9 @@ function alldata() {
          } 
 
    }
+
+
+   console.log(drugpagedata)
 
 
 
@@ -280,6 +285,9 @@ function alldata() {
    const uniquecategory = [...new Set(props.data.map(item => item.Category))]
 
 
+   
+
+
    return (
 
 
@@ -312,34 +320,46 @@ function alldata() {
 
       <div className='drugpage-filter-wrapper'>
 
-
-
+        
          <div className='test'>
             
             <div className='drugpage-filters'>
-            <p className='drugpage-filters-title'>filtrebi</p> 
+            <p className='drugpage-filters-title'>გაფილტვრა</p> 
 
-            <div className='drug-input-par'>
-            <input className='drug-input' onChange={(e) => setmin(e.target.value)} value={min} type="number" placeholder="min" />
-            <input className='drug-input' onChange={(e) => setmax(e.target.value)} value={max} type="number" placeholder="max" />  
-            </div>
 
-            <div className='drug-input-par'>
-            <input className='drug-input' onChange={(e) => setmindose(e.target.value)} value={mindose} type="number" placeholder="mindose" />
-            <input className='drug-input' onChange={(e) => setmaxdose(e.target.value)} value={maxdose} type="number" placeholder="maxdose" />  
-            </div>
+        <button className='drug-filter-seeall' onClick={alldata}>მაჩვენე ყველაფერი</button>          
 
-            <button onClick={alldata}>მაჩვენე ყველაფერი</button>          
+
+         <Dropdown title={'ფასით'}>
+         <div className='drug-input-par'>
+           <input className='drug-input' onChange={(e) => setmin(e.target.value)} value={min} type="number" placeholder="დან" />
+           <input className='drug-input' onChange={(e) => setmax(e.target.value)} value={max} type="number" placeholder="მდე" />  
+         </div>
+        </Dropdown>
+
+        <Dropdown title={'დოზირებით'}>
+        <div className='drug-input-par'>
+           <input className='drug-input' onChange={(e) => setmindose(e.target.value)} value={mindose} type="number" placeholder="დან" />
+           <input className='drug-input' onChange={(e) => setmaxdose(e.target.value)} value={maxdose} type="number" placeholder="მდე" />  
+        </div>        
+        </Dropdown>
+
+
+
             {/* <button onClick={filter}>medical devices</button>     */}
+            <Dropdown title={'კატეგორიით'}>
+            <div className='filter-category'>
             {
                props.data ? 
                uniquecategory.map((item, index) => {
                   return(
-                  <button onClick={() => filtercat(item)} key={index}>{item}</button>
+                  <button className='drug-filter-button' onClick={() => filtercat(item)} key={index}>{item}</button>
                   )
                })
                : null
-            }      
+            }   
+            </div>
+            </Dropdown>   
             </div>
 
             <div className='drugpage-lowfilter'>

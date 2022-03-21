@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-// import { Pagehead } from '../product-head/pagehead'
+import { Pagehead } from '../product-head/pagehead'
 import { useContext, useState } from 'react'
 // import {Liveproduct} from '../live-product/liveproduct'
 import './favorite.css'
@@ -28,13 +28,13 @@ function remove(id) {
     return (
    <div>
 
-{/*         
+        
             <Pagehead 
-        title={'კალათა'} 
+        title={'ფავორიტები'} 
         adress= {
         { 
         title2 : 'მთავარი /',
-        title3 : 'კალათა'
+        title3 : 'ფავორიტები'
         }
        } 
 
@@ -44,7 +44,7 @@ function remove(id) {
         redirect2 : '',
         }
        } 
-        /> */}
+        />
         
 
       <div className='fav-product-wrapper'>
