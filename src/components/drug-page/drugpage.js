@@ -14,6 +14,7 @@ import Itemstatus from '../../itemstatus';
 import Favoritecontext from '../../favoritecontext';
 import right from './pictures/arrow-right.png'
 import left from './pictures/arrow-left.png'
+import close from './pictures/close.png'
 import { Dropdown } from './dropdown';
 
 
@@ -23,23 +24,22 @@ export function Drugpage(props) {
 
 
 
+   useEffect(() => {
+
+      window.scrollTo({
+          top: 10, 
+      });
+      
+    }, [])
 
 
+
+   const {cartitem, setcartitem} = useContext(Cartcontext)
+   const {itemstatus, setitemstatus} = useContext(Itemstatus)
+   const {favorite, setfavorite} = useContext(Favoritecontext)
 
    
-// let ssd = useParams()
-
-// console.log(ssd)
-
-const {cartitem, setcartitem} = useContext(Cartcontext)
-const {itemstatus, setitemstatus} = useContext(Itemstatus)
-const {favorite, setfavorite} = useContext(Favoritecontext)
-
-   
-
-
    const step = 16
-   const [category, setcategory] = useState([])
    const [drugpagedata, setdrugpagedata] = useState([])
    const [pricedata, setpricedata] = useState([])
    const [drugpagedata2, setdrugpagedata2] = useState([])
@@ -52,15 +52,12 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
    const [end, setend] = useState(step)
    const [callfade, setcallfade] = useState('')
    const [status, setstatus] = useState(1)
-   // const [test, settest] = useState([])
+   const [filterstat, setfilterstat] = useState(false)
+   const [togledrop, settogledrop] = useState(false)
+   const [itemcategory, setitemcategory] = useState('')
+   const [itemcountry, setitemcountry] = useState('')
+   const [itemmanufacturer, setitemmanufacturer] = useState('')
 
-
-   // console.log(test)
-
-
-
-   // console.log(max)
-   // console.log(min)
 
    useEffect(() => {
 
@@ -76,44 +73,24 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
             setdrugpagedata(data.sort(function (a, b) {return a.customid - b.customid;}))
             setdrugpagedata2(data.sort(function (a, b) {return a.customid - b.customid;}))
             setpricedata(data.sort(function (a, b) {return a.customid - b.customid;}))
-            // settest(drugpagedata.slice(start, end))
             setdatastatus(true)
          })
 
       }
-      getdata()
-
-      // console.log('test')      
+      getdata()  
 
    }, [props.data])
 
 
 
-         useEffect(() => {
-      
-      if(props.category && drugpagedata.length > 0) {
-         console.log(props.category)
-         filtercat(props.category)
-      }
-   
-      }, [props.data, datastatus])
-      
-   
-   
-
    useEffect(() => {
-
-      window.scrollTo({
-          top: 10, 
-      });
-      
-  }, [])
-
-
-
-
-
-
+      if(props.category && drugpagedata.length > 0) {
+         setitemcategory(props.category)
+      }
+   }, [props.data, datastatus])
+   
+   
+   
   function moveright() {
      
    if(end < props.data.length && drugpagedata.slice(start + step, end + step).length !== 0 ) {
@@ -143,13 +120,10 @@ function moveleft() {
 }
    
 
-// console.log(props.data.length)
-// console.log(drugpagedata.length)
-// console.log(drugpagedata.slice(start, end).length)
-
 
 function alldata() {
    window.scrollTo(0, 0)
+   settogledrop(!togledrop)
    setmin('')
    setmax('')
    setmindose('')
@@ -159,25 +133,58 @@ function alldata() {
    setstatus(1)
    setdrugpagedata(props.data)
    setdrugpagedata2(props.data)
+   setitemcategory('')
+   setitemcountry('')
+   setitemmanufacturer('')
 }
 
-   function filtercat(category) {
-      window.scrollTo(0, 0)
-      setstart(0)
-      setend(step)
-      setstatus(1)
-      // console.log('test')
-      let filteredData = props.data.filter(item => item.Category === category )
-      // console.log(filteredData)
-      setdrugpagedata(filteredData)
-      setdrugpagedata2(filteredData)
+
+
+   function addfilters(type, category) {
+
+      if(type === 'category') {
+         setitemcategory(category)
+      }
+
+      if(type === 'country') {
+         setitemcountry(category)
+      }
+
+      if(type === 'manufacturer') {
+         setitemmanufacturer(category)
+      }
+      
    }
 
 
-   // console.log(drugpagedata)  
+//   console.log(itemmanufacturer)
+
+   function allfilter() {
+
+         const newfil = props.data.filter(item => item.Category.includes(itemcategory))
+         .filter(item => item.country.includes(itemcountry))
+         .filter(item => item.manufacturer.includes(itemmanufacturer))
+
+         // console.log(newfil)
+   
+         setdrugpagedata(newfil)
+         setdrugpagedata2(newfil)
+
+   }
+
+
+   useEffect(() => {
+     
+      allfilter()
+ 
+    }, [itemcategory, itemcountry, itemmanufacturer])
+
+
+   // console.log(itemcategory)
 
 
    function filterprice() {
+
 
       setstart(0)
       setend(step)
@@ -234,7 +241,18 @@ function alldata() {
    }
 
 
-   console.log(drugpagedata)
+   // console.log(drugpagedata.length)
+
+   useEffect(() => {
+
+      if(drugpagedata.length < props.data.length || min || max || mindose || maxdose) {
+        setfilterstat(true)
+      } else {
+         setfilterstat(false)
+      }
+
+   }, [drugpagedata])
+   
 
 
 
@@ -283,6 +301,10 @@ function alldata() {
 
 
    const uniquecategory = [...new Set(props.data.map(item => item.Category))]
+   const uniquecountry = [...new Set(props.data.map(item => item.country))]
+   const uniquemanufacturer = [...new Set(props.data.map(item => item.manufacturer))]
+
+   // console.log(uniquecountry)
 
 
    
@@ -322,44 +344,103 @@ function alldata() {
 
         
          <div className='test'>
-            
+         
             <div className='drugpage-filters'>
+            <div className='drugpage-title-par'>
             <p className='drugpage-filters-title'>გაფილტვრა</p> 
+              {
+                 filterstat ? 
+                 <button className='drug-filter-seeall' onClick={alldata}>
+                 <p className='seeall-text'>განულება</p>
+                </button> 
+
+                : null
+              }
+
+            </div>
 
 
-        <button className='drug-filter-seeall' onClick={alldata}>მაჩვენე ყველაფერი</button>          
 
 
-         <Dropdown title={'ფასით'}>
+         <Dropdown open={togledrop} title={'ფასით'}>
          <div className='drug-input-par'>
-           <input className='drug-input' onChange={(e) => setmin(e.target.value)} value={min} type="number" placeholder="დან" />
-           <input className='drug-input' onChange={(e) => setmax(e.target.value)} value={max} type="number" placeholder="მდე" />  
+
+           <input className='drug-input'
+            onChange={(e) => e.target.value >= 0 ? setmin(e.target.value) : min}
+             value={min} type="number" placeholder="დან"
+           />
+
+           <input className='drug-input' 
+           onChange={(e) => e.target.value >= 0 ? setmax(e.target.value) : max} 
+           value={max} type="number" placeholder="მდე"
+            />  
+
          </div>
         </Dropdown>
 
-        <Dropdown title={'დოზირებით'}>
+        <Dropdown open={togledrop} title={'დოზირებით'}>
         <div className='drug-input-par'>
-           <input className='drug-input' onChange={(e) => setmindose(e.target.value)} value={mindose} type="number" placeholder="დან" />
-           <input className='drug-input' onChange={(e) => setmaxdose(e.target.value)} value={maxdose} type="number" placeholder="მდე" />  
+
+           <input className='drug-input' 
+           onChange={(e) => e.target.value >= 0 ? setmindose(e.target.value) : mindose} 
+           value={mindose} type="number" placeholder="დან" 
+           />
+           
+           <input className='drug-input'
+            onChange={(e) => e.target.value >= 0 ? setmaxdose(e.target.value) : maxdose}
+             value={maxdose} type="number" placeholder="მდე"
+          />  
+
         </div>        
         </Dropdown>
 
 
+         <Dropdown open={togledrop} title={'კატეგორიით'}>
+         <div className='filter-category'>
+         {
+            props.data ? 
+            uniquecategory.map((item, index) => {
+               return(
+               <button className='drug-filter-button' onClick={() => addfilters('category', item)} key={index}>{item}</button>
+               )
+            })
+            : null
+         }   
+         </div>
+         </Dropdown>   
 
-            {/* <button onClick={filter}>medical devices</button>     */}
-            <Dropdown title={'კატეგორიით'}>
+
+         
+         <Dropdown open={togledrop} title={'გამოშვების ქვეყნით'}>
             <div className='filter-category'>
             {
                props.data ? 
-               uniquecategory.map((item, index) => {
+               uniquecountry.map((item, index) => {
                   return(
-                  <button className='drug-filter-button' onClick={() => filtercat(item)} key={index}>{item}</button>
+                  <button className='drug-filter-button' onClick={() => addfilters('country', item)} key={index}>{item}</button>
                   )
                })
                : null
             }   
             </div>
-            </Dropdown>   
+         </Dropdown> 
+
+
+         <Dropdown open={togledrop} title={'მწარმოებლით'}>
+            <div className='filter-category'>
+            {
+               props.data ? 
+               uniquemanufacturer.map((item, index) => {
+                  return(
+                  <button className='drug-filter-button' onClick={() => addfilters('manufacturer', item)} key={index}>{item}</button>
+                  )
+               })
+               : null
+            }   
+            </div>
+         </Dropdown> 
+
+
             </div>
 
             <div className='drugpage-lowfilter'>
@@ -374,7 +455,60 @@ function alldata() {
 
 
    <div className='drug-wrapper-par'>
-   {/* <div className='drug-invis'></div> */}
+   
+      {
+         filterstat ? 
+
+         <div className='filternames'>
+
+         {
+            min ?
+           <p onClick={() => setmin('')} className='filternames-text'>ფასი: {min} დან</p>
+            : null
+         }
+
+         
+         {
+            max ?
+           <p onClick={() => setmax('')} className='filternames-text'>ფასი: {max} მდე</p>
+            : null
+         }
+
+         {
+            mindose ?
+           <p onClick={() => setmindose('')} className='filternames-text'>დოზა: {mindose} დან</p>
+            : null
+         }
+
+         
+         {
+            maxdose ?
+           <p onClick={() => setmaxdose('')} className='filternames-text'>დოზა: {maxdose} მდე</p>
+            : null
+         }
+
+         {
+            itemcategory ?
+           <p onClick={() => setitemcategory('')} className='filternames-text'>{itemcategory}</p>
+            : null
+         }
+         
+         {
+            itemcountry ?
+           <p onClick={() => setitemcountry('')} className='filternames-text'>{itemcountry}</p>
+            : null
+         }
+  
+         {
+            itemmanufacturer ?
+           <p onClick={() => setitemmanufacturer('')} className='filternames-text'>{itemmanufacturer}</p>
+            : null
+         }
+
+      </div> : null
+
+      }
+
 
       <div className="drugs-wrapper">
 
@@ -398,7 +532,8 @@ function alldata() {
                </div>
                <div className='drug-product-text-wrapper'>
                <p className='drug-product-title'>{item.title}</p>
-               <p className='drug-product-title'>{item.amount}</p>
+               <p className='smallcat' >{item.amount}</p>
+               <p className='smallcat' >{item.country}: {item.manufacturer}</p>
                <p className='drug-product-category'>{item.Category}</p>
                </div>
       
@@ -429,7 +564,12 @@ function alldata() {
                   </div>
       
                         </div>
-                        <img onClick={() => hearting(item.customid)} className='drug-hearth' src={item.hearted ? redhearth : hearth} alt="hearth" />
+
+                    <img className='drug-hearth' 
+                     onClick={() => hearting(item.customid)}
+                     src={item.hearted ? redhearth : hearth} alt="hearth" 
+                     />
+
                   </div>
                </div>
 
@@ -450,6 +590,15 @@ function alldata() {
             })
             : null
       }
+
+      {
+         drugpagedata.length < 1 && props.data.length > 0 ? 
+         <div className='not-found-par'>
+             <div className='not-found-text'>სამწუხაროდ მსგავსი შედეგები ვერ მოიძებნა</div>
+         </div> 
+         : null
+      }
+
       </div> 
 
    <div  className='drug-switch'>
