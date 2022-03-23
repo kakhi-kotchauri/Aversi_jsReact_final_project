@@ -39,7 +39,7 @@ export function Drugpage(props) {
    const {favorite, setfavorite} = useContext(Favoritecontext)
 
    
-   const step = 16
+   const step = 20
    const [drugpagedata, setdrugpagedata] = useState([])
    const [pricedata, setpricedata] = useState([])
    const [drugpagedata2, setdrugpagedata2] = useState([])
@@ -463,45 +463,67 @@ function alldata() {
 
          {
             min ?
-           <p onClick={() => setmin('')} className='filternames-text'>ფასი: {min} დან</p>
+            <div onClick={() => setmin('')} className='filtertag-par'>
+              <p className='filtertag-text'>ფასი: {min} დან</p>
+              <img className='closetag' src={close} alt="closetag" />
+            </div>      
             : null
          }
 
          
          {
             max ?
-           <p onClick={() => setmax('')} className='filternames-text'>ფასი: {max} მდე</p>
+            <div onClick={() => setmax('')} className='filtertag-par'>
+              <p className='filtertag-text'>ფასი: {max} მდე</p>
+              <img className='closetag' src={close} alt="closetag" />
+            </div>      
             : null
          }
+
 
          {
             mindose ?
-           <p onClick={() => setmindose('')} className='filternames-text'>დოზა: {mindose} დან</p>
+            <div onClick={() => setmindose('')} className='filtertag-par'>
+              <p className='filtertag-text' >დოზა: {mindose} დან</p>
+              <img className='closetag' src={close} alt="closetag" />
+            </div>      
             : null
          }
-
+ 
          
          {
             maxdose ?
-           <p onClick={() => setmaxdose('')} className='filternames-text'>დოზა: {maxdose} მდე</p>
+            <div onClick={() => setmaxdose('')} className='filtertag-par'>
+              <p className='filtertag-text'>დოზა: {maxdose} მდე</p>
+              <img className='closetag' src={close} alt="closetag" />
+            </div>      
             : null
          }
 
          {
             itemcategory ?
-           <p onClick={() => setitemcategory('')} className='filternames-text'>{itemcategory}</p>
+            <div onClick={() => setitemcategory('')} className='filtertag-par'>
+              <p className='filtertag-text'>{itemcategory}</p>
+              <img className='closetag' src={close} alt="closetag" />
+            </div>      
             : null
          }
          
          {
             itemcountry ?
-           <p onClick={() => setitemcountry('')} className='filternames-text'>{itemcountry}</p>
+            <div onClick={() => setitemcountry('')} className='filtertag-par'>
+              <p className='filtertag-text'>{itemcountry}</p>
+              <img className='closetag' src={close} alt="closetag" />
+            </div>      
             : null
          }
   
          {
             itemmanufacturer ?
-           <p onClick={() => setitemmanufacturer('')} className='filternames-text'>{itemmanufacturer}</p>
+            <div onClick={() => setitemmanufacturer('')} className='filtertag-par'>
+              <p className='filtertag-text'>{itemmanufacturer}</p>
+              <img className='closetag' src={close} alt="closetag" />
+            </div>      
             : null
          }
 
@@ -532,7 +554,11 @@ function alldata() {
                </div>
                <div className='drug-product-text-wrapper'>
                <p className='drug-product-title'>{item.title}</p>
-               <p className='smallcat' >{item.amount}</p>
+               {
+                  parseInt(item.amount) > 0  ? 
+                     <p className='smallcat' >{item.amount}</p>
+                  : null
+               }
                <p className='smallcat' >{item.country}: {item.manufacturer}</p>
                <p className='drug-product-category'>{item.Category}</p>
                </div>

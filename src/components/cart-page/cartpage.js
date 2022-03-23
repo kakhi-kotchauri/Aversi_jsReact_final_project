@@ -114,7 +114,7 @@ export function Cartpage(props) {
               <div key={index} className='cart-product'>
               <div className='cart-product-left'>
 
-                <Link  to={`/${item.id}`}>
+                <Link  to={`/${item.customid}`}>
                   <div className='cart-image-par'>
                       <img className='cart-img' src={item.img} alt="cartimage" />
                   </div>

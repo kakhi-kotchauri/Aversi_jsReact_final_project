@@ -67,7 +67,7 @@ function remove(id) {
               <div key={index} className='fav-product'>
               <div className='fav-product-left'>
 
-                <Link  to={`/${item.id}`}>
+                <Link  to={`/${item.customid}`}>
                   <div className='fav-image-par'>
                       <img className='fav-img' src={item.img} alt="favimage" />
                   </div>

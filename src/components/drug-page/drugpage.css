@@ -24,7 +24,7 @@
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    padding-bottom: 100px;
+    padding-bottom: 40px;
 }
 
 .drug-filter-button {
@@ -155,20 +155,30 @@
     align-items: center;
 }
 
-.filternames-text {
-    margin-right: 10px;
+
+.filtertag-par {
+    margin-right: 20px;
     padding-left: 10px;
-    font-size: 14px;
     padding-right: 10px;
     height: 36px;
     border: 1px solid #6A6A68;
     background-color:  #4a6cfa;
-    color: #e3e3e4;
     border-radius: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     cursor: pointer;
+}
+
+.filtertag-text {
+    color: #e3e3e4;
+    font-size: 14px;
+}
+
+.closetag {
+    width: 10px;
+    margin-left: 8px;
+    margin-right: 2px;
 }
 
 

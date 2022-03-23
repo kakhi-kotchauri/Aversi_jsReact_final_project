@@ -166,7 +166,11 @@ function hearthing(id) {
                     <p className='side-texts'>{productdata.usage}</p>
                     <p className='side-texts'>ქვეყანა : {productdata.country}</p>
                     <p className='side-texts'>მწარმოებელი : {productdata.manufacturer}</p>
-                    <p className='side-texts'>ოდენობა : {productdata.amount}</p>
+                    {
+                        parseInt(productdata.amount) > 0  ? 
+                        <p className='side-texts' >{productdata.amount}</p>
+                        : null
+                    }
                     <p className='side-texts'>კატეგორია : {productdata.Category}</p>
 
                     <div className='dummy'>
