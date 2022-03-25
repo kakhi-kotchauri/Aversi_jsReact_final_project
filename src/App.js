@@ -34,7 +34,17 @@ import { Buyed } from './buyed-page/buyed';
     const [alert, setalert] = useState('')
     const [globalcat, setglobalcat] = useState('')
     const [totalprice, settotalprice] = useState(0)
+    const [totalitems, settotalitems] = useState(0)
+    const [registerdis, setregisterdis] = useState(false)
+
+
+    const registerdisp = {
+      reg : registerdis,
+      setreg : setregisterdis
+    }
       
+
+
     useEffect(() => {
 
       fetch('https://kakhi-kotchauri.github.io/fakedata.github.io/fakedata.json')
@@ -74,6 +84,7 @@ import { Buyed } from './buyed-page/buyed';
 
     const someref = useRef()
     const someref2 = useRef()
+    const regref = useRef()
 
     // console.log(someref.current)
 
@@ -85,6 +96,20 @@ import { Buyed } from './buyed-page/buyed';
       }
       
     }
+
+
+    function outside(e) {
+
+      if(e.target === regref.current) {
+        
+        setregisterdis(!registerdis)
+        
+      }
+      
+    }
+
+
+    
 
 
     let nav = useNavigate();
@@ -107,7 +132,7 @@ import { Buyed } from './buyed-page/buyed';
     }, [searchvalue])
     
 
-
+    // console.log(totalitems)
 
 
       return (
@@ -143,16 +168,16 @@ import { Buyed } from './buyed-page/buyed';
 
           <div ref={someref} className='app-par'>
 
-          <Header valuesend={searchvaluedata}/>
+          <Header registerdisp={registerdisp} valuesend={searchvaluedata}/>
             <Routes>
               <Route path='/' element={ <Home data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
               <Route path='drugpage-cat' element={ <Drugpage  category={globalcat} data={data}/> }/>
               <Route path='about' element={ <About/> }/>
-              <Route path='cart' element={ <Cartpage total={{value:settotalprice}} originaldata={data} data={cartitem}/> }/>
+              <Route path='cart' element={ <Cartpage  totalitems={{totalitems:settotalitems}}total={{value:settotalprice}} originaldata={data} data={cartitem}/> }/>
               <Route path='favorites' element={ <Favorite data={data}/> }/>
               <Route path='search' element={ <Search data={data} test={searchvaluedata} value={searchvalue}/> }/>
-              <Route path='buyed' element={ <Buyed price={totalprice}/> }/>
+              <Route path='buyed' element={ <Buyed totalitems={totalitems  } price={totalprice}/> }/>
               <Route path='/:index' element={ <Productpage data ={data}/> }/>
             </Routes>
           <Footer/>
@@ -171,6 +196,36 @@ import { Buyed } from './buyed-page/buyed';
               </div>
             </div> : null
           }
+
+
+
+
+          {
+            registerdis ? <div ref={regref} onClick={(e) => outside(e)} className='register-par'>
+
+              <div className='register-content'>
+
+                <div className='register-title-par'>
+                  <p className='register-title'>რეგისტრაცია</p>
+                </div>
+             
+             <div className='register-name-par'>
+               <input className='register-name-input' type="text" placeholder='სახელი' />
+               <input className='register-name-input' type="text" placeholder='გვარი' />
+             </div>
+
+             <input className='register-inputs' placeholder='ტელეფონი' type="number" />
+             <input className='register-inputs' placeholder='ელფოსტა' type="text" />
+             <input className='register-inputs' placeholder='პაროლი' type="password" />
+             <input className='register-inputs' placeholder='გაიმეორეთ პაროლი' type="password" />
+
+             <button className='register-button'>რეგისტრაცია</button>
+
+             </div>
+                  
+            </div> : null
+          }
+
           </div>
 
         </Cartcontext.Provider>

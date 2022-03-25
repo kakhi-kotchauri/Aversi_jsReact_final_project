@@ -16,6 +16,8 @@ import Cartcontext from '../../cartcontext';
 export function Header(props) {
 
   let nav = useNavigate();
+
+  const {reg, setreg} = props.registerdisp
   
 
 const {cartitem, setcartitem} = useContext(Cartcontext)
@@ -39,7 +41,7 @@ const {searchvalue, setsearchvalue} = props.valuesend
           </div>
           <div className='icon-wrap'>
 
-          <img className='icons' src={person} alt="person" />
+          <img onClick={() => setreg(!reg)} className='icons' src={person} alt="person" />
 
             <Link to={'favorites'}>
               <img className='icons' src={hearth} alt="hearth" />

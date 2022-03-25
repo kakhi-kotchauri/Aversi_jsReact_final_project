@@ -16,8 +16,17 @@ export function Cartpage(props) {
   // const {sortarr, setsortarr} = useContext([])
   const {itemstatus, setitemstatus} = useContext(Itemstatus)
   const  {value} = props.total
+  const  {totalitems} = props.totalitems
 
 
+
+  useEffect(() => {
+
+    window.scrollTo({
+        top: 10, 
+    });
+    
+  }, [])
 
 
   function counter(id, type) {
@@ -34,6 +43,7 @@ export function Cartpage(props) {
         setcartitem([...replace, findcart].sort(function (a, b) {return a.time - b.time;}))
     }
 }
+
 
     
 
@@ -68,6 +78,12 @@ export function Cartpage(props) {
       }
    }
 
+   
+   useEffect(() => {
+
+    totalitems(cartitem.length)
+
+  }, [cartitem.length])
 
 
    useEffect(() => {
@@ -84,6 +100,7 @@ export function Cartpage(props) {
    function buy() {
 
     if(props.data.length >= 1) {
+      setcartitem([])
       nav('/buyed')
     }
      
