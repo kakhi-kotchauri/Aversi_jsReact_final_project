@@ -167,14 +167,14 @@
 }
 
 .catalog-img {
-    margin-bottom: 32px;
+    margin-bottom: 10px;
+    height: 100px;
 }
 
 .catalog-p {
     font-size: 20px;
     color: #6A6A68;
 }
-
 
 
 
@@ -366,9 +366,7 @@
     justify-content: center;
 }
 
-.catalog-img {
-    margin-bottom: 32px;
-}
+
 
 .catalog-p {
     font-size: 20px;

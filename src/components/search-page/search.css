@@ -1,0 +1,24 @@
+
+.search-par {
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30vh;
+}
+
+/* .search-data {
+    width: 1000px;
+    height: 150px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+}
+
+
+.search-image {
+    width: 130px; */

@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Pagehead } from '../product-head/pagehead'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Cartcontext from '../../cartcontext'
 import Itemstatus from '../../itemstatus'
 import {Liveproduct} from '../live-product/liveproduct'
 import './cartpage.css'
-
 
 
 
@@ -16,6 +15,8 @@ export function Cartpage(props) {
   const {cartitem, setcartitem} = useContext(Cartcontext)
   // const {sortarr, setsortarr} = useContext([])
   const {itemstatus, setitemstatus} = useContext(Itemstatus)
+  const  {value} = props.total
+
 
 
 
@@ -60,14 +61,33 @@ export function Cartpage(props) {
 
       } else if(param.length > 1) {
 
-      return param.reduce((total, value) => {return total + value.price * value.productcount}, 0);  
-        
+      return param.reduce((total, value) => {return total + value.price * value.productcount}, 0);
+           
       } else {
          return 0
       }
    }
 
 
+
+   useEffect(() => {
+
+     value(ssd(cartitem))
+
+   }, [ssd(cartitem)])
+   
+
+
+   let nav = useNavigate();
+    
+
+   function buy() {
+
+    if(props.data.length >= 1) {
+      nav('/buyed')
+    }
+     
+   }
 
 
 
@@ -178,7 +198,7 @@ export function Cartpage(props) {
             <p className='sum-title-1'>{ssd(cartitem)} ლარი</p>
           </div>
         </div>
-        <button className='sum-buy'>ყიდვა</button>
+        <button  onClick={() => buy()} className='sum-buy'>ყიდვა</button>
       </div>
 
       </div>

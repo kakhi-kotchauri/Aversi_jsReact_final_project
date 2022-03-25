@@ -5,19 +5,24 @@ import hearth from './images/hearth.png'
 import person from './images/person.png'
 import cart from './images/shopping-cart.png'
 import burger from './images/burger.png'
-import { Link } from 'react-router-dom'
-import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
+import { useContext, useState } from 'react';
 import Cartcontext from '../../cartcontext';
 
 
 
 
 
+export function Header(props) {
 
-export function Header() {
+  let nav = useNavigate();
+  
 
 const {cartitem, setcartitem} = useContext(Cartcontext)
+const {searchvalue, setsearchvalue} = props.valuesend
+// const [searchinput, setsearchinput] = useState('')
 
+// console.log(searchinput)
 
     return (
         <header>
@@ -29,7 +34,7 @@ const {cartitem, setcartitem} = useContext(Cartcontext)
           </Link>
 
           <div className='search-wrap'>
-          <input className='input' type="text" placeholder='წამლის ძებნა' />
+          <input value={searchvalue}  onChange={(e) => setsearchvalue(e.target.value)} className='input' type="text" placeholder='წამლის ძებნა' />
           <img className='search' src={search} alt="search" />
           </div>
           <div className='icon-wrap'>

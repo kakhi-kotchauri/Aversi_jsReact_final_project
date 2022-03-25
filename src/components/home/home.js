@@ -1,6 +1,7 @@
 import './home.css'
 import { Liveproduct } from '../live-product/liveproduct'
 import { Liveoffer } from '../live-offers/liveoffer'
+import { useNavigate } from 'react-router-dom'
 import cart from './pictures/cart.png'
 import calendar from './pictures/calendar.png'
 import doctor from './pictures/doctor.png'
@@ -44,6 +45,14 @@ export function Home(props) {
 const {globalcat, setglobalcat} = useContext(Globalcat)
 
 
+    let nav = useNavigate();
+
+    function goroutecat(route, cat) {
+      setglobalcat(cat)
+      nav(`/${route}`);
+    }
+
+
 
 
     return (
@@ -71,7 +80,6 @@ const {globalcat, setglobalcat} = useContext(Globalcat)
 
         </Swiper>
       </div>
-
 
 
      <div className='slot-wrapper-par'>
@@ -108,58 +116,55 @@ const {globalcat, setglobalcat} = useContext(Globalcat)
       <div className='catalog'>
 
 
-      <Link to={`/${'drugpage-cat'}`}>
-        <div onClick={() => setglobalcat('მედიკამენტი')} className='catalog-slot'>
+        <div onClick={() => goroutecat('drugpage-cat', 'მედიკამენტი')} className='catalog-slot'>
             <img className='catalog-img' src={pill} alt="pill" />
-            <p className='catalog-p'>წამლები</p>
+            <p className='catalog-p'>მედიკამენტები</p>
         </div>  
-      </Link>   
 
-      <Link to={`/${'drugpage-cat'}`}>
-        <div onClick={() => setglobalcat('კოსმეტიკა')} className='catalog-slot'>
+        <div onClick={() => goroutecat('drugpage-cat', 'კოსმეტიკა')} className='catalog-slot'>
             <img className='catalog-img' src={cosmetic} alt="pill" />
             <p className='catalog-p'>კოსმეტიკა</p>
         </div>  
-        </Link>   
 
-        <div className='catalog-slot'>
+        <div onClick={() => goroutecat('drugpage-cat', 'ბავშვები')} className='catalog-slot'>
             <img className='catalog-img' src={feeder} alt="pill" />
             <p className='catalog-p'>საბავშვო კვება</p>
         </div>     
 
-        <div className='catalog-slot'>
+        <div onClick={() => goroutecat('drugpage-cat', 'თმის მოვლა')} className='catalog-slot'>
             <img className='catalog-img' src={stick} alt="pill" />
-            <p className='catalog-p'>ორთოპედია</p>
+            <p className='catalog-p'>თმის მოვლა</p>
         </div>     
+ 
 
-        <div className='catalog-slot'>
-            <img className='catalog-img' src={eye} alt="pill" />
-            <p className='catalog-p'>ოპტიკა</p>
-        </div>  
-
-      <Link to={`/${'drugpage-cat'}`}>
-        <div onClick={() => setglobalcat('ჰიგიენა')} className='catalog-slot'>
+        <div onClick={() => goroutecat('drugpage-cat', 'ჰიგიენა')} className='catalog-slot'>
             <img className='catalog-img' src={sanit} alt="pill" />
             <p className='catalog-p'>ჰიგიენა</p>
-        </div>  
-        </Link>   
+        </div>    
 
-        <div className='catalog-slot'>
+        <div onClick={() => goroutecat('drugpage-cat', 'სამედიცინო მოწყობილობები')} className='catalog-slot'>
             <img className='catalog-img' src={tray} alt="pill" />
-            <p className='catalog-p'>დიაგნოსტიკა</p>
+            <p className='catalog-p'>მოწყობილობები</p>
         </div>     
 
-        <div className='catalog-slot'>
+        <div onClick={() => goroutecat('drugpage-cat', 'პირველადი დახმარება')} className='catalog-slot'>
             <img className='catalog-img' src={bag} alt="pill" />
             <p className='catalog-p'>პირველადი დახმარება</p>
         </div>     
 
-        <div className='catalog-slot'>
-            <img className='catalog-img' src={salad} alt="pill" />
-            <p className='catalog-p'>ბალახეული</p>
-        </div>     
+        
+        <div onClick={() => goroutecat('drugpage-cat', 'ოპტიკა')} className='catalog-slot'>
+            <img className='catalog-img' src={eye} alt="pill" />
+            <p className='catalog-p'>ოპტიკა</p>
+        </div>    
 
-        <div className='catalog-slot'>
+        
+        <div onClick={() => goroutecat('drugpage-cat', 'ორთოპედია')} className='catalog-slot'>
+            <img className='catalog-img' src={salad} alt="pill" />
+            <p className='catalog-p'>ორთოპედია</p>
+        </div>    
+
+        <div onClick={() => goroutecat('drugpage-cat', '')} className='catalog-slot'>
             <img className='catalog-img' src={group} alt="pill" />
             <p className='catalog-p'>სხვა</p>
         </div>    

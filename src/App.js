@@ -7,13 +7,17 @@ import { Pagehead } from './components/product-head/pagehead';
 import { Drugpage } from './components/drug-page/drugpage';
 import { Productpage } from './components/product-page/productpage';
 import { About } from './components/about/about';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Cartcontext from './cartcontext';
 import { Cartpage } from './components/cart-page/cartpage';
 import Itemstatus from './itemstatus';
 import Globalcat from './globalcat';
 import Favoritecontext from './favoritecontext'
 import { Favorite } from './components/favorite-page/favorite';
+import { Search } from './components/search-page/search';
+import { Buyed } from './buyed-page/buyed';
+
+
 
 
 
@@ -29,6 +33,7 @@ import { Favorite } from './components/favorite-page/favorite';
     const [itemstatus, setitemstatus] = useState(true)
     const [alert, setalert] = useState('')
     const [globalcat, setglobalcat] = useState('')
+    const [totalprice, settotalprice] = useState(0)
       
     useEffect(() => {
 
@@ -82,6 +87,28 @@ import { Favorite } from './components/favorite-page/favorite';
     }
 
 
+    let nav = useNavigate();
+
+
+    const [searchvalue, setsearchvalue] = useState('')
+
+    const searchvaluedata = {
+      searchvalue: searchvalue,
+      setsearchvalue : setsearchvalue
+    }
+
+
+    useEffect(() => {
+        
+      if(searchvalue) {
+        nav('/search')
+      } 
+
+    }, [searchvalue])
+    
+
+
+
 
       return (
 
@@ -116,17 +143,20 @@ import { Favorite } from './components/favorite-page/favorite';
 
           <div ref={someref} className='app-par'>
 
-          <Header/>
+          <Header valuesend={searchvaluedata}/>
             <Routes>
               <Route path='/' element={ <Home data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
-              <Route path='drugpage-cat' element={  <Drugpage category={globalcat} data={data}/> }/>
+              <Route path='drugpage-cat' element={ <Drugpage  category={globalcat} data={data}/> }/>
               <Route path='about' element={ <About/> }/>
-              <Route path='cart' element={ <Cartpage originaldata={data} data={cartitem}/> }/>
+              <Route path='cart' element={ <Cartpage total={{value:settotalprice}} originaldata={data} data={cartitem}/> }/>
               <Route path='favorites' element={ <Favorite data={data}/> }/>
+              <Route path='search' element={ <Search data={data} test={searchvaluedata} value={searchvalue}/> }/>
+              <Route path='buyed' element={ <Buyed price={totalprice}/> }/>
               <Route path='/:index' element={ <Productpage data ={data}/> }/>
             </Routes>
           <Footer/>
+
 
 
 
