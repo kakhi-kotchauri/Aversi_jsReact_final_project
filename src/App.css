@@ -205,12 +205,25 @@ a {
 	width: 90%;
 	height: 40px;
 	margin-top: 15px;
-	margin-bottom: 35px;
 	border-radius: 20px;
     background-color: #253988;
 	border-width: 1px;
 	font-size: 16px;
 	color: white;
+	cursor: pointer;
+}
+
+
+.register-button-1 {
+	width: 90%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 35px;
+    color: #253988;
+	font-size: 17px;
+	border: transparent;
+	background-color: transparent;
+	cursor: pointer;
 }
 
 

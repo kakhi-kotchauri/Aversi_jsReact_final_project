@@ -36,6 +36,7 @@ import { Buyed } from './buyed-page/buyed';
     const [totalprice, settotalprice] = useState(0)
     const [totalitems, settotalitems] = useState(0)
     const [registerdis, setregisterdis] = useState(false)
+    const [signindis, setsignindis] = useState(false)
 
 
     const [regname, setregname] = useState('')
@@ -46,10 +47,14 @@ import { Buyed } from './buyed-page/buyed';
     const [confirmpassword, setconfirmpassword] = useState('')
     const [users, setusers] = useState([])
 
+    const [signinemail, setsigninemail] = useState('')
+    const [signinpassword, setsigninpasword] = useState('')
+
 
     const someref = useRef()
     const someref2 = useRef()
     const regref = useRef()
+    const signinref = useRef()
 
     const nameref =useRef()
     const lastnameref =useRef()
@@ -57,6 +62,9 @@ import { Buyed } from './buyed-page/buyed';
     const emailref =useRef()
     const passwordref =useRef()
     const confirmpasswordref =useRef()
+
+    const signinemailref =useRef()
+    const signinpasswordref =useRef()
 
 
 
@@ -66,43 +74,137 @@ import { Buyed } from './buyed-page/buyed';
 
       e.preventDefault()
 
+      const userdata = {
+        id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
+        firstname : regname,
+        lastname : reglastname,
+        email : email,
+        phone : phone,
+        password : password,
+        password2 : confirmpassword
+      }
+
+      const find = users.find(item => item.email === userdata.email)
+
       if(regname && reglastname && phone && email && password && confirmpassword && password === confirmpassword) {
 
-        const userdata = {
-          id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
-          firstname : regname,
-          lastname : reglastname,
-          email : email,
-          phone : phone,
-          password : password,
-          password2 : confirmpassword
+        if(!find) {
+         setusers([...users, userdata])
+         setregisterdis(!registerdis)
+         setsignindis(!signindis)
+         setregname('')
+         setreglastname('')
+         setemail('')
+         setphone('')
+         setpassword('')
+         setconfirmpassword('')
+         console.log('5545')
         }
-    
-        setusers([...users, userdata])
 
-      }
+       }
+
+       
 
       if( password && confirmpassword && password !== confirmpassword) {
         passwordref.current.style.borderColor = 'red'
         passwordref.current.placeholder = 'პაროლები არ მეთხვევა ერთმანეთს'
-        setpassword('')
         confirmpasswordref.current.style.borderColor = 'red'
         confirmpasswordref.current.placeholder = 'პაროლები არ მეთხვევა ერთმანეთს'
-        setconfirmpassword('')
+      }
+
+      if(find) {
+        emailref.current.style.borderColor = 'red'
+        emailref.current.placeholder = 'მოცემულე ემაილი უკვე გამოყენებულია'
+        setemail('')
+      }
+
+      if(!regname) {
+        nameref.current.style.borderColor = 'red'
+        nameref.current.placeholder = 'ველი ცარიელია'
+        setregname('')
+      }
+
+      if(!reglastname) {
+        lastnameref.current.style.borderColor = 'red'
+        lastnameref.current.placeholder = 'ველი ცარიელია'
+        setreglastname('')
       }
       
+      if(!email) {
+        emailref.current.style.borderColor = 'red'
+        emailref.current.placeholder = 'ველი ცარიელია'
+        setemail('')
+      }
+
+      if(!phone) {
+        phoneref.current.style.borderColor = 'red'
+        phoneref.current.placeholder = 'ველი ცარიელია'
+        setphone('')
+      }
+
+      if(!password) {
+        passwordref.current.style.borderColor = 'red'
+        passwordref.current.placeholder = 'ველი ცარიელია'
+        setpassword('')
+      }
+
+      if(!confirmpassword) {
+        confirmpasswordref.current.style.borderColor = 'red'
+        confirmpasswordref.current.placeholder = 'ველი ცარიელია'
+        setconfirmpassword('')
+      }
+
     }
 
 
     console.log(users)
-    
 
 
-    
-    const registerdisp = {
-      reg : registerdis,
-      setreg : setregisterdis
+    function signin(e) {
+      
+      e.preventDefault()
+
+      const acountfinder = users.find(item => item.email === signinemail && item.password === signinpassword)
+
+
+      if(acountfinder) {
+        console.log(acountfinder)
+        setsignindis(!signindis)
+      } else {
+        signinpasswordref.current.style.borderColor = 'red'
+        signinpasswordref.current.placeholder = 'ემაილი ან პაროლი არასწორია'
+        signinemailref.current.style.borderColor = 'red'
+        signinemailref.current.placeholder = 'ემაილი ან პაროლი არასწორია'
+        setsigninemail('')
+        setsigninpasword('')
+      }
+
+      if(!signinpassword) {
+        signinpasswordref.current.style.borderColor = 'red'
+        signinpasswordref.current.placeholder = 'ველი ცარიელია'
+      }
+
+
+      if(!signinemail) {
+        signinemailref.current.style.borderColor = 'red'
+        signinemailref.current.placeholder = 'ველი ცარიელია'
+      }
+
     }
+    
+
+
+    
+    // const registerdisp = {
+    //   reg : registerdis,
+    //   setreg : setregisterdis
+    // }
+
+    const signindisp = {
+      signin : signindis,
+      setsignin : setsignindis
+    }
+      
       
 
 
@@ -161,12 +263,45 @@ import { Buyed } from './buyed-page/buyed';
       if(e.target === regref.current) {
         
         setregisterdis(!registerdis)
+        setregname('')
+        setreglastname('')
+        setemail('')
+        setphone('')
+        setpassword('')
+        setconfirmpassword('')
         
       }
       
     }
 
 
+    
+    function outsidesignin(e) {
+
+      if(e.target === signinref.current) {
+        
+        setsignindis(!signindis)
+        setsigninemail('')
+        setsigninpasword('')
+        
+      }
+      
+    }
+
+    function opensign() {
+      setsignindis(!signindis)
+      setregisterdis(!registerdis)
+      setsigninpasword('')
+      setsigninemail('')
+      setregname('')
+      setreglastname('')
+      setemail('')
+      setphone('')
+      setpassword('')
+      setconfirmpassword('')
+    }
+
+  
     
 
 
@@ -226,7 +361,7 @@ import { Buyed } from './buyed-page/buyed';
 
           <div ref={someref} className='app-par'>
 
-          <Header registerdisp={registerdisp} valuesend={searchvaluedata}/>
+          <Header signin={signindisp} valuesend={searchvaluedata}/>
             <Routes>
               <Route path='/' element={ <Home data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
@@ -301,6 +436,42 @@ import { Buyed } from './buyed-page/buyed';
              placeholder='გაიმეორეთ პაროლი' type="password" />
 
              <button type='submit' className='register-button'>რეგისტრაცია</button>
+             
+             <button  onClick={() => opensign()} type='button' className='register-button-1'>ავტორიზაცია</button>
+
+             </div>
+                  
+            </div> 
+            </form> : null
+          }
+
+
+
+
+{
+            signindis ? <form onSubmit={(e) => signin(e)}>
+              <div ref={signinref} onClick={(e) => outsidesignin(e)} className='register-par'>
+            
+              <div className='register-content'>
+
+                <div className='register-title-par'>
+                  <p className='register-title'>ავტორიზაცია</p>
+                </div>
+             
+
+             <input ref={signinemailref} value={signinemail}
+              className='register-inputs'
+              onChange={(e) => setsigninemail(e.target.value)}
+              placeholder='ელფოსტა' type="text" />
+
+             <input ref={signinpasswordref} value={signinpassword}
+              className='register-inputs'
+              onChange={(e) => setsigninpasword(e.target.value)}
+              placeholder='პაროლი' type="password" />
+
+             <button type='submit' className='register-button'>ავტორიზაცია</button>
+
+             <button type='button' onClick={() => opensign()} className='register-button-1'>რეგისტრაცია</button>
 
              </div>
                   

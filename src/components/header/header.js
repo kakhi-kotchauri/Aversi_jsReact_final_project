@@ -17,7 +17,7 @@ export function Header(props) {
 
   let nav = useNavigate();
 
-  const {reg, setreg} = props.registerdisp
+  const {signin, setsignin} = props.signin
   
 
 const {cartitem, setcartitem} = useContext(Cartcontext)
@@ -41,7 +41,7 @@ const {searchvalue, setsearchvalue} = props.valuesend
           </div>
           <div className='icon-wrap'>
 
-          <img onClick={() => setreg(!reg)} className='icons' src={person} alt="person" />
+          <img onClick={() => setsignin(!signin)} className='icons' src={person} alt="person" />
 
             <Link to={'favorites'}>
               <img className='icons' src={hearth} alt="hearth" />
