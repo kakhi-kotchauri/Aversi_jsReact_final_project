@@ -38,6 +38,67 @@ import { Buyed } from './buyed-page/buyed';
     const [registerdis, setregisterdis] = useState(false)
 
 
+    const [regname, setregname] = useState('')
+    const [reglastname, setreglastname] = useState('')
+    const [phone, setphone] = useState('')
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
+    const [confirmpassword, setconfirmpassword] = useState('')
+    const [users, setusers] = useState([])
+
+
+    const someref = useRef()
+    const someref2 = useRef()
+    const regref = useRef()
+
+    const nameref =useRef()
+    const lastnameref =useRef()
+    const phoneref =useRef()
+    const emailref =useRef()
+    const passwordref =useRef()
+    const confirmpasswordref =useRef()
+
+
+
+
+
+    function register(e) {
+
+      e.preventDefault()
+
+      if(regname && reglastname && phone && email && password && confirmpassword && password === confirmpassword) {
+
+        const userdata = {
+          id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
+          firstname : regname,
+          lastname : reglastname,
+          email : email,
+          phone : phone,
+          password : password,
+          password2 : confirmpassword
+        }
+    
+        setusers([...users, userdata])
+
+      }
+
+      if( password && confirmpassword && password !== confirmpassword) {
+        passwordref.current.style.borderColor = 'red'
+        passwordref.current.placeholder = 'პაროლები არ მეთხვევა ერთმანეთს'
+        setpassword('')
+        confirmpasswordref.current.style.borderColor = 'red'
+        confirmpasswordref.current.placeholder = 'პაროლები არ მეთხვევა ერთმანეთს'
+        setconfirmpassword('')
+      }
+      
+    }
+
+
+    console.log(users)
+    
+
+
+    
     const registerdisp = {
       reg : registerdis,
       setreg : setregisterdis
@@ -82,9 +143,6 @@ import { Buyed } from './buyed-page/buyed';
     }, [cartitem])
     
 
-    const someref = useRef()
-    const someref2 = useRef()
-    const regref = useRef()
 
     // console.log(someref.current)
 
@@ -201,8 +259,9 @@ import { Buyed } from './buyed-page/buyed';
 
 
           {
-            registerdis ? <div ref={regref} onClick={(e) => outside(e)} className='register-par'>
-
+            registerdis ? <form onSubmit={(e) => register(e)}>
+              <div ref={regref} onClick={(e) => outside(e)} className='register-par'>
+            
               <div className='register-content'>
 
                 <div className='register-title-par'>
@@ -210,20 +269,43 @@ import { Buyed } from './buyed-page/buyed';
                 </div>
              
              <div className='register-name-par'>
-               <input className='register-name-input' type="text" placeholder='სახელი' />
-               <input className='register-name-input' type="text" placeholder='გვარი' />
+               <input ref={nameref} value={regname} 
+               className='register-name-input'
+               onChange={(e) => setregname(e.target.value)}
+               type="text" placeholder='სახელი' />
+
+               <input ref={lastnameref} value={reglastname}
+                className='register-name-input' 
+                onChange={(e) => setreglastname(e.target.value)}
+                type="text" placeholder='გვარი' />
              </div>
 
-             <input className='register-inputs' placeholder='ტელეფონი' type="number" />
-             <input className='register-inputs' placeholder='ელფოსტა' type="text" />
-             <input className='register-inputs' placeholder='პაროლი' type="password" />
-             <input className='register-inputs' placeholder='გაიმეორეთ პაროლი' type="password" />
+             <input ref={phoneref} value={phone}
+              className='register-inputs'
+              onChange={(e) => setphone(e.target.value)} 
+              placeholder='ტელეფონი' type="number" />
 
-             <button className='register-button'>რეგისტრაცია</button>
+             <input ref={emailref} value={email}
+              className='register-inputs'
+              onChange={(e) => setemail(e.target.value)}
+              placeholder='ელფოსტა' type="text" />
+
+             <input ref={passwordref} value={password}
+              className='register-inputs'
+              onChange={(e) => setpassword(e.target.value)}
+              placeholder='პაროლი' type="password" />
+
+             <input ref={confirmpasswordref} value={confirmpassword} 
+             className='register-inputs'
+             onChange={(e) => setconfirmpassword(e.target.value)} 
+             placeholder='გაიმეორეთ პაროლი' type="password" />
+
+             <button type='submit' className='register-button'>რეგისტრაცია</button>
 
              </div>
                   
-            </div> : null
+            </div> 
+            </form> : null
           }
 
           </div>
