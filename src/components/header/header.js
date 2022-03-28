@@ -17,6 +17,8 @@ export function Header(props) {
 
   let nav = useNavigate();
 
+  console.log(props.currentuser)
+
   const {signin, setsignin} = props.signin
   
 
@@ -40,15 +42,22 @@ const {searchvalue, setsearchvalue} = props.valuesend
           <img className='search' src={search} alt="search" />
           </div>
           <div className='icon-wrap'>
+           
+            {
+              props.currentuser ?
+               <div className='userprofile' style={{backgroundColor : props.currentuser.color}}> 
+               
+               {`${props.currentuser.firstname[0]} . ${props.currentuser.lastname[0]}`} 
+               
+               </div>
+               :
+               <img onClick={() => setsignin(!signin)} className='icons' src={person} alt="person" />
+            }
 
-          <img onClick={() => setsignin(!signin)} className='icons' src={person} alt="person" />
+              <img onClick={() => nav('/favorites')} className='icons' src={hearth} alt="hearth" />
 
-            <Link to={'favorites'}>
-              <img className='icons' src={hearth} alt="hearth" />
-            </Link>
-
-              <Link to={'cart'}>
-                <div className='header-cart-wrapper'>
+            
+                <div onClick={() => nav('/cart')} className='header-cart-wrapper'>
               <img className='icons' src={cart} alt="cart" />
               {
                 cartitem.length >= 1 ? 
@@ -57,7 +66,7 @@ const {searchvalue, setsearchvalue} = props.valuesend
               }
               
               </div>
-              </Link>
+  
           </div>
         </div>
 

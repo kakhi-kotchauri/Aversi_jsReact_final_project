@@ -46,6 +46,7 @@ import { Buyed } from './buyed-page/buyed';
     const [password, setpassword] = useState('')
     const [confirmpassword, setconfirmpassword] = useState('')
     const [users, setusers] = useState([])
+    const [currentuser, setcurrentuser] = useState()
 
     const [signinemail, setsigninemail] = useState('')
     const [signinpassword, setsigninpasword] = useState('')
@@ -74,8 +75,11 @@ import { Buyed } from './buyed-page/buyed';
 
       e.preventDefault()
 
+      const randomColor = Math.floor(Math.random()*16777215).toString(16)
+
       const userdata = {
         id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
+        color : `#${randomColor}`,
         firstname : regname,
         lastname : reglastname,
         email : email,
@@ -157,7 +161,8 @@ import { Buyed } from './buyed-page/buyed';
     }
 
 
-    console.log(users)
+    // console.log(users)
+    console.log(currentuser)
 
 
     function signin(e) {
@@ -170,6 +175,7 @@ import { Buyed } from './buyed-page/buyed';
       if(acountfinder) {
         console.log(acountfinder)
         setsignindis(!signindis)
+        setcurrentuser(acountfinder)
       } else {
         signinpasswordref.current.style.borderColor = 'red'
         signinpasswordref.current.placeholder = 'ემაილი ან პაროლი არასწორია'
@@ -361,7 +367,7 @@ import { Buyed } from './buyed-page/buyed';
 
           <div ref={someref} className='app-par'>
 
-          <Header signin={signindisp} valuesend={searchvaluedata}/>
+          <Header currentuser={currentuser} signin={signindisp} valuesend={searchvaluedata}/>
             <Routes>
               <Route path='/' element={ <Home data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>

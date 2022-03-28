@@ -59,13 +59,21 @@
   cursor: pointer;
 }
 
+.userprofile {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .icon-wrap {
   margin-top: 9px;
   width: 148px;
-  height: 25px;
   display: flex;
-  justify-content: center;
   justify-content: space-around;
+  align-items: center;
 }
 
 .line-wrapper {
