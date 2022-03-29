@@ -6,7 +6,7 @@ import person from './images/person.png'
 import cart from './images/shopping-cart.png'
 import burger from './images/burger.png'
 import { Link, useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import Cartcontext from '../../cartcontext';
 
 
@@ -16,22 +16,40 @@ import Cartcontext from '../../cartcontext';
 export function Header(props) {
 
   let nav = useNavigate();
+   
+  const {setcurrentuser} = props.setcurrentuser
+  
 
-  console.log(props.currentuser)
 
   const {signin, setsignin} = props.signin
+
+  const [toglemenu, settoglemenu] = useState(false)
   
 
 const {cartitem, setcartitem} = useContext(Cartcontext)
 const {searchvalue, setsearchvalue} = props.valuesend
-// const [searchinput, setsearchinput] = useState('')
 
-// console.log(searchinput)
+const menuref = useRef()
+
+  function closemenu(e) {
+    if(e.target !== menuref.current) {
+      settoglemenu(!toglemenu)
+    } 
+  }
+
+
+  function out() {
+
+    nav('/')
+    setcurrentuser()
+    
+  }
+
 
     return (
         <header>
         
-        <div className='line-wrapper'>
+        <div  onClick={(e) => closemenu(e)}  className='line-wrapper'>
 
           <Link to='/'>
           <img className='logo' src={logo} alt="logo" />
@@ -45,10 +63,22 @@ const {searchvalue, setsearchvalue} = props.valuesend
            
             {
               props.currentuser ?
-               <div className='userprofile' style={{backgroundColor : props.currentuser.color}}> 
-               
-               {`${props.currentuser.firstname[0]} . ${props.currentuser.lastname[0]}`} 
-               
+              <div className='userprofile-icon-par'>
+
+               <div onClick={ () => settoglemenu(!toglemenu)} className='userprofile' style={{backgroundColor : props.currentuser.color}}> 
+               { props.currentuser.firstname.slice(0,2)} 
+               </div>
+
+               {
+                 toglemenu ? 
+                 <div ref={menuref}  className='userprofile-buttons'>
+                  <button onClick={() => nav('/profile-page')} className='button-prof'>პროფილი</button>
+                  <button onClick={() => out()} className='button-prof'>გასვლა</button>
+                </div>
+                : null
+               }
+
+          
                </div>
                :
                <img onClick={() => setsignin(!signin)} className='icons' src={person} alt="person" />

@@ -66,6 +66,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    border: solid 1px;
 }
 
 .icon-wrap {
@@ -166,6 +168,37 @@
 
 }
 
+.userprofile-icon-par {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.userprofile-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    width: 180px;
+    height: 60px;
+    background-color: white;
+    margin-top: 50px;
+    z-index: 2;
+    border-radius: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+
+.button-prof {
+    width: 95%;
+    height: 22px;
+    background-color: transparent;
+    border-radius: 7px;
+    border: solid 1px #dad9d9;
+    cursor: pointer;
+}
 
 
 

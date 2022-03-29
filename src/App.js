@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
 import { Home } from './components/home/home';
+import { Profielpage } from './components/profle-page/profilepage';
 import { Pagehead } from './components/product-head/pagehead';
 import { Drugpage } from './components/drug-page/drugpage';
 import { Productpage } from './components/product-page/productpage';
@@ -37,6 +38,7 @@ import { Buyed } from './buyed-page/buyed';
     const [totalitems, settotalitems] = useState(0)
     const [registerdis, setregisterdis] = useState(false)
     const [signindis, setsignindis] = useState(false)
+    const [curentuserupdate, setcurentuserupdate] = useState(false)
 
 
     const [regname, setregname] = useState('')
@@ -50,6 +52,8 @@ import { Buyed } from './buyed-page/buyed';
 
     const [signinemail, setsigninemail] = useState('')
     const [signinpassword, setsigninpasword] = useState('')
+
+    
 
 
     const someref = useRef()
@@ -161,8 +165,6 @@ import { Buyed } from './buyed-page/buyed';
     }
 
 
-    // console.log(users)
-    console.log(currentuser)
 
 
     function signin(e) {
@@ -331,7 +333,7 @@ import { Buyed } from './buyed-page/buyed';
     }, [searchvalue])
     
 
-    // console.log(totalitems)
+    console.log(curentuserupdate)
 
 
       return (
@@ -367,14 +369,31 @@ import { Buyed } from './buyed-page/buyed';
 
           <div ref={someref} className='app-par'>
 
-          <Header currentuser={currentuser} signin={signindisp} valuesend={searchvaluedata}/>
+            <button onClick={() => nav('/profile-page')} >test</button>
+
+          <Header setcurrentuser={{setcurrentuser:setcurrentuser}} currentuser={currentuser} signin={signindisp} valuesend={searchvaluedata}/>
             <Routes>
               <Route path='/' element={ <Home data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
               <Route path='drugpage-cat' element={ <Drugpage  category={globalcat} data={data}/> }/>
               <Route path='about' element={ <About/> }/>
-              <Route path='cart' element={ <Cartpage  totalitems={{totalitems:settotalitems}}total={{value:settotalprice}} originaldata={data} data={cartitem}/> }/>
+              <Route path='cart' 
+                element={ <Cartpage  
+                totalitems={{totalitems:settotalitems}}
+                total={{value:settotalprice}}
+                originaldata={data} 
+                data={cartitem}
+                /> } />
               <Route path='favorites' element={ <Favorite data={data}/> }/>
+              <Route path='profile-page' element={ 
+                 <Profielpage 
+                  update={{
+                    curentuserupdate:curentuserupdate,
+                    setcurentuserupdate:setcurentuserupdate
+                  }} 
+                  users={users}
+                  currentuser={currentuser}
+                  /> }/>
               <Route path='search' element={ <Search data={data} test={searchvaluedata} value={searchvalue}/> }/>
               <Route path='buyed' element={ <Buyed totalitems={totalitems  } price={totalprice}/> }/>
               <Route path='/:index' element={ <Productpage data ={data}/> }/>

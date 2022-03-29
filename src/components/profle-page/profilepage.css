@@ -1,0 +1,144 @@
+
+.profilepage-par {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    padding-bottom: 100px;
+}
+
+
+.profile-info {
+    width: 514px;
+    height: 793px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.profile-panel {
+    width: 878px;
+    height: 793px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 50px;
+    border-radius: 10px;
+}
+
+
+
+.profile-maintitle {
+    font-size: 26px;
+    color: #7D8078;
+    margin-top: 38px;
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    border: solid 1px;
+    font-size: 19px;
+}
+
+.profile-change-par {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-change {
+    margin-left: 24px;
+    font-size: 18px;
+    color: #7D8078;
+    cursor: pointer;
+}
+
+.colorpicker {
+    margin-top: 10px;
+}
+
+.profile-img-par {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+
+
+.profile-inputs {
+  margin-top: 10px;
+}
+
+
+.profile-input-title {
+   font-size: 20px;
+   color: #7D8078;
+}
+
+
+.profile-input {
+    width: 550px;
+    height: 44px;
+    margin-top: 10px;
+    background-color: #F9F9F9;
+    border-color: #707070A6;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+
+
+.profile-button {
+    width: 130px;
+    height: 52px;
+    background-color: #EC5257;
+    border: transparent;
+    font-size: 20px;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+
+.profile-input-par {
+    position: relative;
+}
+
+
+.profile-eye {
+    width: 30px;
+    position: absolute;
+    right: 10px;
+    bottom: 13px;
+    cursor: pointer;
+}
+
+
+
+
+@media only screen and (max-width: 1500px) {
+
+
+    .profile-info {
+        width: 400px;
+    }
+    
+    .profile-panel {
+        width: 700px;
+    }
+
+
+}
