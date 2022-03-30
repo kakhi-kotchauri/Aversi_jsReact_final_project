@@ -99,6 +99,12 @@
     border-color: #707070A6;
     border-width: 0.5px;
     border-radius: 5px;
+    color: #7D8078;
+}
+
+.profile-input:focus {
+    outline: 1px;
+    color: #181818;
 }
 
 
@@ -110,6 +116,13 @@
     font-size: 20px;
     border-radius: 15px;
     margin-top: 50px;
+    cursor: pointer;
+    color: white;
+}
+
+
+.profile-button:hover {
+    background-color: #f05f64;
 }
 
 
@@ -124,6 +137,15 @@
     right: 10px;
     bottom: 13px;
     cursor: pointer;
+}
+
+
+.profilechanged {
+    color: #EC5257;
+    font-size: 18px;
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
 }
 
 

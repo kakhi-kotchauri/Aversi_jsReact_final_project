@@ -32,16 +32,20 @@ const {searchvalue, setsearchvalue} = props.valuesend
 const menuref = useRef()
 
   function closemenu(e) {
-    if(e.target !== menuref.current) {
       settoglemenu(!toglemenu)
-    } 
   }
 
 
   function out() {
-
     nav('/')
     setcurrentuser()
+    settoglemenu(!toglemenu)
+  }
+
+  function inprofile() {
+
+    nav('/profile-page')
+    settoglemenu(!toglemenu)
     
   }
 
@@ -49,7 +53,13 @@ const menuref = useRef()
     return (
         <header>
         
-        <div  onClick={(e) => closemenu(e)}  className='line-wrapper'>
+        <div  className='line-wrapper'>
+
+         {
+            toglemenu ? 
+            <div onClick={() => closemenu()} ref={menuref} className='toggleof'></div>
+          : null
+          }
 
           <Link to='/'>
           <img className='logo' src={logo} alt="logo" />
@@ -69,10 +79,11 @@ const menuref = useRef()
                { props.currentuser.firstname.slice(0,2)} 
                </div>
 
+
                {
                  toglemenu ? 
-                 <div ref={menuref}  className='userprofile-buttons'>
-                  <button onClick={() => nav('/profile-page')} className='button-prof'>პროფილი</button>
+                 <div className='userprofile-buttons'>
+                  <button onClick={() => inprofile()} className='button-prof'>პროფილი</button>
                   <button onClick={() => out()} className='button-prof'>გასვლა</button>
                 </div>
                 : null
