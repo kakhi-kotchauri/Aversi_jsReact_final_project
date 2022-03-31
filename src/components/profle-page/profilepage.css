@@ -28,13 +28,15 @@
 
 .profileinfo-slot {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 35px;
+    width: 100%;
 }
 
 
 .profileinfo-img {
-    width: 20px;
+    /* width: 20px; */
+    height: 25px;
 }
 
 
@@ -42,6 +44,9 @@
     margin-left: 20px;
     font-size: 22px;
     color: #7D8078;
+    text-decoration: underline;
+    line-height: 1.2;
+    cursor: pointer;
 }
 
 
@@ -92,7 +97,15 @@
     font-size: 18px;
     color: #7D8078;
     cursor: pointer;
+    text-decoration: underline 1px rgb(103, 104, 104);
 }
+
+
+.profile-change:hover {
+    color: #ca5353;
+    text-decoration: underline rgb(0, 0, 0);
+}
+
 
 .colorpicker {
     margin-top: 10px;

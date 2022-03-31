@@ -316,9 +316,6 @@ import { Buyed } from './buyed-page/buyed';
       setconfirmpassword('')
     }
 
-  
-    
-
 
     let nav = useNavigate();
 
@@ -330,6 +327,8 @@ import { Buyed } from './buyed-page/buyed';
       setsearchvalue : setsearchvalue
     }
 
+    // console.log(users)
+
 
     useEffect(() => {
         
@@ -339,8 +338,6 @@ import { Buyed } from './buyed-page/buyed';
 
     }, [searchvalue])
     
-
-    console.log(curentuserupdate)
 
 
       return (
@@ -389,6 +386,7 @@ import { Buyed } from './buyed-page/buyed';
                 total={{value:settotalprice}}
                 originaldata={data} 
                 data={cartitem}
+                currentuser = {currentuser}
                 /> } />
               <Route path='favorites' element={ <Favorite data={data}/> }/>
               <Route path='profile-page' element={ 

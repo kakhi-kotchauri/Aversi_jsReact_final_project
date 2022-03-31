@@ -85,23 +85,30 @@ const {globalcat, setglobalcat} = useContext(Globalcat)
      <div className='slot-wrapper-par'>
       <div className='slot-wrapper'>
 
+      <a target='_blank' href="https://play.google.com/store/apps/details?id=com.leavingstone.aversi&hl=en&gl=US">
         <div className='slot'>
          <img className='slot-img' src={cart} alt="cart" />
          <p className='p1'>შეუკვეთე ონლაინ</p>
          <p className='p2'>ჩამოტვირთეთ ავერსის მობილური აპლიკაცია ან ისარგებლეთ გლოვოს მიტანის სერვისით</p>
-        </div>  
+        </div> 
+        </a>
 
+         
+      <a target='_blank' href="https://www.aversi.ge/">
         <div className='slot'>
          <img className='slot-img' src={calendar} alt="cart" />
          <p className='p1'>ექიმთან ჩაწერა</p>
          <p className='p3'>ნუ გადადებ ექიმთან ვიზიტს შორეულ მომავალზე, ჩაეწერე ონლაინ დღესვე</p>
-        </div>  
+        </div> 
+      </a> 
 
+     <a target='_blank' href="https://www.aversi.ge/">
         <div className='slot'>
          <img className='slot-img' src={doctor} alt="cart" />
          <p className='p1'>მტრედი ბარათი</p>
          <p className='p4'>დააგროვე ბონუსები და ამავე დროს შეიძინე პროდუქცია ფასდაკლებით</p>
-        </div>  
+        </div> 
+      </a> 
 
       </div>
       </div>

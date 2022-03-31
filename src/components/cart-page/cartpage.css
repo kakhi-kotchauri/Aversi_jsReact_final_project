@@ -6,6 +6,56 @@
     justify-content: center;
 }
 
+
+
+.cart-register {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: #68696a4d;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cart-menu {
+    width: 450px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+    position: absolute;
+}
+
+
+.cart-menu-text {
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    line-height: 1.1;
+}
+
+.cart-menu-button {
+    margin-top: 20px;
+    width: 80%;
+    height: 40px;
+    border-radius: 7px;
+    border: solid 1px #EA3339;
+    cursor: pointer;
+}
+
+/* .cart-menu-button {
+
+} */
+
+
 .cart-product-par {
     width: 983px;
 }

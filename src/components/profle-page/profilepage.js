@@ -4,6 +4,12 @@ import { useEffect, useRef, useState } from 'react'
 import eye from './pictures/eye.png'
 import { useNavigate } from 'react-router-dom'
 import person from './pictures/person.png'
+import persona from './pictures/persona.png'
+import gift from './pictures/gift.png'
+import card from './pictures/card.png'
+import arrows from './pictures/arrows.png'
+import i from './pictures/i.png'
+
 
 
 export function Profielpage(props) {
@@ -52,38 +58,49 @@ export function Profielpage(props) {
             setTimeout(() => {
                 setchanged(false)
             }, 2000);
+            console.log('color')
+            setnewcolor('')
+            settoglecolor(false)
         }
 
 
         if(newphone && newemail && newpassword) {
+
             if(newphone && newphone !== props.currentuser.phone) {
                 props.currentuser.phone = newphone
                 window.scroll(0, 0)
                 setchanged(true)
+                phoneref.current.style.borderColor = 'green'
                 setTimeout(() => {
                     setchanged(false)
                 }, 2000);    
+            console.log('phone')
             }
             if(newemail && newemail !== props.currentuser.email) {
                 props.currentuser.email = newemail
                 window.scroll(0, 0)
                 setchanged(true)
+                emailref.current.style.borderColor = 'green'
+                emailref.current.placeholder = 'ემაილი'
                 setTimeout(() => {
                     setchanged(false)
-                }, 2000);    
+                }, 2000); 
+            console.log('email')
+
             }
             if(newpassword && confirmpassword && newpassword === confirmpassword && newpassword !== props.currentuser.password) {
                 props.currentuser.password = newpassword
                 window.scroll(0, 0)
                 setchanged(true)
+                passwordref.current.style.borderColor = 'green'
+                passwordref.current.placeholder = 'პაროლი'
+                setconfirmpassword('')
                 setTimeout(() => {
                     setchanged(false)
-                }, 2000);    
+                }, 2000); 
+                console.log('password')
             }
 
-            if(props.currentuser.password === newpassword) {
-                setshowpass(false)
-            }
 
         }
 
@@ -112,14 +129,16 @@ export function Profielpage(props) {
             confirmpasswordref.current.placeholder = 'ველი ცარიელია'
         }
 
-        if(newpassword !== confirmpassword) {
+        if(newpassword && confirmpassword && newpassword !== confirmpassword) {
             setconfirmpassword('')
             confirmpasswordref.current.style.borderColor = 'red'
             confirmpasswordref.current.placeholder = 'პაროლები არ ემთხვევა ერთმანეთს'
             setnewpassword('')
             passwordref.current.style.borderColor = 'red'
             passwordref.current.placeholder = 'პაროლები არ ემთხვევა ერთმანეთს'
-        }
+        } else if(props.currentuser.password === newpassword) {
+            setshowpass(false)
+        } 
 
     }
 
@@ -161,30 +180,30 @@ export function Profielpage(props) {
                     </div>
 
                     <div className='profileinfo-slot'>
-                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <img className='profileinfo-img' src={card} alt="icon" />
                         <p className='profileinfo-text'>მტრედი ბარათის ქულების შემოწმება</p>
                     </div>
 
                     <div className='profileinfo-slot'>
-                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <img className='profileinfo-img' src={arrows} alt="icon" />
                         <p className='profileinfo-text'>მტრედი ბარათის ანგარიშზე მიბმა</p>
                     </div>
 
 
                     <div className='profileinfo-slot'>
-                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <img className='profileinfo-img' src={gift} alt="icon" />
                         <p className='profileinfo-text'>საჩუქრის არჩევა ქულების მიხედვით</p>
                     </div>
 
 
                     <div className='profileinfo-slot'>
-                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <img className='profileinfo-img' src={persona} alt="icon" />
                         <p className='profileinfo-text'>მისამართების მართვა</p>
                     </div>
 
 
                     <div className='profileinfo-slot'>
-                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <img className='profileinfo-img' src={i} alt="icon" />
                         <p className='profileinfo-text'>ინფორმაცია შეკვეთებზე</p>
                     </div>
 

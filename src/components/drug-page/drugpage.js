@@ -442,10 +442,10 @@ function alldata() {
 
 
             </div>
-
+{/* 
             <div className='drugpage-lowfilter'>
                
-            </div>
+            </div> */}
 
        </div>
          

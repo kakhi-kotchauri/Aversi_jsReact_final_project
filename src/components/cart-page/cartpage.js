@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { Pagehead } from '../product-head/pagehead'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import Cartcontext from '../../cartcontext'
 import Itemstatus from '../../itemstatus'
 import {Liveproduct} from '../live-product/liveproduct'
@@ -17,6 +17,10 @@ export function Cartpage(props) {
   const {itemstatus, setitemstatus} = useContext(Itemstatus)
   const  {value} = props.total
   const  {totalitems} = props.totalitems
+  const [menu, setmenu] = useState(false)
+
+  const menuref = useRef()
+  const outsideref = useRef()
 
 
 
@@ -99,13 +103,17 @@ export function Cartpage(props) {
 
    function buy() {
 
-    if(props.data.length >= 1) {
+    if(props.currentuser && props.data.length >= 1) {
       setcartitem([])
       nav('/buyed')
+    } else if(!props.currentuser) {
+     setmenu(true)
     }
      
    }
 
+
+   console.log(props.currentuser)
 
 
     return (
@@ -131,6 +139,20 @@ export function Cartpage(props) {
 
       <div className='cart-product-wrapper'>
 
+
+    {
+      menu ? 
+
+      <div ref={outsideref} onClick={(e) => e.target === outsideref.current ? setmenu(false) : null} className='cart-register'>
+      <div ref={menuref} className='cart-menu'>
+         <p className='cart-menu-text'>პროდუქტის შესაძენად გთხოვთ გაიაროთ რეგისტრაცია ან შეხვიდეთ სისტმაში</p>
+         <button onClick={() => setmenu(false)} className='cart-menu-button'>დახურვა</button>
+      </div>
+    </div>
+
+      :null
+    }
+        
 
 
 <div>
