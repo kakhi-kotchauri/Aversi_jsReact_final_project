@@ -3,6 +3,7 @@ import { Pagehead } from '../product-head/pagehead'
 import { useEffect, useRef, useState } from 'react'
 import eye from './pictures/eye.png'
 import { useNavigate } from 'react-router-dom'
+import person from './pictures/person.png'
 
 
 export function Profielpage(props) {
@@ -111,6 +112,15 @@ export function Profielpage(props) {
             confirmpasswordref.current.placeholder = 'ველი ცარიელია'
         }
 
+        if(newpassword !== confirmpassword) {
+            setconfirmpassword('')
+            confirmpasswordref.current.style.borderColor = 'red'
+            confirmpasswordref.current.placeholder = 'პაროლები არ ემთხვევა ერთმანეთს'
+            setnewpassword('')
+            passwordref.current.style.borderColor = 'red'
+            passwordref.current.placeholder = 'პაროლები არ ემთხვევა ერთმანეთს'
+        }
+
     }
 
 
@@ -141,8 +151,49 @@ export function Profielpage(props) {
                 <div className='profilepage-par'>
 
                 <div className='profile-content'>
+
   
-                <div className='profile-info'></div>
+                <div className='profile-info'>
+
+                    <div className='profileinfo-slot'>
+                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <p className='profileinfo-text'>პირადი ინფორმაცია</p>
+                    </div>
+
+                    <div className='profileinfo-slot'>
+                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <p className='profileinfo-text'>მტრედი ბარათის ქულების შემოწმება</p>
+                    </div>
+
+                    <div className='profileinfo-slot'>
+                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <p className='profileinfo-text'>მტრედი ბარათის ანგარიშზე მიბმა</p>
+                    </div>
+
+
+                    <div className='profileinfo-slot'>
+                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <p className='profileinfo-text'>საჩუქრის არჩევა ქულების მიხედვით</p>
+                    </div>
+
+
+                    <div className='profileinfo-slot'>
+                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <p className='profileinfo-text'>მისამართების მართვა</p>
+                    </div>
+
+
+                    <div className='profileinfo-slot'>
+                        <img className='profileinfo-img' src={person} alt="icon" />
+                        <p className='profileinfo-text'>ინფორმაცია შეკვეთებზე</p>
+                    </div>
+
+                </div>
+
+
+
+
+
   
                 <form onSubmit={(e) => submit(e)}>
   

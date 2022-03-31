@@ -18,7 +18,35 @@
     height: 793px;
     background-color: white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 30px;
 }
+
+
+
+.profileinfo-slot {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+
+.profileinfo-img {
+    width: 20px;
+}
+
+
+.profileinfo-text {
+    margin-left: 20px;
+    font-size: 22px;
+    color: #7D8078;
+}
+
+
+
+
 
 .profile-panel {
     width: 878px;
@@ -72,7 +100,7 @@
 
 .profile-img-par {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-top: 30px;
     margin-bottom: 25px;
@@ -147,6 +175,8 @@
     text-align: center;
     width: 100%;
 }
+
+
 
 
 

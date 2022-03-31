@@ -74,6 +74,31 @@ import { Buyed } from './buyed-page/buyed';
 
 
 
+    
+    useEffect(() => {
+
+      fetch('https://kakhi-kotchauri.github.io/fakedata.github.io/fakedata.json')
+      .then( response => response.json())
+      .then(response2 => {
+        const finaldata = response2.Products.map((item, index) => ({...item, customid : index}))
+        setdata(finaldata)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+      fetch('https://kakhi-kotchauri.github.io/fakedata.github.io//offers.json')
+      .then( response => response.json())
+      .then(response2 => setdata2(response2.offers))
+      .catch((error) => {
+        console.log(error)
+      })
+
+    }, [])
+
+
+
+
 
     function register(e) {
 
@@ -118,6 +143,8 @@ import { Buyed } from './buyed-page/buyed';
         passwordref.current.placeholder = 'პაროლები არ მეთხვევა ერთმანეთს'
         confirmpasswordref.current.style.borderColor = 'red'
         confirmpasswordref.current.placeholder = 'პაროლები არ მეთხვევა ერთმანეთს'
+        setpassword('')
+        setconfirmpassword('')
       }
 
       if(find) {
@@ -216,26 +243,6 @@ import { Buyed } from './buyed-page/buyed';
       
 
 
-    useEffect(() => {
-
-      fetch('https://kakhi-kotchauri.github.io/fakedata.github.io/fakedata.json')
-      .then( response => response.json())
-      .then(response2 => {
-        const finaldata = response2.Products.map((item, index) => ({...item, customid : index}))
-        setdata(finaldata)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-
-      fetch('https://kakhi-kotchauri.github.io/fakedata.github.io//offers.json')
-      .then( response => response.json())
-      .then(response2 => setdata2(response2.offers))
-      .catch((error) => {
-        console.log(error)
-      })
-
-    }, [])
 
 
     // console.log(data)
@@ -369,7 +376,6 @@ import { Buyed } from './buyed-page/buyed';
 
           <div ref={someref} className='app-par'>
 
-            <button onClick={() => nav('/profile-page')} >test</button>
 
           <Header setcurrentuser={{setcurrentuser:setcurrentuser}} currentuser={currentuser} signin={signindisp} valuesend={searchvaluedata}/>
             <Routes>
