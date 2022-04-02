@@ -216,8 +216,15 @@ import { Buyed } from './buyed-page/buyed';
  }, [favorite])
   
 
-console.log(currentuser)
+useEffect(() => {
 
+  if(currentuser) {
+    favorite.forEach(element => {
+      element.hearted = true 
+    });
+  } 
+
+}, [currentuser, favorite])
 
 
 
@@ -230,7 +237,12 @@ console.log(currentuser)
 
 
       if(acountfinder) {
-        console.log(acountfinder)
+
+        favorite.forEach(element => {
+          element.hearted = false
+         });
+         setfavorite([])
+
         setsignindis(!signindis)
         setcurrentuser(acountfinder)
       } else {

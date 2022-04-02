@@ -35,26 +35,24 @@ export function Profielpage(props) {
     const nav = useNavigate()
 
 
-    // useEffect(() => {
-    //     setfavorite(props.currentuser.favorites)
-    //     props.currentuser.favorites.forEach(element => {
-    //         element.hearted = true
-    //       });
-    //     if(!props.currentuser) {
-    //     nav('/')
-    //     }
-    // }, [])
+    useEffect(() => {
+        if(!props.currentuser) {
+        nav('/')
+        }
+    }, [props.currentuser])
     
 
 
-    console.log(props.currentuser.favorites)
+    // console.log(props.users)
 
 
     function submit(e) {
 
         e.preventDefault()
 
+        const find = props.users.find(item => item.email === newemail && item.id !== props.currentuser.id)
 
+        // console.log(find)
         
         if(newcolor) {
             setcurentuserupdate(!curentuserupdate)
@@ -82,7 +80,7 @@ export function Profielpage(props) {
                 }, 2000);    
             console.log('phone')
             }
-            if(newemail && newemail !== props.currentuser.email) {
+            if(newemail && !find && newemail !== props.currentuser.email) {
                 props.currentuser.email = newemail
                 window.scroll(0, 0)
                 setchanged(true)
@@ -122,6 +120,12 @@ export function Profielpage(props) {
             emailref.current.style.borderColor = 'red'
             emailref.current.placeholder = 'ველი ცარიელია'
         }
+
+        if(find) {
+            emailref.current.style.borderColor = 'red'
+            emailref.current.placeholder = 'მოცემულე ემაილი უკვე გამოყენებულია'
+            setnewemail('')
+          }
 
         if(!newpassword) {
             setnewpassword('')

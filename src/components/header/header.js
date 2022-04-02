@@ -42,7 +42,7 @@ const menuref = useRef()
     setcurrentuser()
     settoglemenu(!toglemenu)
     favorite.forEach(element => {
-      console.log(element.hearted)
+      console.log('clean')
       element.hearted = false
     });
     setfavorite([])
