@@ -24,6 +24,7 @@ export function Profielpage(props) {
     const [newcolor, setnewcolor] = useState('')
     const [toglecolor, settoglecolor] = useState(false)
     const {curentuserupdate, setcurentuserupdate} = props.update
+    const {setfavorite} = props.setfavorite
 
     const phoneref = useRef()
     const emailref = useRef()
@@ -34,14 +35,19 @@ export function Profielpage(props) {
     const nav = useNavigate()
 
 
-    useEffect(() => {
-        if(!props.currentuser) {
-        nav('/')
-        }
-    }, [])
+    // useEffect(() => {
+    //     setfavorite(props.currentuser.favorites)
+    //     props.currentuser.favorites.forEach(element => {
+    //         element.hearted = true
+    //       });
+    //     if(!props.currentuser) {
+    //     nav('/')
+    //     }
+    // }, [])
     
 
 
+    console.log(props.currentuser.favorites)
 
 
     function submit(e) {

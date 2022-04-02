@@ -97,7 +97,7 @@ import { Buyed } from './buyed-page/buyed';
     }, [])
 
 
-
+// console.log(favorite)
 
 
     function register(e) {
@@ -114,7 +114,8 @@ import { Buyed } from './buyed-page/buyed';
         email : email,
         phone : phone,
         password : password,
-        password2 : confirmpassword
+        password2 : confirmpassword,
+        favorites : [...favorite]
       }
 
       const find = users.find(item => item.email === userdata.email)
@@ -131,7 +132,10 @@ import { Buyed } from './buyed-page/buyed';
          setphone('')
          setpassword('')
          setconfirmpassword('')
-         console.log('5545')
+         favorite.forEach(element => {
+          element.hearted = false
+         });
+         setfavorite([])
         }
 
        }
@@ -190,6 +194,30 @@ import { Buyed } from './buyed-page/buyed';
       }
 
     }
+
+
+
+    
+    useEffect(() => {
+      if(currentuser) {
+        setfavorite(currentuser.favorites)
+        currentuser.favorites.forEach(element => {
+            element.hearted = true
+          });
+     }  
+   }, [currentuser])
+
+
+   useEffect(() => {
+    if(currentuser) {
+      currentuser.favorites = [...favorite]
+      console.log('t')
+   }  
+ }, [favorite])
+  
+
+console.log(currentuser)
+
 
 
 
@@ -374,7 +402,12 @@ import { Buyed } from './buyed-page/buyed';
           <div ref={someref} className='app-par'>
 
 
-          <Header setcurrentuser={{setcurrentuser:setcurrentuser}} currentuser={currentuser} signin={signindisp} valuesend={searchvaluedata}/>
+          <Header setcurrentuser={{setcurrentuser:setcurrentuser}}
+           currentuser={currentuser}
+            signin={signindisp} 
+            valuesend={searchvaluedata}
+            favorite={{setfavorite : setfavorite, favorite : favorite}}
+            />
             <Routes>
               <Route path='/' element={ <Home data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
@@ -397,6 +430,7 @@ import { Buyed } from './buyed-page/buyed';
                   }} 
                   users={users}
                   currentuser={currentuser}
+                  setfavorite={{setfavorite : setfavorite}}
                   /> }/>
               <Route path='search' element={ <Search data={data} test={searchvaluedata} value={searchvalue}/> }/>
               <Route path='buyed' element={ <Buyed totalitems={totalitems  } price={totalprice}/> }/>

@@ -18,6 +18,7 @@ export function Header(props) {
   let nav = useNavigate();
    
   const {setcurrentuser} = props.setcurrentuser
+  const {setfavorite, favorite} = props.favorite
   
 
 
@@ -37,9 +38,14 @@ const menuref = useRef()
 
 
   function out() {
-    nav('/')
+    // nav('/')
     setcurrentuser()
     settoglemenu(!toglemenu)
+    favorite.forEach(element => {
+      console.log(element.hearted)
+      element.hearted = false
+    });
+    setfavorite([])
   }
 
   function inprofile() {
@@ -48,6 +54,8 @@ const menuref = useRef()
     settoglemenu(!toglemenu)
     
   }
+
+  // console.log(favorite)
 
 
     return (
