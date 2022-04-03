@@ -115,7 +115,8 @@ import { Buyed } from './buyed-page/buyed';
         phone : phone,
         password : password,
         password2 : confirmpassword,
-        favorites : [...favorite]
+        favorites : [...favorite],
+        cart : [...cartitem]
       }
 
       const find = users.find(item => item.email === userdata.email)
@@ -136,6 +137,7 @@ import { Buyed } from './buyed-page/buyed';
           element.hearted = false
          });
          setfavorite([])
+         setcartitem([])
         }
 
        }
@@ -204,9 +206,12 @@ import { Buyed } from './buyed-page/buyed';
         currentuser.favorites.forEach(element => {
             element.hearted = true
           });
+
+        setitemstatus(false)
+        setcartitem(currentuser.cart)  
      }  
    }, [currentuser])
-
+ 
 
    useEffect(() => {
     if(currentuser) {
@@ -214,6 +219,16 @@ import { Buyed } from './buyed-page/buyed';
       console.log('t')
    }  
  }, [favorite])
+
+
+ useEffect(() => {
+  if(currentuser) {
+    currentuser.cart = [...cartitem]
+ }  
+}, [cartitem])
+
+
+
   
 
 useEffect(() => {
@@ -377,6 +392,9 @@ useEffect(() => {
       } 
 
     }, [searchvalue])
+
+
+    console.log(cartitem)
     
 
 

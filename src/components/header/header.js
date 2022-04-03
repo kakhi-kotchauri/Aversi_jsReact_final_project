@@ -46,6 +46,7 @@ const menuref = useRef()
       element.hearted = false
     });
     setfavorite([])
+    setcartitem([])
   }
 
   function inprofile() {

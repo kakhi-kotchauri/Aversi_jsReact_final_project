@@ -72,8 +72,10 @@ export function Liveproduct(props) {
             find['time'] = Date.now()  
             find['productcount'] = 1  
             setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
+        console.log('damateba')
         } else {
             setcartitem([...cartitem].sort(function (a, b) {return a.time - b.time;}))
+        console.log('gamocvla')
         }
     }
 

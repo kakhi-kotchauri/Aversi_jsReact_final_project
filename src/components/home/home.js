@@ -33,7 +33,7 @@ import "swiper/css/navigation";
 import "..//.././styles.css";
 
 // import required modules
-import { Pagination, Navigation } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 
 
 
@@ -64,7 +64,11 @@ const {globalcat, setglobalcat} = useContext(Globalcat)
             pagination={{
             clickable: true,
             }}
-            modules={[Pagination]}
+            autoplay={{
+              delay: 10000,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay, Pagination]}
           >
 
               <SwiperSlide>
