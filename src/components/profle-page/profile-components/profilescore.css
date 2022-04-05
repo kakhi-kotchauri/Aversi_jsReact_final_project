@@ -1,0 +1,52 @@
+
+
+.profscore-par {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.profscore-card-par {
+   position: relative;
+   margin-top: 100px;
+}
+
+
+
+
+.profscore-card {
+    width: 600px;
+    border-radius: 20px;
+    border: rgba(128, 128, 128, 0.636) solid 2px;
+}
+
+.profscore-value-par {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 25px;
+    padding-left: 25px;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    z-index: 3;
+}
+
+
+.profscore-score {
+    font-size: 26px;
+    color: aliceblue;
+}
+
+
+
+.profscore-info {
+    font-size: 22px;
+    margin-top: 30px;
+    max-width: 500px;
+    text-align: center;
+    line-height: 1.2;
+}

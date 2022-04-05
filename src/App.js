@@ -116,7 +116,9 @@ import { Buyed } from './buyed-page/buyed';
         password : password,
         password2 : confirmpassword,
         favorites : [...favorite],
-        cart : [...cartitem]
+        cart : [...cartitem],
+        score : 0,
+        transactions : []
       }
 
       const find = users.find(item => item.email === userdata.email)
@@ -394,7 +396,10 @@ useEffect(() => {
     }, [searchvalue])
 
 
-    console.log(cartitem)
+    //  if(currentuser) {
+    // console.log(currentuser.score)
+    //    console.log(Math.floor(currentuser.score))
+    //  }
     
 
 
@@ -452,7 +457,7 @@ useEffect(() => {
                 currentuser = {currentuser}
                 /> } />
               <Route path='favorites' element={ <Favorite data={data}/> }/>
-              <Route path='profile-page' element={ 
+              <Route path='profile-page/*' element={ 
                  <Profielpage 
                   update={{
                     curentuserupdate:curentuserupdate,

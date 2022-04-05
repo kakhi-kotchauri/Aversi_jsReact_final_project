@@ -105,6 +105,8 @@ export function Cartpage(props) {
 
     if(props.currentuser && props.data.length >= 1) {
       setcartitem([])
+      props.currentuser.score = props.currentuser.score + ssd(cartitem) / 100 * 10
+      props.currentuser.transactions = [...props.currentuser.transactions, ...cartitem]
       nav('/buyed')
     } else if(!props.currentuser) {
      setmenu(true)
@@ -113,7 +115,8 @@ export function Cartpage(props) {
    }
 
 
-   console.log(props.currentuser)
+
+  //  console.log(cartitem)
 
 
     return (

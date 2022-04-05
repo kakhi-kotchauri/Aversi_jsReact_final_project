@@ -65,7 +65,7 @@ const {globalcat, setglobalcat} = useContext(Globalcat)
             clickable: true,
             }}
             autoplay={{
-              delay: 10000,
+              delay: 8000,
               disableOnInteraction: false,
             }}
             modules={[Autoplay, Pagination]}
