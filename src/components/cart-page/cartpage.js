@@ -106,7 +106,7 @@ export function Cartpage(props) {
     if(props.currentuser && props.data.length >= 1) {
       setcartitem([])
       props.currentuser.score = props.currentuser.score + ssd(cartitem) / 100 * 10
-      props.currentuser.transactions = [...props.currentuser.transactions, ...cartitem]
+      props.currentuser.transactions = [...cartitem, ...props.currentuser.transactions]
       nav('/buyed')
     } else if(!props.currentuser) {
      setmenu(true)
@@ -148,7 +148,7 @@ export function Cartpage(props) {
 
       <div ref={outsideref} onClick={(e) => e.target === outsideref.current ? setmenu(false) : null} className='cart-register'>
       <div ref={menuref} className='cart-menu'>
-         <p className='cart-menu-text'>პროდუქტის შესაძენად გთხოვთ გაიაროთ რეგისტრაცია ან შეხვიდეთ სისტმაში</p>
+         <p className='cart-menu-text'>პროდუქტის შესაძენად გთხოვთ გაიაროთ რეგისტრაცია ან შეხვიდეთ სისტემაში</p>
          <button onClick={() => setmenu(false)} className='cart-menu-button'>დახურვა</button>
       </div>
     </div>
@@ -221,32 +221,43 @@ export function Cartpage(props) {
 
       </div>
 
-      <div className='cart-sum'>
-        <div className='cart-sum-div'>
-          <div className='cart-sum-slots'>
-            <p className='sum-title'>პროდუქცია</p>
-            <p className='sum-title'>{ssd(cartitem)} ლარი</p>
+      {
+        cartitem.length > 0 ?
+
+          <div className='cart-sum'>
+            <div className='cart-sum-div'>
+              <div className='cart-sum-slots'>
+                <p className='sum-title'>პროდუქცია</p>
+                <p className='sum-title'>{ssd(cartitem)} ლარი</p>
+              </div>
+              <div className='cart-sum-slots'>
+                <p className='sum-title'>მიტანის საკომისიო</p>
+                <p className='sum-title'>0 ლარი</p>
+              </div>
+              <div className='cart-sum-slots'>
+                <p className='sum-title'>გაქვს ვაუჩერი ?</p>
+              </div>
+              <div className='sum-line'></div>
+              <div className='cart-sum-slots'>
+                <p className='sum-title'>სულ</p>
+                <p className='sum-title-1'>{ssd(cartitem)} ლარი</p>
+              </div>
+            </div>
+            <button  onClick={() => buy()} className='sum-buy'>ყიდვა</button>
           </div>
-          <div className='cart-sum-slots'>
-            <p className='sum-title'>მიტანის საკომისიო</p>
-            <p className='sum-title'>0 ლარი</p>
-          </div>
-          <div className='cart-sum-slots'>
-            <p className='sum-title'>გაქვს ვაუჩერი ?</p>
-          </div>
-          <div className='sum-line'></div>
-          <div className='cart-sum-slots'>
-            <p className='sum-title'>სულ</p>
-            <p className='sum-title-1'>{ssd(cartitem)} ლარი</p>
-          </div>
-        </div>
-        <button  onClick={() => buy()} className='sum-buy'>ყიდვა</button>
-      </div>
+
+        : null
+      }
+
+
 
       </div>
 
-        
-      <p className='cart-caution'>გაყიდული პროდუქცია დაბრუნებას ან/და შეცვლას არ ექვემდებარება</p>
+      {
+        cartitem.length > 0 ?
+          <p className='cart-caution'>გაყიდული პროდუქცია დაბრუნებას ან/და შეცვლას არ ექვემდებარება</p>
+        :null
+      }
      
      <Liveproduct data={props.originaldata}/>
 

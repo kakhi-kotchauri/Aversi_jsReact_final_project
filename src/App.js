@@ -16,7 +16,8 @@ import Globalcat from './globalcat';
 import Favoritecontext from './favoritecontext'
 import { Favorite } from './components/favorite-page/favorite';
 import { Search } from './components/search-page/search';
-import { Buyed } from './buyed-page/buyed';
+import { Buyed } from './components/buyed-page/buyed';
+import { Pharmacys } from './components/pharmacys/pharmacys';
 
 
 
@@ -400,6 +401,9 @@ useEffect(() => {
     // console.log(currentuser.score)
     //    console.log(Math.floor(currentuser.score))
     //  }
+
+
+    // console.log(Resolution())
     
 
 
@@ -412,13 +416,7 @@ useEffect(() => {
           }
         }
         >
-        <Globalcat.Provider value= {
-          {
-            globalcat : globalcat,
-            setglobalcat : setglobalcat
-          }
-        }
-        >
+      
         <Itemstatus.Provider value= {
           {
             itemstatus : itemstatus,
@@ -443,10 +441,12 @@ useEffect(() => {
             valuesend={searchvaluedata}
             favorite={{setfavorite : setfavorite, favorite : favorite}}
             />
+
             <Routes>
-              <Route path='/' element={ <Home data={data} data2={data2}/> }/>
+              <Route path='/' element={ <Home globalcat={{setglobalcat:setglobalcat}} data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
               <Route path='drugpage-cat' element={ <Drugpage  category={globalcat} data={data}/> }/>
+              <Route path='pharmacy' element={ <Pharmacys/> }/>
               <Route path='about' element={ <About/> }/>
               <Route path='cart' 
                 element={ <Cartpage  
@@ -456,7 +456,7 @@ useEffect(() => {
                 data={cartitem}
                 currentuser = {currentuser}
                 /> } />
-              <Route path='favorites' element={ <Favorite data={data}/> }/>
+              <Route path='favorites' element={ <Favorite  originaldata={data}  data={data}/> }/>
               <Route path='profile-page/*' element={ 
                  <Profielpage 
                   update={{
@@ -581,7 +581,6 @@ useEffect(() => {
 
         </Cartcontext.Provider>
         </Itemstatus.Provider>
-        </Globalcat.Provider>
         </Favoritecontext.Provider>
       );
     }

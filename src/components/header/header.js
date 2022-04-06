@@ -123,25 +123,24 @@ const menuref = useRef()
         <nav className='header-line2'>
 
            <ul className='header-text-par'>
-           <Link to='/'>
-              <li>
+          
+              <li onClick={() => nav('/')} >
                 <div className='header-burger-par'>
                   <img className='burger' src={burger} alt="burger" />
                   <p className='burger-text'>მთავარი</p>
                 </div> 
               </li>
-              </Link>
-              
+            
               <li>
-                 <Link className='header-text' to='drugpage'>წამლები</Link>
+                 <p onClick={() => nav('drugpage')}  className='header-text' to='drugpage'>წამლები</p>
                </li> 
 
                <li>
-                 <Link className='header-text' to='#'>კატალოგი</Link>
+                 <p onClick={() => nav('pharmacy')} className='header-text'>აფთიაქები</p>
               </li> 
 
                <li>
-                 <Link className='header-text' to='about'>ჩვენს შესახებ</Link>
+                 <p onClick={() => nav('about')}  className='header-text' to='about'>ჩვენს შესახებ</p>
               </li> 
 
             </ul>

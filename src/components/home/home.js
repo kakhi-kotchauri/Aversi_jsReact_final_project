@@ -42,7 +42,7 @@ import { Autoplay, Pagination } from "swiper";
 export function Home(props) {
 
 
-const {globalcat, setglobalcat} = useContext(Globalcat)
+const {setglobalcat} = props.globalcat
 
 
     let nav = useNavigate();

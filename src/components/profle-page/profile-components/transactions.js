@@ -1,30 +1,31 @@
-
+import { useNavigate } from 'react-router-dom'
+import './transaction.css'
 
 
 
 
 export function Transactions({props}) {
 
-    console.log(props.currentuser.transactions)
+     const nav = useNavigate()
 
 
     return (
-        <div>
+        <div className='trans-par'>
           
           {   props.currentuser.transactions.length >= 1 ?
-              props.currentuser.transactions.sort(function (a, b) {return b.time - a.time;}).map((item, index) => {
+              props.currentuser.transactions.map((item, index) => {
             return (
-              <div key={index} className='fav-product'>
-              <div className='fav-product-left'>
+              <div onClick={() => nav(`/${item.customid}`)} key={index} className='trans-product'>
+              <div className='trans-product-left'>
 
-                  <div className='fav-image-par'>
-                      <img className='fav-img' src={item.img} alt="favimage" />
+                  <div className='trans-image-par'>
+                      <img className='trans-img' src={item.img} alt="transimage" />
                   </div>
                 
-                <div className='fav-product-text-par'>
-                  <div className='fav-product-title'>{item.title}</div>
-                  <div className='fav-product-text'>{item.usage}</div>
-                  <div className='fav-product-text'> ოდენობა {item.amount}</div>
+                <div className='trans-product-text-par'>
+                  <div className='trans-product-title'>{item.title}</div>
+                  <div className='trans-product-text'>{item.usage}</div>
+                  <div className='trans-product-text'> ოდენობა {item.amount}</div>
                 </div>
 
               </div>
@@ -37,7 +38,7 @@ export function Transactions({props}) {
         :
         
         <div className='fav-empty'>
-            <p>ფავორიტი პროდუქტები არ არის დამატებული</p>
+            <p>ტრანზაქციები არ არის</p>
         </div>
     }
 

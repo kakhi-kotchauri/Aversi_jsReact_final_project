@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Pagehead } from '../product-head/pagehead'
 import { useContext, useState } from 'react'
-// import {Liveproduct} from '../live-product/liveproduct'
+import {Liveproduct} from '../live-product/liveproduct'
 import './favorite.css'
 import Favoritecontext from '../../favoritecontext'
 
@@ -101,7 +101,7 @@ function remove(id) {
     </div>
 
      
-     {/* <Liveproduct data={props.originaldata}/> */}
+     <Liveproduct data={props.originaldata}/>
 
 
  </div>

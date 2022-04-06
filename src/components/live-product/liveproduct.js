@@ -11,19 +11,16 @@ import star from './pictures/star.png'
 import graystar from './pictures/gray-star.png'
 import hearth from './pictures/hearth.png'
 import redhearth from './pictures/redhearth.png'
-
-// Import Swiper React components
+import { Pagination, Navigation } from "swiper";
+import { Resolution } from '../../hooks/resolution'
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 import "..//.././styles.css";
 
-// import required modules
-import { Pagination, Navigation } from "swiper";
+
 
 
 
@@ -34,6 +31,18 @@ export function Liveproduct(props) {
     const {cartitem, setcartitem} = useContext(Cartcontext)
     const {favorite, setfavorite} = useContext(Favoritecontext)
     const [productarr, setproductarr] = useState([])
+    const [pagestatus, setpagestatus] = useState(false)
+
+    useEffect(() => {
+       setpagestatus(true)
+       return () => {
+       setpagestatus(false)
+      }
+    }, [])
+
+
+    
+    
 
 
     useEffect(() => {
@@ -102,7 +111,7 @@ export function Liveproduct(props) {
 
 
 
-    
+    // console.log(Resolution())
 
 
 
@@ -121,14 +130,14 @@ export function Liveproduct(props) {
 
               
           <Swiper
-                slidesPerView={4}
+                slidesPerView={Resolution() < 1100 && pagestatus ? 3 : 4 }
                 spaceBetween={1}
                 slidesPerGroup={4}
                 navigation={true}
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-    
+           
             {
                 productarr? 
                 productarr.map((item, index) => {
