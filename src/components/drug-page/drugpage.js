@@ -276,9 +276,9 @@ function alldata() {
       if(find !== findcart) {
             find['time'] = Date.now()  
             find['productcount'] = 1  
-         setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
+         setcartitem([...cartitem, find].sort(function (a, b) {return b.time - a.time;}))
       } else {
-         setcartitem([...cartitem].sort(function (a, b) {return a.time - b.time;}))
+         setcartitem([...cartitem].sort(function (a, b) {return b.time - a.time;}))
       }
    }
 
@@ -290,10 +290,11 @@ function alldata() {
       const replace = props.data.filter(element => element.customid !== id)
       if(find['hearted'] === true) {
          find['hearted'] = false
-         setfavorite(removeitem)
+         setfavorite(removeitem.sort(function (a, b) {return b.timeheart - a.timeheart;}))
       } else {
          find['hearted'] = true
-         setfavorite([...favorite, find])
+         find['timeheart'] = Date.now()  
+         setfavorite([...favorite, find].sort(function (a, b) {return b.timeheart - a.timeheart;}))
       }
       // setdrugpagedata2([...replace, find].sort(function (a, b) {return a.customid - b.customid;})) 
    }

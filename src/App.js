@@ -119,7 +119,8 @@ import { Pharmacys } from './components/pharmacys/pharmacys';
         favorites : [...favorite],
         cart : [...cartitem],
         score : 0,
-        transactions : []
+        transactions : [],
+        transactionsum : 0
       }
 
       const find = users.find(item => item.email === userdata.email)
@@ -455,7 +456,8 @@ useEffect(() => {
                 originaldata={data} 
                 data={cartitem}
                 currentuser = {currentuser}
-                /> } />
+                /> } 
+                />
               <Route path='favorites' element={ <Favorite  originaldata={data}  data={data}/> }/>
               <Route path='profile-page/*' element={ 
                  <Profielpage 
@@ -466,7 +468,9 @@ useEffect(() => {
                   users={users}
                   currentuser={currentuser}
                   setfavorite={{setfavorite : setfavorite}}
-                  /> }/>
+                  data={data}
+                  /> }
+                  />
               <Route path='search' element={ <Search data={data} test={searchvaluedata} value={searchvalue}/> }/>
               <Route path='buyed' element={ <Buyed totalitems={totalitems  } price={totalprice}/> }/>
               <Route path='/:index' element={ <Productpage data ={data}/> }/>

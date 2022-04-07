@@ -11,6 +11,11 @@ export function Transactions({props}) {
 
     return (
         <div className='trans-par'>
+
+          <div className='trans-head'>
+            <p className='trans-head-text'>გადახდილი თნახის ტოტალური ოდენობა</p>
+            <p className='trans-head-text'>{props.currentuser.transactionsum} ლარი</p>
+          </div>
           
           {   props.currentuser.transactions.length >= 1 ?
               props.currentuser.transactions.map((item, index) => {

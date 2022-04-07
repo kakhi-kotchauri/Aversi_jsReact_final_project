@@ -41,10 +41,10 @@ export function Cartpage(props) {
 
     if(type === '+') {
       findcart['productcount'] = findcart.productcount + 1
-      setcartitem([...replace, findcart].sort(function (a, b) {return a.time - b.time;}))
+      setcartitem([...replace, findcart].sort(function (a, b) {return b.time - a.time;}))
     } else if (type === '-' && findcart.productcount > 1) {
         findcart['productcount'] = findcart.productcount - 1
-        setcartitem([...replace, findcart].sort(function (a, b) {return a.time - b.time;}))
+        setcartitem([...replace, findcart].sort(function (a, b) {return b.time - a.time;}))
     }
 }
 
@@ -105,8 +105,9 @@ export function Cartpage(props) {
 
     if(props.currentuser && props.data.length >= 1) {
       setcartitem([])
-      props.currentuser.score = props.currentuser.score + ssd(cartitem) / 100 * 10
+      props.currentuser.score = props.currentuser.score + ssd(cartitem) * 5
       props.currentuser.transactions = [...cartitem, ...props.currentuser.transactions]
+      props.currentuser.transactionsum = props.currentuser.transactionsum + ssd(cartitem)
       nav('/buyed')
     } else if(!props.currentuser) {
      setmenu(true)

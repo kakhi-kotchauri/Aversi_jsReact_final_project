@@ -20,7 +20,7 @@ function remove(id) {
     const removeitem = favorite.filter(item => item.customid !== id)
     const find = props.data.find(element => element.customid === id)
     find['hearted'] = false
-    setfavorite(removeitem)
+    setfavorite(removeitem.sort(function (a, b) {return b.timeheart - a.timeheart;}))
  }
 
 

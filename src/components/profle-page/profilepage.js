@@ -11,6 +11,7 @@ import i from './pictures/i.png'
 import { Profileinfo } from './profile-components/profileinfo';
 import { Profilescores } from './profile-components/profilescores';
 import { Transactions } from './profile-components/transactions';
+import { Scorebuy } from './profile-components/scorebuy';
 
 
 export function Profielpage(props) {
@@ -79,7 +80,7 @@ export function Profielpage(props) {
 
                     <div className='profileinfo-slot'>
                         <img className='profileinfo-img' src={gift} alt="icon" />
-                        <p className='profileinfo-text'>საჩუქრის არჩევა ქულების მიხედვით</p>
+                        <p onClick={() => nav('profile-scorebuy')} className='profileinfo-text'>საჩუქრის არჩევა ქულების მიხედვით</p>
                     </div>
 
 
@@ -102,6 +103,7 @@ export function Profielpage(props) {
                    <Route path='*' element={ <Profileinfo props={props}/> }/>
                    <Route path='profile-scores' element={ <Profilescores props={props}/> }/>
                    <Route path='profile-transactions' element={ <Transactions props={props}/> }/>
+                   <Route path='profile-scorebuy' element={ <Scorebuy props={props}/> }/>
                </Routes>
                </div>
 
