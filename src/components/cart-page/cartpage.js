@@ -159,16 +159,24 @@ export function Cartpage(props) {
         
 
 
-<div>
+<div className='cart-product-par-wrapper'>
  
       <div className='cart-product-par'>
 
-          <div className='cart-titles'>
-              <p className='cart-title-text'>პროდუქციის დასახელება</p>
-              <p className='cart-title-text'>ფასი</p>
-              <p className='cart-title-text'>რაოდენობა</p>
-              <p className='cart-title-text'>ჯამი</p>
-          </div>
+        {
+           props.data.length >= 1 ?
+
+         <div className='cart-titles'>
+           <p className='cart-title-text'>პროდუქციის დასახელება</p>
+           <p className='cart-title-text'>ფასი</p>
+           <p className='cart-title-text'>რაოდენობა</p>
+           <p className='cart-title-text'>ჯამი</p>
+        </div>
+
+           : null
+           
+        }
+
 
 
           {   props.data.length >= 1 ?
@@ -207,15 +215,9 @@ export function Cartpage(props) {
 
           </div>
             )
-        })
-        
-        :
-        
-        <div className='cart-empty'>
-            <p>კალათა ცარიელია</p>
-        </div>
+        }) : null
     }
-          
+
 
 
           </div>
@@ -253,6 +255,16 @@ export function Cartpage(props) {
 
 
       </div>
+
+      {
+           props.data.length === 0 ?
+           <div className='cart-empty-par'>
+            <div className='cart-empty'>
+            <p>კალათა ცარიელია</p>
+           </div>
+          </div>
+           : null
+        }
 
       {
         cartitem.length > 0 ?

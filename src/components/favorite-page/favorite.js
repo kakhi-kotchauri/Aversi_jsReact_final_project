@@ -53,12 +53,19 @@ function remove(id) {
  
       <div className='fav-product-par'>
 
+        {
+          favorite.length >= 1 ?
+
           <div className='fav-titles'>
-              <p className='fav-title-text'>პროდუქციის დასახელება</p>
-              <p className='fav-title-text'>ფასი</p>
-              <p className='fav-title-text'>რაოდენობა</p>
-              <p className='fav-title-text'>ჯამი</p>
-          </div>
+          <p className='fav-title-text'>პროდუქციის დასახელება</p>
+          <p className='fav-title-text'>ფასი</p>
+          <p className='fav-title-text'>რაოდენობა</p>
+          <p className='fav-title-text'>ჯამი</p>
+        </div>
+
+          : null
+        }
+
 
 
           {   favorite.length >= 1 ?
@@ -87,13 +94,7 @@ function remove(id) {
     
           </div>
             )
-        })
-        
-        :
-        
-        <div className='fav-empty'>
-            <p>ფავორიტი პროდუქტები არ არის დამატებული</p>
-        </div>
+        }) : null
     }
           
           </div>
@@ -101,7 +102,18 @@ function remove(id) {
     </div>
 
      
-     <Liveproduct data={props.originaldata}/>
+     {
+       favorite.length === 0 ?
+       <div className='fav-empty-par'>
+        <div className='fav-empty'>
+          <p>ფავორიტი პროდუქტები არ არის დამატებული</p>
+        </div>
+      </div>
+      : null
+     }
+
+<Liveproduct data={props.originaldata}/>
+
 
 
  </div>

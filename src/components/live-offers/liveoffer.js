@@ -62,7 +62,7 @@ export function Liveoffer(props) {
               </div>
 
 
-
+  <div className='tt4'>
       <div className='offer-slot-wrapper'>
          
 
@@ -71,9 +71,6 @@ export function Liveoffer(props) {
                 spaceBetween={1}
                 slidesPerGroup={4}
                 navigation={true}
-                pagination={{
-                 clickable: true,
-                }}
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
               >
@@ -109,6 +106,7 @@ export function Liveoffer(props) {
         </Swiper>
              
        </div>
+    </div>
 
     </section>
     )

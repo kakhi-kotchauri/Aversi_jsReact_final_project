@@ -18,6 +18,7 @@ import { Favorite } from './components/favorite-page/favorite';
 import { Search } from './components/search-page/search';
 import { Buyed } from './components/buyed-page/buyed';
 import { Pharmacys } from './components/pharmacys/pharmacys';
+import { Hospitals } from './components/hospitals/hospitals';
 
 
 
@@ -448,6 +449,7 @@ useEffect(() => {
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
               <Route path='drugpage-cat' element={ <Drugpage  category={globalcat} data={data}/> }/>
               <Route path='pharmacy' element={ <Pharmacys/> }/>
+              <Route path='hospitals' element={ <Hospitals/> }/>
               <Route path='about' element={ <About/> }/>
               <Route path='cart' 
                 element={ <Cartpage  

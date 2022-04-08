@@ -10,8 +10,6 @@ export function Transactions({props}) {
      const nav = useNavigate()
 
 
-     
-
     return (
         <div className='trans-par'>
 

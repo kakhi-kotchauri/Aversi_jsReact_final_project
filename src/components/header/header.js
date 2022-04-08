@@ -70,9 +70,9 @@ const menuref = useRef()
           : null
           }
 
-          <Link to='/'>
-          <img className='logo' src={logo} alt="logo" />
-          </Link>
+        
+          <img onClick={() => nav('/')} className='logo' src={logo} alt="logo" />
+        
 
           <div className='search-wrap'>
           <input value={searchvalue}  onChange={(e) => setsearchvalue(e.target.value)} className='input' type="text" placeholder='წამლის ძებნა' />
@@ -137,6 +137,10 @@ const menuref = useRef()
 
                <li>
                  <p onClick={() => nav('pharmacy')} className='header-text'>აფთიაქები</p>
+              </li> 
+
+              <li>
+                 <p onClick={() => nav('hospitals')} className='header-text'>კლინიკები</p>
               </li> 
 
                <li>

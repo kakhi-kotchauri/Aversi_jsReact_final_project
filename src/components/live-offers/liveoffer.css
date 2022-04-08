@@ -22,8 +22,14 @@
     background-color: rgb(127, 145, 145);
 }
 
-.offer-slot-wrapper {
+.tt4 {
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.offer-slot-wrapper {
+    width: 95%;
     margin-bottom: 100px;
     display: flex;
     justify-content: space-around;
@@ -35,6 +41,7 @@
     background-color: white;
     border-radius: 0 0 10px 10px ;
     position: relative;
+    box-shadow: 0px 5px 5px #0000000D;
 }
 
 .offer-slot:hover {
