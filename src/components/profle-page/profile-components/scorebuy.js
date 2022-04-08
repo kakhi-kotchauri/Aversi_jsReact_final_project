@@ -1,19 +1,45 @@
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './scorebuy.css'
 
 
 export function Scorebuy({props}) {
 
- const scoredata = props.data.filter(item => 
-    item.price <= props.currentuser.score * 1 / 100 
-    && 
-    item.Category === 'კოსმეტიკა' 
-    ||
-        item.price <= props.currentuser.score * 1 / 100
-    && 
-    item.Category === 'თმის მოვლა')
+  const dialogref = useRef()
+
+  const [toggledialog, settoggledialog] = useState(false)
+  const [togglebuyed, settogglebuyed] = useState(false)
+  const [productname, setproductname] = useState('')
+  const [productid, setproductid] = useState(null)
+  const pointfactor = 100
+
+ const scoredata = props.data.filter(item => item.Category === 'კოსმეტიკა' || item.Category === 'თმის მოვლა')
 
     const nav = useNavigate()
+
+
+    function dialog(name, customid) {
+
+      settoggledialog(true)
+      setproductname(name)
+      setproductid(customid)
+      
+    }
+
+
+    function scorebuy(id) {
+      const find = scoredata.find(item => item.customid === id)
+      console.log(find)
+      console.log(find.price * pointfactor)
+      if(props.currentuser.score >= find.price * pointfactor) {
+          props.currentuser.score = props.currentuser.score - find.price * pointfactor
+          props.currentuser.transactions = [find, ...props.currentuser.transactions]
+          settogglebuyed(true)  
+      } else {
+        console.log('ar mogdis too')
+      }
+      settoggledialog(false)      
+    }
 
     
 
@@ -26,19 +52,23 @@ export function Scorebuy({props}) {
             <p className='scorebuy-head-text'>{props.currentuser.score} ქულა</p>
           </div>
 
+          <div className='scorebuy-head2'>
+            <p className='scorebuy-head-text'>კატალოგი </p>
+          </div>
+
         
         {   scoredata.length >= 1 ?
             scoredata.map((item, index) => {
           return (
-            <div onClick={() => nav(`/${item.customid}`)} key={index} className='scorebuy-product'>
+            <div key={index} className='scorebuy-product'>
 
             <div className='scorebuy-product-left'>
 
                 <div className='scorebuy-image-par'>
-                    <img className='scorebuy-img' src={item.img} alt="scorebuyimage" />
+                    <img onClick={() => nav(`/${item.customid}`)} className='scorebuy-img' src={item.img} alt="scorebuyimage" />
                 </div>
               
-              <div className='scorebuy-product-text-par'>
+              <div onClick={() => nav(`/${item.customid}`)} className='scorebuy-product-text-par'>
                 <div className='scorebuy-product-title'>{item.title}</div>
                 <div className='scorebuy-product-text'>{item.usage}</div>
                 <div className='scorebuy-product-text'> ოდენობა {item.amount}</div>
@@ -46,9 +76,15 @@ export function Scorebuy({props}) {
 
             </div>
 
-            <div>
-                <p>{item.price * 100} ქულა</p>
-                <p>შეძენა ქულებით</p>
+            <div className='scorebuy-right'>
+                <p>{item.price * pointfactor} ქულა</p>
+
+                <button
+                style={{cursor: props.currentuser.score < item.price * pointfactor ? null : 'pointer' }} 
+                className='scorebuy-button'
+                disabled={props.currentuser.score < item.price * pointfactor ? true : false}
+                onClick={() => dialog(item.title, item.customid)}
+                > შეძენა ქულებით </button>
             </div>
   
         </div>
@@ -58,9 +94,57 @@ export function Scorebuy({props}) {
       :
       
       <div className='fav-empty'>
-          <p>ტრანზაქციები არ არის</p>
+          <p>err</p>
       </div>
   }
+
+
+
+
+    {
+      toggledialog ? 
+
+      <div 
+      className='scorebuy-register'
+      ref={dialogref} 
+      onClick={(e) => e.target === dialogref.current ? settoggledialog(false) : null}
+      >
+      <div className='scorebuy-menu'>
+         <p className='scorebuy-menu-text'>გსურთ მოცემული პროდუქტის : {productname} - ის შეძენა ?</p>
+
+         <div className='scorebuy-menu-buttons'>
+         <button onClick={() => scorebuy(productid)} className='scorebuy-menu-button'>შეძენა</button>
+         <button onClick={() => settoggledialog(false)} className='scorebuy-menu-button'>გაუქმება</button>
+         </div>
+
+      </div>
+    </div>
+
+      :null
+    }
+
+
+
+    {
+      togglebuyed ? 
+
+      <div 
+      className='scorebuy-register'
+      ref={dialogref} 
+      onClick={(e) => e.target === dialogref.current ? settogglebuyed(false) : null}
+      >
+      <div className='scorebuy-menu'>
+         <p className='scorebuy-menu-text'>თქვენ წარმატებით შეიძნეთ {productname} - ი</p>
+
+         <div className='scorebuy-menu-buttons'>
+         <button onClick={() => settogglebuyed(false)} className='scorebuy-menu-button'>დახურვა</button>
+         </div>
+
+      </div>
+    </div>
+
+      :null
+    }
 
       </div>
     )

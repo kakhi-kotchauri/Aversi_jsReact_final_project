@@ -2,6 +2,53 @@
 
 .scorebuy-par {
     width: 100%;
+    /* position: relative; */
+}
+
+
+
+.scorebuy-register {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #68696a4d;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.scorebuy-menu {
+    width: 450px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+    position: absolute;
+}
+
+
+.scorebuy-menu-text {
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    line-height: 1.1;
+}
+
+.scorebuy-menu-button {
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 7px;
+    border: solid 1px #EA3339;
+    cursor: pointer;
 }
 
 
@@ -9,11 +56,25 @@
     width: 100%;
     height: 30px;
     margin-top: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid 1px rgb(53, 52, 52);
+    /* border-bottom: solid 1px rgb(53, 52, 52); */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.scorebuy-head2 {
+    width: 100%;
+    height: 30px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: solid 1px rgb(158, 155, 155);
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -33,7 +94,6 @@
     align-items: center;
     padding-right: 9%;
     border-bottom: solid 1px rgb(161, 159, 159);
-    cursor: pointer;
 }
 
 .scorebuy-product:hover {
@@ -74,5 +134,30 @@
     margin-bottom: 5px;
     line-height: 1.2;
     color: #6A6A68;
+}
+
+.scorebuy-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.scorebuy-button {
+    /* width: 50px; */
+    height: 40px;
+    border-radius: 8px;
+    border: solid 1px #EA3339;
+}
+
+
+.scorebuy-menu-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
 }
 
