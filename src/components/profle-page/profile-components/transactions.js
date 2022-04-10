@@ -21,7 +21,7 @@ export function Transactions({props}) {
           {   props.currentuser.transactions.length >= 1 ?
               props.currentuser.transactions.map((item, index) => {
             return (
-              <div onClick={() => nav(`/${item.customid}`)} key={index} className='trans-product'>
+       <div onClick={() => nav(`/${item.customid}`)} key={index} className={` trans-product ${item.type === 'gift' ? 'gold' : ''}`}>
               <div className='trans-product-left'>
 
                   <div className='trans-image-par'>
@@ -35,16 +35,32 @@ export function Transactions({props}) {
                 </div>
 
               </div>
-    
-    
+
+           {
+             !item.type ?
+             <div className='trans-value-par'>
+             <div className='trans-value'>{item.productcount} ცალი</div>
+             <div className='trans-value'>{item.price * item.productcount} ლარი</div>
+             </div>
+             : null
+           }
+
+          {
+             item.type === 'gift' ?
+             <div className='trans-value-gold'>{item.scoreprice} ქულა</div>
+             : null
+           }
+        
           </div>
             )
         })
         
         :
         
-        <div className='fav-empty'>
+        <div className='trans-empty-par'>
+            <div className='trans-empty'>
             <p>ტრანზაქციები არ არის</p>
+            </div>
         </div>
     }
 

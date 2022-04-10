@@ -25,14 +25,27 @@ function addtocart(id) {
     const find = props.data.find(element => element.customid === id)
     const findcart = cartitem.find(element => element.customid === id)
     const replace = cartitem.filter(item => item.customid !== id)
-    if(find !== findcart) {
-            find['time'] = Date.now()  
-            find['productcount'] = productcount
-        setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
-    } else {
+
+    if(!findcart) {
+        find['time'] = Date.now()  
         find['productcount'] = productcount
-        setcartitem([...replace, find].sort(function (a, b) {return a.time - b.time;}))
-    }
+        const newfind = { ...find } 
+        setcartitem([...cartitem, newfind].sort(function (a, b) {return b.time - a.time;}))
+        console.log('ssss')
+     } else {
+       console.log('dam')
+       const newfind = { ...find } 
+       setcartitem([...replace, newfind].sort(function (a, b) {return b.time - a.time;}))
+     }
+
+    // if(find !== findcart) {
+    //         find['time'] = Date.now()  
+    //         find['productcount'] = productcount
+    //     setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
+    // } else {
+    //     find['productcount'] = productcount
+    //     setcartitem([...replace, find].sort(function (a, b) {return a.time - b.time;}))
+    // }
 }
 
 

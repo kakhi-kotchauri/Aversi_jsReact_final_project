@@ -77,15 +77,17 @@ export function Liveproduct(props) {
     function addtocart(id) {
         const find = props.data.find(element => element.customid === id)
         const findcart = cartitem.find(element => element.customid === id)
-        if(find !== findcart) {
+        
+        if(!findcart) {
             find['time'] = Date.now()  
-            find['productcount'] = 1  
-            setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
-        console.log('damateba')
-        } else {
-            setcartitem([...cartitem].sort(function (a, b) {return a.time - b.time;}))
-        console.log('gamocvla')
-        }
+            find['productcount'] = 1 
+            const newfind = { ...find } 
+            setcartitem([...cartitem, newfind].sort(function (a, b) {return b.time - a.time;}))
+            console.log('ssss')
+         } else {
+           console.log('dam')
+           setcartitem([...cartitem].sort(function (a, b) {return b.time - a.time;}))
+         }
     }
 
 

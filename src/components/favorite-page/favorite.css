@@ -82,11 +82,9 @@
 }
 
 .fav-right-product {
-    height: 148px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 135px;
 }
 
 .fav-product-prices {

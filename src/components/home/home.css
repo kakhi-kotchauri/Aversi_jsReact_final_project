@@ -160,6 +160,7 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0px 3px 6px #00000029;
+    cursor: pointer;
 }
 
 .catalog-slot:hover {

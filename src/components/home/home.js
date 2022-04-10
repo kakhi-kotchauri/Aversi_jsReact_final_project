@@ -74,12 +74,17 @@ const {setglobalcat} = props.globalcat
               <SwiperSlide>
             <div className='banner'></div>
             <h1 className='ban-text'>შექმენით თქვენი პირადი სააფთიაქო თარო</h1>
+            <a target='_blank' href="https://www.aversi.ge/">
             <button className='button'>გაიგეთ მეტი..</button>
+            </a>
            </SwiperSlide>
+
            <SwiperSlide>
             <div className='banner2'></div>
             <h1 className='ban-text'>ავერსში გულების აქცია გრძელდება</h1>
+            <a target='_blank' href="https://www.aversi.ge/">
             <button className='button'>ნახვა</button>
+            </a>
            </SwiperSlide>
 
         </Swiper>
@@ -193,8 +198,15 @@ const {setglobalcat} = props.globalcat
            <p className='left-text-p'>შეამოწმე ქულები მტრედი ბარათზე</p>
            <p className='left-text-p'>იხილე აფთიაქებისა და კლინიკების მისამართები</p>
            <div className='store-par'>
-               <img className='store' src={apple} alt="apple" />
-               <img className='store' src={play} alt="play" />
+
+            <a target='_blank' href="https://play.google.com/store/apps/details?id=com.leavingstone.aversi&hl=en&gl=US">
+             <img className='store' src={play} alt="play" />
+             </a>
+
+             <a target='_blank' href="https://apps.apple.com/us/app/aversi/id1195068578">
+             <img className='store' src={apple} alt="apple" />
+             </a>
+
            </div>
        </div>
     </div>

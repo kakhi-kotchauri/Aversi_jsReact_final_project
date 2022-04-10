@@ -29,11 +29,14 @@ export function Scorebuy({props}) {
 
     function scorebuy(id) {
       const find = scoredata.find(item => item.customid === id)
+      const newfind = { ...find } 
+      newfind['type'] = 'gift'
+      newfind['scoreprice'] = find.price * pointfactor
       console.log(find)
       console.log(find.price * pointfactor)
       if(props.currentuser.score >= find.price * pointfactor) {
           props.currentuser.score = props.currentuser.score - find.price * pointfactor
-          props.currentuser.transactions = [find, ...props.currentuser.transactions]
+          props.currentuser.transactions = [newfind, ...props.currentuser.transactions]
           settogglebuyed(true)  
       } else {
         console.log('ar mogdis too')

@@ -1,6 +1,7 @@
 .logo {
     width: 214px;
     height: 49px;
+    cursor: pointer;
 }
 
 .input {
@@ -127,8 +128,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* transition: transform 0.4s ease; */
     cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 .header-text:hover {
@@ -137,29 +138,44 @@
     outline-color: rgb(230, 227, 223);
     transform: scale(1.05);
     color: black;
-    transition-duration: 0.4s;
 }
+
+
+
 
 .header-burger-par {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 240px;
+    width: 220px;
     height: 58px;
     transition: transform 0.2s ease;
     cursor: pointer;
+    /* outline: 1px solid rgb(173, 171, 171); */
+    /* background-color: rgba(255, 255, 255, 0.148); */
 }
 
 .header-burger-par:hover {
     outline: solid;
     outline-width: 1px;
     outline-color: rgb(230, 227, 223);
+    /* background-color: transparent; */
     transform: scale(1.03);
 }
 
+
+
+
+.header-burger-par:hover .burger-text {
+    transform: scale(1.03);
+    color: beige;
+}
+
+
 .burger-text {
-    font-size: 20px;
-    color: white;
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+    transition-duration: 0.3s;
 }
 
 

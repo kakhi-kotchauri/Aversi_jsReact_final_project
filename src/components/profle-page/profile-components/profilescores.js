@@ -13,6 +13,9 @@ export function Profilescores({props}) {
     return (
 
         <div className='profscore-par'>
+
+    <p className='profscore-info'>მტრედი ბარათის ქულები</p>
+            
             <div className='profscore-card-par' >
             <img className='profscore-card' src={card} alt="card" />
                 <div className='profscore-value-par'>
@@ -20,8 +23,8 @@ export function Profilescores({props}) {
                 <p className='profscore-score'>ქულა</p>
                 </div>
             </div>
-            <p className='profscore-info'>100 ქულა უდრის 1 ლარს</p>
-            <p className='profscore-info'>ქულების საშუალებით შეგიძლიათ შეიძინოთ ნებისმიერი პროდუქტი ჩვენს ვებსაიტზე</p>
+            
+            <p className='profscore-info'>ქულების საშუალებით შეგიძლიათ აარჩიოთ საჩუქრები კატალოგიდან</p>
 
         </div>
 

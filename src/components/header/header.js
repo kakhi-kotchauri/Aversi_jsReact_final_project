@@ -4,7 +4,7 @@ import search from './images/search.png'
 import hearth from './images/hearth.png'
 import person from './images/person.png'
 import cart from './images/shopping-cart.png'
-import burger from './images/burger.png'
+import home from './images/home.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useRef, useState } from 'react';
 import Cartcontext from '../../cartcontext';
@@ -126,7 +126,7 @@ const menuref = useRef()
           
               <li onClick={() => nav('/')} >
                 <div className='header-burger-par'>
-                  <img className='burger' src={burger} alt="burger" />
+                  <img className='burger' src={home} alt="burger" />
                   <p className='burger-text'>მთავარი</p>
                 </div> 
               </li>

@@ -4,6 +4,7 @@ import { useContext, useState } from 'react'
 import {Liveproduct} from '../live-product/liveproduct'
 import './favorite.css'
 import Favoritecontext from '../../favoritecontext'
+import Cartcontext from '../../cartcontext'
 
 
 
@@ -11,6 +12,8 @@ export function Favorite(props) {
 
 
 const {favorite, setfavorite} = useContext(Favoritecontext)
+const {cartitem, setcartitem} = useContext(Cartcontext)
+
 
 
 // console.log(favorite)
@@ -22,6 +25,26 @@ function remove(id) {
     find['hearted'] = false
     setfavorite(removeitem.sort(function (a, b) {return b.timeheart - a.timeheart;}))
  }
+
+
+
+ function addtocart(id) {
+  const find = props.data.find(element => element.customid === id)
+  const findcart = cartitem.find(element => element.customid === id)
+  
+  // console.log(findcart)
+
+  if(!findcart) {
+     find['time'] = Date.now()  
+     find['productcount'] = 1 
+     const newfind = { ...find } 
+     setcartitem([...cartitem, newfind].sort(function (a, b) {return b.time - a.time;}))
+     console.log('ssss')
+  } else {
+    console.log('dam')
+    setcartitem([...cartitem].sort(function (a, b) {return b.time - a.time;}))
+  }
+}
 
 
 
@@ -89,6 +112,7 @@ function remove(id) {
               </div>
        
               <div className='fav-right-product'>
+                  <p className='fav-delete' onClick={() => addtocart(item.customid)}>ყიდვა</p>
                   <p className='fav-delete' onClick={() => remove(item.customid)}>წაშლა</p>
                 </div>
     
