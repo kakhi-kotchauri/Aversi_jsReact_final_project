@@ -94,7 +94,7 @@ const {setglobalcat} = props.globalcat
      <div className='slot-wrapper-par'>
       <div className='slot-wrapper'>
 
-      <a target='_blank' href="https://play.google.com/store/apps/details?id=com.leavingstone.aversi&hl=en&gl=US">
+      <a className='slot-a' target='_blank' href="https://play.google.com/store/apps/details?id=com.leavingstone.aversi&hl=en&gl=US">
         <div className='slot'>
          <img className='slot-img' src={cart} alt="cart" />
          <p className='p1'>შეუკვეთე ონლაინ</p>
@@ -103,7 +103,7 @@ const {setglobalcat} = props.globalcat
         </a>
 
          
-      <a target='_blank' href="https://www.aversi.ge/">
+      <a className='slot-a' target='_blank' href="https://www.aversi.ge/">
         <div className='slot'>
          <img className='slot-img' src={calendar} alt="cart" />
          <p className='p1'>ექიმთან ჩაწერა</p>
@@ -111,7 +111,7 @@ const {setglobalcat} = props.globalcat
         </div> 
       </a> 
 
-     <a target='_blank' href="https://www.aversi.ge/">
+     <a className='slot-a' target='_blank' href="https://www.aversi.ge/">
         <div className='slot'>
          <img className='slot-img' src={doctor} alt="cart" />
          <p className='p1'>მტრედი ბარათი</p>
@@ -124,7 +124,7 @@ const {setglobalcat} = props.globalcat
 
 
    <Liveproduct data={props.data}/>
-   <Liveoffer data={props.data2}/>
+   {/* <Liveoffer data={props.data2}/> */}
 
 
       <div className='catalog-title'>პროდუქციის კატალოგი</div>
@@ -188,7 +188,7 @@ const {setglobalcat} = props.globalcat
       </div>
     </div>
 
-
+{/* 
     <div className='ad'>
        <img className='phone' src={phone} alt="phone" />
        <div className='left-text'>
@@ -209,7 +209,7 @@ const {setglobalcat} = props.globalcat
 
            </div>
        </div>
-    </div>
+    </div> */}
 
     
     </div>

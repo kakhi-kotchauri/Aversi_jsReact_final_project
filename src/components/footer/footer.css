@@ -81,3 +81,11 @@
 .copyright {
     color: white;
 }
+
+
+.lower-lang-par {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+}

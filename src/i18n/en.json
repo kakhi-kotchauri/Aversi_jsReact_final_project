@@ -1,0 +1,30 @@
+{
+
+    "home": "Home",
+    "drugs" : "Medicine",
+    "pharmacy" : "Pharmacies",
+    "hospital" : "Hospitals",
+    "about": "About us",
+
+    "logout" : "Log out",
+    "profile" : "profile",
+
+    
+    "company" : "Company",
+    "info" : "Info",
+    "help" : "Help",
+
+    "news" : "News",
+    "bonus" : "Bonus system",
+    "database" : "Database",
+    "price" : "Price registry",
+
+    "return" : "Return",
+    "order" : "Order declaration",
+    "payment" : "Payment",
+    "useragrement" : "Terms of service",
+
+    "onlinehelp" : "Online help"
+
+  
+}

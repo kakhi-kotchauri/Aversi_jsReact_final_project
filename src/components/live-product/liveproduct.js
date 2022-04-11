@@ -32,6 +32,7 @@ export function Liveproduct(props) {
     const {favorite, setfavorite} = useContext(Favoritecontext)
     const [productarr, setproductarr] = useState([])
     const [pagestatus, setpagestatus] = useState(false)
+    const [res, setres] = useState(Resolution())
 
     useEffect(() => {
        setpagestatus(true)
@@ -40,9 +41,18 @@ export function Liveproduct(props) {
       }
     }, [])
 
+    const test = Resolution()
+
+
+    useEffect(() => {
+
+        setres(window.innerWidth)
+
+     }, [test])
 
     
-    
+    // console.log(res)
+    // console.log(window.innerWidth)
 
 
     useEffect(() => {
@@ -130,11 +140,14 @@ export function Liveproduct(props) {
     
           <div className='live-product'>
 
+        {/* {
+            console.log(age < 17 ? "You cannot drive." : ( age == 17 ? "Go to driving school." : "You can drive."));
+        } */}
               
           <Swiper
-                slidesPerView={Resolution() < 1100 && pagestatus ? 3 : 4 }
+                slidesPerView={ pagestatus && res > 1150 ? 4 : ( res < 1150 && res > 850 ? 3 : ( res < 855 ? 2 : 2))}
                 spaceBetween={1}
-                slidesPerGroup={4}
+                slidesPerGroup={2}
                 navigation={true}
                 modules={[Pagination, Navigation]}
                 className="mySwiper"

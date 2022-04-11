@@ -19,6 +19,38 @@ import { Search } from './components/search-page/search';
 import { Buyed } from './components/buyed-page/buyed';
 import { Pharmacys } from './components/pharmacys/pharmacys';
 import { Hospitals } from './components/hospitals/hospitals';
+import i18n from "i18next";
+import { initReactI18next } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
+
+
+
+const resources = {
+
+  en: {
+    translation: require('./i18n/en.json')
+  },
+
+  ka: {
+    translation:  require('./i18n/ka.json') 
+  },
+
+};
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources,
+    lng: "ka",
+
+    interpolation: {
+      escapeValue: false 
+    }
+  });
+
+  // function lang(language) {
+  //   i18n.changeLanguage(language)
+  // }
 
 
 
@@ -28,6 +60,8 @@ import { Hospitals } from './components/hospitals/hospitals';
 
 
     function App() {
+  // const {t} = useTranslation()
+
 
     const [data, setdata] = useState([])
     const [data2, setdata2] = useState([])
@@ -99,7 +133,6 @@ import { Hospitals } from './components/hospitals/hospitals';
     }, [])
 
 
-// console.log(favorite)
 
 
     function register(e) {
@@ -444,6 +477,8 @@ useEffect(() => {
             favorite={{setfavorite : setfavorite, favorite : favorite}}
             />
 
+            {/* <div>{t('home')}</div> */}
+
             <Routes>
               <Route path='/' element={ <Home globalcat={{setglobalcat:setglobalcat}} data={data} data2={data2}/> }/>
               <Route path='drugpage' element={  <Drugpage data={data}/> }/>
@@ -477,7 +512,7 @@ useEffect(() => {
               <Route path='buyed' element={ <Buyed totalitems={totalitems  } price={totalprice}/> }/>
               <Route path='/:index' element={ <Productpage data ={data}/> }/>
             </Routes>
-          <Footer/>
+          {/* <Footer/> */}
 
 
 

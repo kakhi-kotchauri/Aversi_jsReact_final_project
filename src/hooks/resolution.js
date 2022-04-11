@@ -8,7 +8,7 @@ export function Resolution() {
 
     useEffect(() => {
       window.addEventListener('resize', size)
-    }, [])
+    }, [window.innerWidth])
 
     function size(e) {
         // console.log(e.target.innerWidth)

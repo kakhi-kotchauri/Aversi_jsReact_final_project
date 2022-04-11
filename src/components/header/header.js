@@ -5,10 +5,13 @@ import hearth from './images/hearth.png'
 import person from './images/person.png'
 import cart from './images/shopping-cart.png'
 import home from './images/home.png'
+import burger from './images/burger.png'
+import logo2 from './images/logo2.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useRef, useState } from 'react';
 import Cartcontext from '../../cartcontext';
-
+import { Resolution } from '../../hooks/resolution'
+import { useTranslation } from 'react-i18next'
 
 
 
@@ -16,6 +19,11 @@ import Cartcontext from '../../cartcontext';
 export function Header(props) {
 
   let nav = useNavigate();
+
+  const {t} = useTranslation()
+
+  const [togleburger, settogleburger] = useState(false)
+
    
   const {setcurrentuser} = props.setcurrentuser
   const {setfavorite, favorite} = props.favorite
@@ -61,6 +69,11 @@ const menuref = useRef()
 
     return (
         <header>
+
+
+         {
+           Resolution() > 720 ?
+          <div className='header-main' >
         
         <div  className='line-wrapper'>
 
@@ -78,6 +91,8 @@ const menuref = useRef()
           <input value={searchvalue}  onChange={(e) => setsearchvalue(e.target.value)} className='input' type="text" placeholder='წამლის ძებნა' />
           <img className='search' src={search} alt="search" />
           </div>
+
+          
           <div className='icon-wrap'>
            
             {
@@ -92,8 +107,8 @@ const menuref = useRef()
                {
                  toglemenu ? 
                  <div className='userprofile-buttons'>
-                  <button onClick={() => inprofile()} className='button-prof'>პროფილი</button>
-                  <button onClick={() => out()} className='button-prof'>გასვლა</button>
+                  <button onClick={() => inprofile()} className='button-prof'>{t('profile')}</button>
+                  <button onClick={() => out()} className='button-prof'>{t('logout')}</button>
                 </div>
                 : null
                }
@@ -109,6 +124,7 @@ const menuref = useRef()
             
                 <div onClick={() => nav('/cart')} className='header-cart-wrapper'>
               <img className='icons' src={cart} alt="cart" />
+
               {
                 cartitem.length >= 1 ? 
                 <div className='header-cart-number'>{cartitem.length}</div> 
@@ -127,30 +143,96 @@ const menuref = useRef()
               <li onClick={() => nav('/')} >
                 <div className='header-burger-par'>
                   <img className='burger' src={home} alt="burger" />
-                  <p className='burger-text'>მთავარი</p>
+                  <p className='burger-text'>{t('home')}</p>
                 </div> 
               </li>
             
               <li>
-                 <p onClick={() => nav('drugpage')}  className='header-text' to='drugpage'>წამლები</p>
+                 <p onClick={() => nav('drugpage')}  className='header-text' to='drugpage'>{t('drugs')}</p>
                </li> 
 
                <li>
-                 <p onClick={() => nav('pharmacy')} className='header-text'>აფთიაქები</p>
+                 <p onClick={() => nav('pharmacy')} className='header-text'>{t('pharmacy')}</p>
               </li> 
 
               <li>
-                 <p onClick={() => nav('hospitals')} className='header-text'>კლინიკები</p>
+                 <p onClick={() => nav('hospitals')} className='header-text'>{t('hospital')}</p>
               </li> 
 
                <li>
-                 <p onClick={() => nav('about')}  className='header-text' to='about'>ჩვენს შესახებ</p>
+                 <p onClick={() => nav('about')}  className='header-text' to='about'>{t('about')}</p>
               </li> 
 
             </ul>
 
         </nav>
 
+        </div>
+        : null
+    }
+
+    {
+      Resolution() < 720 ?
+      <div className='header-mobile-par'>
+        
+        <div className='header-mobile' >
+         <div className='header-burger-content'>
+          <img onClick={() => settogleburger(!togleburger)} className='header2-burger' src={burger} alt="burger" />
+
+        </div>
+           
+           <div className='search-wrap'>
+          <input value={searchvalue}  onChange={(e) => setsearchvalue(e.target.value)} className='input' type="text" placeholder='წამლის ძებნა' />
+          <img className='search' src={search} alt="search" />
+          </div>
+        </div>
+
+        {
+          togleburger ?
+           <nav className='header2-nav'>
+             <ul className='header2-ul'>
+
+              <li className='header2-li'>
+                <p onClick={() => nav('/')} className='header2-p'>{t('home')}</p>
+              </li>
+
+              <li className='header2-li'>
+                <p onClick={() => nav('drugpage')} className='header2-p'>{t('drugs')}</p>
+              </li>
+
+              <li className='header2-li'>
+                <p onClick={() => nav('pharmacy')} className='header2-p'>{t('pharmacy')}</p>
+              </li>
+
+              <li className='header2-li'>
+                <p onClick={() => nav('hospitals')} className='header2-p'>{t('hospital')}</p>
+              </li>
+
+              <li className='header2-li'>
+                <p onClick={() => nav('about')} className='header2-p noborder'>{t('about')}</p>
+              </li>
+
+              <li className='header2-li'>
+                <p onClick={() => setsignin(!signin)} className='header2-p noborder'>ავტორიზაცია</p>
+              </li>
+
+              <li className='header2-li'>
+                <p onClick={() => nav('favorites')} className='header2-p noborder'>ფავორიტები</p>
+              </li>
+
+              <li className='header2-li'>
+                <p onClick={() => nav('cart')} className='header2-p noborder'>კალათა</p>
+              </li>
+
+             </ul>
+           </nav>
+          : null
+        }
+
+        </div>
+      : null
+    }
+        
         </header>
     )
 

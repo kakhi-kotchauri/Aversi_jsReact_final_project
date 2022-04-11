@@ -2,10 +2,19 @@ import './footer.css'
 import logo from './pictures/logo.png'
 import chat from './pictures/chat.png'
 import card from './pictures/cards.png'
+import i18n from 'i18next'
+import { useTranslation } from 'react-i18next'
 
 
 
 export function Footer() {
+
+
+      function lang(language) {
+        i18n.changeLanguage(language)
+      }
+
+  const {t} = useTranslation()
 
 
     return (
@@ -18,37 +27,42 @@ export function Footer() {
        <div className='center-text'>
 
          <div className='colums'>
-             <h3 className='colum-h3'>კომპანია</h3>
-             <p className='colum-p'>ჩვენს შესახებ</p>
-             <p className='colum-p'>სიახლეები</p>
-             <p className='colum-p'>აფთიაქები</p>
-             <p className='colum-p'>კლინიკები</p>
+             <h3 className='colum-h3'>{t('company')}</h3>
+             <p className='colum-p'>{t('about')}</p>
+             <p className='colum-p'>{t('news')}</p>
+             <p className='colum-p'>{t('pharmacy')}</p>
+             <p className='colum-p'>{t('hospital')}</p>
          </div>
 
          <div className='colums'>
-             <h3 className='colum-h3'>ინფორმაცია</h3>
-             <p className='colum-p'>საბონუსე სისტემა</p>
-             <p className='colum-p'>მონაცემთა ბაზა</p>
-             <p className='colum-p'>ფასების რეესტრი</p>
+             <h3 className='colum-h3'>{t('info')}</h3>
+             <p className='colum-p'>{t('bonus')}</p>
+             <p className='colum-p'>{t('database')}</p>
+             <p className='colum-p'>{t('price')}</p>
          </div>
 
          <div className='colums'>
-             <h3 className='colum-h3'>დახმარება</h3>
-             <p className='colum-p'>დაბრუნება</p>
-             <p className='colum-p'>შეკვეთის გაფორმება</p>
-             <p className='colum-p'>შეკვეთის გადახდა</p>
-             <p className='colum-p'>მომსახურების წესები</p>
+             <h3 className='colum-h3'>{t('help')}</h3>
+             <p className='colum-p'>{t('return')}</p>
+             <p className='colum-p'>{t('order')}</p>
+             <p className='colum-p'>{t('payment')}</p>
+             <p className='colum-p'>{t('useragrement')}</p>
          </div>
 
        </div>
 
        <div className='help-wrapper'>
            <img className='help-img' src={chat} alt="chat" />
-           <p className='help-p'>ონლაინ დახმარება</p>
+           <p className='help-p'>{t('onlinehelp')}</p>
        </div>
     
        </div>
 
+
+    <div className='lower-lang-par'>
+       <button onClick={() => lang('en')}>en</button>
+       <button onClick={() => lang('ka')}>ka</button>
+   </div>
 
      <div className='lower-content-wrapper'>
        <div className='lower-content'>
