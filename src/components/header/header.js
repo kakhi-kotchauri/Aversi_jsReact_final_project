@@ -33,6 +33,7 @@ export function Header(props) {
   const {signin, setsignin} = props.signin
 
   const [toglemenu, settoglemenu] = useState(false)
+  const [togleprofile, settogleprofile] = useState(false)
   
 
 const {cartitem, setcartitem} = useContext(Cartcontext)
@@ -46,7 +47,7 @@ const menuref = useRef()
 
 
   function out() {
-    // nav('/')
+    settogleprofile(false)
     setcurrentuser()
     settoglemenu(!toglemenu)
     favorite.forEach(element => {
@@ -192,37 +193,69 @@ const menuref = useRef()
            <nav className='header2-nav'>
              <ul className='header2-ul'>
 
-              <li className='header2-li'>
-                <p onClick={() => nav('/')} className='header2-p'>{t('home')}</p>
+              <li onClick={() => nav('/')} className='header2-li'>
+                <p  className='header2-p'>{t('home')}</p>
               </li>
 
-              <li className='header2-li'>
-                <p onClick={() => nav('drugpage')} className='header2-p'>{t('drugs')}</p>
+              <li onClick={() => nav('drugpage')} className='header2-li'>
+                <p  className='header2-p'>{t('drugs')}</p>
               </li>
 
-              <li className='header2-li'>
-                <p onClick={() => nav('pharmacy')} className='header2-p'>{t('pharmacy')}</p>
+              <li onClick={() => nav('pharmacy')}  className='header2-li'>
+                <p className='header2-p'>{t('pharmacy')}</p>
               </li>
 
-              <li className='header2-li'>
-                <p onClick={() => nav('hospitals')} className='header2-p'>{t('hospital')}</p>
+              <li onClick={() => nav('hospitals')} className='header2-li'>
+                <p className='header2-p'>{t('hospital')}</p>
               </li>
 
-              <li className='header2-li'>
-                <p onClick={() => nav('about')} className='header2-p noborder'>{t('about')}</p>
+              <li onClick={() => nav('about')} className='header2-li'>
+                <p  className='header2-p noborder'>{t('about')}</p>
               </li>
 
-              <li className='header2-li'>
+              <li onClick={() => nav('favorites')} className='header2-li'>
+                <p className='header2-p noborder'>ფავორიტები</p>
+              </li>
+
+              <li onClick={() => nav('cart')} className='header2-li'>
+                <p  className='header2-p noborder'>კალათა</p>
+              </li>
+
+              {
+                props.currentuser ?
+                <div className='header-user-par'>
+
+                <li onClick={() => settogleprofile(!togleprofile)} className='header2-user noborder'>
+                  <div className='header2-circle' 
+                  style={{backgroundColor : props.currentuser.color}}
+                  >
+                   {props.currentuser.firstname.slice(0,1).toUpperCase()}
+                  </div>
+                  <p className='header2-profiletitle'>{props.currentuser.firstname} {props.currentuser.lastname}</p>
+               </li>
+
+
+               {
+                 togleprofile ?
+                  <div className='profileparam-par'>
+                  <li onClick={() => inprofile()} className='header2-profileparam'>
+                      <p className='profileparam-text'>პროფილი</p>
+                  </li> 
+    
+                  <li onClick={() => out()} className='header2-profileparam'>
+                    <p className='profileparam-text'>გასვლა</p>
+                  </li> 
+                 </div>
+                 : null
+               }
+             
+           
+               </div>
+                : 
+                <li className='header2-li'>
                 <p onClick={() => setsignin(!signin)} className='header2-p noborder'>ავტორიზაცია</p>
-              </li>
-
-              <li className='header2-li'>
-                <p onClick={() => nav('favorites')} className='header2-p noborder'>ფავორიტები</p>
-              </li>
-
-              <li className='header2-li'>
-                <p onClick={() => nav('cart')} className='header2-p noborder'>კალათა</p>
-              </li>
+               </li>
+              }
 
              </ul>
            </nav>

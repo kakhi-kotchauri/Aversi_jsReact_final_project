@@ -232,3 +232,48 @@
 }
 
 }
+
+
+@media only screen and (max-width: 600px) {
+
+
+    .offer-slot {
+        width: 220px;
+        height: 380px;
+        background-color: white;
+        border-radius: 0 0 10px 10px ;
+    }
+
+}
+
+
+@media only screen and (max-width: 470px) {
+
+
+    .offer-slot {
+        width: 170px;
+        height: 420px;
+        background-color: white;
+        border-radius: 0 0 10px 10px ;
+    }
+
+
+    .offer-text-par {
+        display: flex;
+        flex-direction: column;
+        width: 97%;
+    }
+
+
+    .offer-description {
+        color: #6A6A68;
+        font-size: 14px;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+
+    .offer-head-p {
+        margin-left: 10px;
+    }
+
+}

@@ -342,7 +342,9 @@
       justify-content: center;
       background-color: #c10e14;
       padding-top: 20px;
-      padding-bottom: 10px;
+      /* padding-bottom: 3px; */
+      z-index: 10;
+      position: relative;
   }
 
   .header2-li {
@@ -355,6 +357,90 @@
       border-bottom: solid 1px #2a2a2a;
   }
 
+  .header-user-par {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+  }
+
+
+
+  .profileparam-par {
+      width: 100%;
+  }
+
+
+  .header2-user {
+    width: 95%;
+    min-height: 37px;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-bottom: solid 1px #2a2a2a;
+  }
+
+  .header2-circle {
+      width: 37px;
+      height: 37px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: pink;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      font-size: 20px;
+  }
+
+
+  .header2-profiletitle {
+    margin-left: 15px;
+    color: white;
+    font-size: 20px;
+  }
+
+
+
+  .header2-profileparam {
+    width: 90%;
+    min-height: 37px;
+    margin-bottom: 10px;
+    margin-left: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-bottom: solid 1px #2a2a2a;
+  }
+
+  .header2-profileparam:hover .profileparam-text {
+    transform: scale(1.15);
+    color: black;
+  }
+
+
+  .header2-profileparam:hover {
+    background-color: #2a2a2a48;
+  }
+
+
+
+
+  .profileparam-text {
+    color: white;
+    font-size: 18px;
+    transition-duration: 0.3s;
+  }
+
+
+
+
+
+
   .header2-li:hover {
       background-color: #2a2a2a3a;
   }
@@ -366,7 +452,7 @@
 
   .header2-p {
     color: #fff;
-    font-size: 20px;
+    font-size: 17px;
     cursor: pointer;
     transition-duration: 0.3s;
     margin-bottom: 8px;

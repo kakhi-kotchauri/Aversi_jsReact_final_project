@@ -178,3 +178,16 @@
 
 }
 
+
+
+
+
+@media only screen and (max-width: 470px) {
+
+
+  .product-head-p {
+      margin-left: 15px;
+  }
+   
+
+}

@@ -512,7 +512,7 @@ useEffect(() => {
               <Route path='buyed' element={ <Buyed totalitems={totalitems  } price={totalprice}/> }/>
               <Route path='/:index' element={ <Productpage data ={data}/> }/>
             </Routes>
-          {/* <Footer/> */}
+          <Footer/>
 
 
 

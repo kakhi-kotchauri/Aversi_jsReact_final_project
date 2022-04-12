@@ -14,12 +14,16 @@ import "..//.././styles.css";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
+import { Resolution } from '../../hooks/resolution';
 
 
 
 export function Liveoffer(props) {
 
   const [offerdata, setofferdata] = useState([])
+  const [res, setres] = useState(Resolution())
+  const [pagestatus, setpagestatus] = useState(false)
+
 
     
     useEffect(() => {
@@ -41,6 +45,26 @@ export function Liveoffer(props) {
         getdata()
     
         }, [props.data])
+
+
+        useEffect(() => {
+         setpagestatus(true)
+         return () => {
+         setpagestatus(false)
+        }
+      }, [])
+  
+
+
+
+        const test = Resolution()
+
+
+        useEffect(() => {
+    
+            setres(window.innerWidth)
+    
+         }, [test])
 
 
 
@@ -67,9 +91,9 @@ export function Liveoffer(props) {
          
 
               <Swiper
-                slidesPerView={4}
+                slidesPerView={ pagestatus && res > 1150 ? 4 : ( res < 1150 && res > 850 ? 3 : ( res < 855 ? 2 : 2))}
                 spaceBetween={1}
-                slidesPerGroup={4}
+                slidesPerGroup={2}
                 navigation={true}
                 modules={[Pagination, Navigation]}
                 className="mySwiper"

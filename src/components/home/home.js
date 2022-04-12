@@ -124,7 +124,7 @@ const {setglobalcat} = props.globalcat
 
 
    <Liveproduct data={props.data}/>
-   {/* <Liveoffer data={props.data2}/> */}
+   <Liveoffer data={props.data2}/>
 
 
       <div className='catalog-title'>პროდუქციის კატალოგი</div>
