@@ -56,13 +56,23 @@ const menuref = useRef()
     });
     setfavorite([])
     setcartitem([])
+    settogleburger(false)
   }
 
   function inprofile() {
 
     nav('/profile-page')
     settoglemenu(!toglemenu)
+    settogleburger(false)
     
+  }
+
+
+  function burgerclick(adress) {
+
+    nav(adress)
+    settogleburger(false)
+
   }
 
   // console.log(favorite)
@@ -193,31 +203,31 @@ const menuref = useRef()
            <nav className='header2-nav'>
              <ul className='header2-ul'>
 
-              <li onClick={() => nav('/')} className='header2-li'>
+              <li onClick={() => burgerclick('/')} className='header2-li'>
                 <p  className='header2-p'>{t('home')}</p>
               </li>
 
-              <li onClick={() => nav('drugpage')} className='header2-li'>
+              <li onClick={() => burgerclick('drugpage')} className='header2-li'>
                 <p  className='header2-p'>{t('drugs')}</p>
               </li>
 
-              <li onClick={() => nav('pharmacy')}  className='header2-li'>
+              <li onClick={() => burgerclick('pharmacy')}  className='header2-li'>
                 <p className='header2-p'>{t('pharmacy')}</p>
               </li>
 
-              <li onClick={() => nav('hospitals')} className='header2-li'>
+              <li onClick={() => burgerclick('hospitals')} className='header2-li'>
                 <p className='header2-p'>{t('hospital')}</p>
               </li>
 
-              <li onClick={() => nav('about')} className='header2-li'>
+              <li onClick={() => burgerclick('about')} className='header2-li'>
                 <p  className='header2-p noborder'>{t('about')}</p>
               </li>
 
-              <li onClick={() => nav('favorites')} className='header2-li'>
+              <li onClick={() => burgerclick('favorites')} className='header2-li'>
                 <p className='header2-p noborder'>ფავორიტები</p>
               </li>
 
-              <li onClick={() => nav('cart')} className='header2-li'>
+              <li onClick={() => burgerclick('cart')} className='header2-li'>
                 <p  className='header2-p noborder'>კალათა</p>
               </li>
 

@@ -13,17 +13,11 @@ export function Productslot({data, item, callfade}) {
 
 
 
-
-
-
-
-
-
     return (
 
 
-            <div className='product-slot'>
-            <div className={`fade ${callfade}`}></div>
+        <div className='product-slot'>
+        <div className={`fade ${callfade}`}></div>
            
         
         <div className='picture-wrapper'>
