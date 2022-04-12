@@ -166,12 +166,34 @@
 
             .colum-p {
                 font-size: 13px;
-                max-width: 30px;
+                max-width: 90px;
                 line-height: 1.2;
             }
 
             .lower-lang-par {
+                margin-top: 20px;
+            }
+
+            .colum-h3 {
+                font-size: 16px;
+            }
+            
+
+            .center-text {
+                height: unset;
+                justify-content: space-around;
+            }
+
+            .footer-cards {
+                display: none;
+            }
+
+            .lower-content {
                 margin-top: 50px;
+            }
+
+            .footer {
+                height: 390px;
             }
     
             }  

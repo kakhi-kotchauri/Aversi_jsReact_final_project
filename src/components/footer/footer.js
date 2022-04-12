@@ -66,7 +66,7 @@ export function Footer() {
 
      <div className='lower-content-wrapper'>
        <div className='lower-content'>
-          <img src={card} alt="cards" />
+          <img className='footer-cards' src={card} alt="cards" />
           <div className='copyright'>© 2020 Aversi, LTD. All rights reserved.</div>
        </div>
      </div>

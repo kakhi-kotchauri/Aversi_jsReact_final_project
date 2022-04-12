@@ -16,10 +16,11 @@ import bag from './pictures/bag.png'
 import tray from './pictures/tray.png'
 import salad from './pictures/salad.png'
 import phone from './pictures/s22.png'
+import smallphone from './pictures/s22-front.png'
 import play from './pictures/play.png'
 import apple from './pictures/apple.png'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Globalcat from '../../globalcat'
 
 // Import Swiper React components
@@ -34,6 +35,7 @@ import "..//.././styles.css";
 
 // import required modules
 import { Autoplay, Pagination } from "swiper";
+import { Resolution } from '../../hooks/resolution'
 
 
 
@@ -43,6 +45,26 @@ export function Home(props) {
 
 
 const {setglobalcat} = props.globalcat
+
+
+  const [pagestatus, setpagestatus] = useState(false)
+  const [res, setres] = useState(Resolution())
+
+  useEffect(() => {
+    setpagestatus(true)
+    return () => {
+    setpagestatus(false)
+    }
+  }, [])
+
+  const test = Resolution()
+
+
+  useEffect(() => {
+
+      setres(window.innerWidth)
+
+  }, [test])
 
 
     let nav = useNavigate();
@@ -188,9 +210,9 @@ const {setglobalcat} = props.globalcat
       </div>
     </div>
 
-{/* 
+
     <div className='ad'>
-       <img className='phone' src={phone} alt="phone" />
+       <img className='phone' src={res > 1000 ? phone : smallphone} alt="phone" />
        <div className='left-text'>
            <h2 className='left-text-h2'>ჩამოტვირთე ავერსის მობილური აპლიკაცია</h2>
            <p className='left-text-p'>შეიძინე პროდუქცია სახლიდან გაუსვლელად</p>
@@ -209,7 +231,7 @@ const {setglobalcat} = props.globalcat
 
            </div>
        </div>
-    </div> */}
+    </div> 
 
     
     </div>
