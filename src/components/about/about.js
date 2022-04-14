@@ -3,9 +3,8 @@ import React from "react";
 import { useState } from 'react';
 
 
-export function About(props) {
 
-    console.log(props.value)
+export function About(props) {
 
 
     return (
@@ -64,6 +63,7 @@ export function About(props) {
              მტრედს, თავისი საქმიანობით სიმშვიდე და ჯანმრთელობა მოაქვს ადამიანებისთვის.
             </p>
          </div> 
+      
 
         
         </div>

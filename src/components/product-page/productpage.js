@@ -8,7 +8,21 @@ import Cartcontext from '../../cartcontext';
 import white from './pictures/white.png'
 import gray from './pictures/gray.png'
 import Favoritecontext from '../../favoritecontext';
+import { Resolution } from '../../hooks/resolution';
 
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import "..//.././styles.css";
+
+// import required modules
+import { Autoplay, Pagination } from "swiper";
 
 
 
@@ -19,6 +33,27 @@ let params = useParams()
 const productdata = props.data.find(item => item.customid === parseInt(params.index))
 const {favorite, setfavorite} = useContext(Favoritecontext)
 const {cartitem, setcartitem} = useContext(Cartcontext)
+
+const [pagestatus, setpagestatus] = useState(false)
+const [res, setres] = useState(Resolution())
+
+useEffect(() => {
+   setpagestatus(true)
+   return () => {
+   setpagestatus(false)
+  }
+}, [])
+
+
+const test = Resolution()
+
+
+useEffect(() => {
+
+    setres(window.innerWidth)
+
+ }, [test])
+
 
 
 function addtocart(id) {
@@ -136,17 +171,20 @@ function hearthing(id) {
             <div className='des-product-content'>
 
 
-            <div className="des-product-wrapper">
-
-            {/* <div>{params.index}</div> */}
-
 
                 
+
+
+            <div className="des-product-wrapper">
+                
                 <div className="des-product-image-par">
+ 
+            {
+                res > 670 ?
 
 
                 <div className='des-picture-content'>
-                
+        
                 <div className='des-smallimages'>
 
                     <div className="des-smallimage-wrapper">
@@ -169,7 +207,44 @@ function hearthing(id) {
                         </div>
                     </div>
 
-                </div>   
+                </div>  
+
+                : 
+
+               <div className='productpage-carousel-par'>
+              
+                    <Swiper
+                    loop={true}
+                    pagination={{
+                    clickable: true,
+                    }}
+                    modules={[Pagination]}
+                    >
+
+                        <SwiperSlide>
+                            <div className='productpage-slide'>
+                                <img className='productpage-carousel-img' src={productdata.img} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className='productpage-slide'>
+                              <img className='productpage-carousel-img' src={productdata.img2} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className='productpage-slide'>
+                              <img className='productpage-carousel-img' src={productdata.img3} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                  </Swiper>
+
+               </div>
+            
+            }
+
 
                 <div className='des-sidetext'>
                     
