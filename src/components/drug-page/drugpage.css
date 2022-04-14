@@ -1,4 +1,7 @@
 
+.drug-price-wrapper2 {
+    display: none;
+}
 
 .drug-invis {
     width: 100%;
@@ -470,6 +473,12 @@
         height: 278px;
     }
 
+    .drug-buy {
+        width: 100px;
+        height: 30px;
+    }
+
+
 }
 
 
@@ -484,4 +493,558 @@
     }
 
 }
+
+
+
+
+
+@media only screen and (max-width: 1130px) {
+
+    .drugpage-filter-wrapper {
+        margin-left: unset;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .drugpage-filters {
+        width: 240px;
+    }
+
+    .drugpage-content-par {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+
+    .drug-wrapper-par {
+        width: 800px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .drugs-wrapper {
+        width: 100%;
+    }
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 1050px) {
+
+    .drugpage-filter-wrapper {
+        margin-left: unset;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .drugpage-content-par {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .drug-price {
+        font-size: 17px;
+    }
+
+    .drug-buy {
+        width: 80px;
+        height: 25px;
+    }
+
+
+    .drug-wrapper-par {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .drugs-wrapper {
+        width: 100%;
+    }
+
+
+
+    .link-wrap {
+        width: 220px;
+    }
+        
+    .drug-product-slot {
+        width: 220px;
+        height: 278px;
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 980px) {
+
+    .drugpage-filter-wrapper {
+        margin-left: unset;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .drugpage-content-par {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .drug-price {
+        font-size: 19px;
+    }
+
+    .drug-buy {
+        width: 80px;
+        height: 30px;
+    }
+
+
+    .drug-wrapper-par {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .drugs-wrapper {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+
+
+
+    .link-wrap {
+        width: 260px;
+    }
+        
+    .drug-product-slot {
+        width: 260px;
+        height: 278px;
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 810px) {
+
+    .drugpage-filter-wrapper {
+        margin-left: unset;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .drugpage-filters {
+        width: 200px;
+    }
+
+    .drugpage-content-par {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .drug-price {
+        font-size: 19px;
+    }
+
+    .drug-buy {
+        width: 80px;
+        height: 30px;
+    }
+
+
+    .drug-wrapper-par {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .drugs-wrapper {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+
+
+
+    .link-wrap {
+        width: 210px;
+    }
+        
+    .drug-product-slot {
+        width: 210px;
+        height: 278px;
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}
+
+
+
+
+
+
+@media only screen and (max-width: 670px) {
+
+    .drugpage-content-par {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .test {
+        margin-bottom: 0px;
+    }
+
+    .drugpage-filter-wrapper {
+        width: 95%;
+        margin-left: unset;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .drugpage-filters {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .drugpage-content-par {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .drug-price {
+        font-size: 19px;
+    }
+
+    .drug-buy {
+        width: 80px;
+        height: 30px;
+    }
+
+
+    .drug-wrapper-par {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .drugs-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    .link-wrap {
+        width: 95%;
+        height: 200px;
+    }
+
+    .drugpage-link {
+        width: 100%;
+        height: 200px;
+    }
+        
+    .drug-product-slot {
+        padding-top: 45px;
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .drug-rating-par {
+        top: 10px;
+    }
+
+  .drug-rating {
+      width: 95%;
+  }
+    
+    .drug-picture-wrapper {
+        width: 170px;
+        height: 190px;
+        overflow: hidden;
+        margin-top: 13px;
+    }
+
+
+    .drug-product-img {
+        width: 160px;
+        transition: transform 0.3s ease;
+    }
+
+
+    .drug-price-wrapper {
+        width: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        right: 20px;
+        bottom: 20px;
+        position: absolute;
+    }
+    
+    .drug-price {
+        font-size: 20px;
+        color: #EA3339;
+        margin-bottom: 10px;
+    }
+
+
+
+    .drug-product-text-wrapper {
+        width: 40%;
+    }
+
+    .drug-price-wrapper {
+        display: none;
+    }
+
+    
+.drug-price-wrapper2 {
+    width: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.drug-price {
+   text-align: center;
+}
+
+/* .drug-buy {
+    width: 110px;
+    height: 35px;
+    border-radius: 15px;
+    border-color: #e93339b7;
+    border-width: 1.5px;
+    cursor: pointer;
+}
+  */
+
+
+
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 450px) {
+
+    .drugpage-content-par {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .test {
+        margin-bottom: 0px;
+    }
+
+    .drugpage-filter-wrapper {
+        width: 95%;
+        margin-left: unset;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .drugpage-filters {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .drugpage-content-par {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .drug-price {
+        font-size: 19px;
+    }
+
+    .drug-buy {
+        width: 80px;
+        height: 30px;
+    }
+
+
+    .drug-wrapper-par {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .drugs-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    .link-wrap {
+        width: 95%;
+        height: 200px;
+    }
+
+    .drugpage-link {
+        width: 100%;
+        height: 200px;
+    }
+        
+    .drug-product-slot {
+        padding-top: 45px;
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .drug-product-title {
+        font-size: 15px;
+    }
+
+    .drug-rating-par {
+        top: 10px;
+    }
+
+  .drug-rating {
+      width: 95%;
+  }
+    
+    .drug-picture-wrapper {
+        width: 140px;
+        height: 140px;
+        overflow: hidden;
+        margin-top: 13px;
+        margin-left: 5px;
+        margin-right: 5px;
+        /* border: solid; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .drug-product-img {
+        width: 110px;
+        transition: transform 0.3s ease;
+    }
+
+
+    .drug-price-wrapper {
+        width: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        right: 20px;
+        bottom: 20px;
+        position: absolute;
+    }
+    
+    .drug-price {
+        font-size: 15px;
+        color: #EA3339;
+        margin-bottom: 10px;
+    }
+
+
+
+    .drug-product-text-wrapper {
+        width: unset;
+        margin-right: 10px;
+    }
+
+    .drug-price-wrapper {
+        display: none;
+    }
+
+    
+.drug-price-wrapper2 {
+    width: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.drug-price {
+   text-align: center;
+}
+
+ .drug-buy {
+    width: 60px;
+    height: 35px;
+    border-radius: 10px;
+    border-color: #e93339b7;
+    border-width: 1.5px;
+    cursor: pointer;
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 

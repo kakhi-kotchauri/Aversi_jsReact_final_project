@@ -6,7 +6,7 @@ import graystar from './pictures/gray-star.png'
 import hearth from './pictures/hearth.png'
 import redhearth from './pictures/redhearth.png'
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Cartcontext from '../../cartcontext';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
@@ -57,6 +57,9 @@ export function Drugpage(props) {
    const [itemcategory, setitemcategory] = useState('')
    const [itemcountry, setitemcountry] = useState('')
    const [itemmanufacturer, setitemmanufacturer] = useState('')
+
+
+   const nav = useNavigate()
 
 
    useEffect(() => {
@@ -550,16 +553,16 @@ function alldata() {
                     <div className={`offerfade0 ${callfade}`}></div>
 
 
-                  <Link to={`/${item.customid}`}>
+                  {/* <Link className='drugpage-link' to={`/${item.customid}`}> */}
 
 
                   <div className='drug-product-slot'>
                   {/* <div className={`fade ${callfade}`}></div> */}
                
-               <div className='drug-picture-wrapper'>
+               <div onClick={() => nav(`/${item.customid}`)} className='drug-picture-wrapper'>
                <img className='drug-product-img' src={item.img} alt="item-pic" />  
                </div>
-               <div className='drug-product-text-wrapper'>
+               <div onClick={() => nav(`/${item.customid}`)} className='drug-product-text-wrapper'>
                <p className='drug-product-title'>{item.title}</p>
                {
                   parseInt(item.amount) > 0  ? 
@@ -569,10 +572,15 @@ function alldata() {
                <p className='smallcat' >{item.country}: {item.manufacturer}</p>
                <p className='drug-product-category'>{item.Category}</p>
                </div>
+
+               <div className='drug-price-wrapper2'>
+               <p className='drug-price'>{item.price} ლარი</p> 
+               <button onClick={() => addtocart(item.customid)} className='drug-buy'>ყიდვა</button>
+               </div>
       
             </div>
             
-            </Link>
+            {/* </Link> */}
 
 
 
@@ -596,7 +604,7 @@ function alldata() {
                         } )}
                   </div>
       
-                        </div>
+                  </div>
 
                     <img className='drug-hearth' 
                      onClick={() => hearting(item.customid)}
@@ -609,7 +617,7 @@ function alldata() {
 
 
 
-            <div className='drug-price-wrapper'>
+             <div className='drug-price-wrapper'>
                <p className='drug-price'>{item.price} ლარი</p> 
                <button onClick={() => addtocart(item.customid)} className='drug-buy'>ყიდვა</button>
                </div>
