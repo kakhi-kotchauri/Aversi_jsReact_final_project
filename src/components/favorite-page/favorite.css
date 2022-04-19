@@ -60,10 +60,11 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: -100px;
 }
 
 .fav-empty {
-    width: 80%;
+    width: 95%;
     height: 148px;
     background-color: white;
     border-radius: 10px;
@@ -158,6 +159,69 @@
     }
 
 }
+
+
+
+@media only screen and (max-width: 750px) {
+
+    .fav-some-div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .fav-product-par {
+        width: 95%;
+    }
+
+    .fav-titles {
+        width: 100%;
+    }
+
+    .fav-product {
+        width: 100%;
+    }
+
+}
+
+
+
+
+
+
+@media only screen and (max-width: 430px) {
+
+.fav-product-title {
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.fav-product-text-par {
+    width: 100px;
+}
+
+.fav-product-text {
+    font-size: 13px;
+    /* max-width: 30px; */
+}
+
+.fav-title-text {
+    font-size: 11px;
+}
+
+.fav-empty-text {
+    font-size: 12px;
+}
+
+.fav-product {
+    padding-right: 10px;
+}
+
+}
+
+
+
 
 
 

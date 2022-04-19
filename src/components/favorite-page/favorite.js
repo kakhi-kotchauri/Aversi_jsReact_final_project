@@ -49,7 +49,7 @@ function remove(id) {
 
 
     return (
-   <div>
+   <div className='favorite-div'>
 
         
             <Pagehead 
@@ -72,7 +72,7 @@ function remove(id) {
 
       <div className='fav-product-wrapper'>
 
-<div>
+    <div className='fav-some-div'>
  
       <div className='fav-product-par'>
 
@@ -130,7 +130,7 @@ function remove(id) {
        favorite.length === 0 ?
        <div className='fav-empty-par'>
         <div className='fav-empty'>
-          <p>ფავორიტი პროდუქტები არ არის დამატებული</p>
+          <p className='fav-empty-text'>ფავორიტი პროდუქტები არ არის დამატებული</p>
         </div>
       </div>
       : null

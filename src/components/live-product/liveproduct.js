@@ -112,10 +112,11 @@ export function Liveproduct(props) {
     const replace = props.data.filter(element => element.customid !== id)
     if(find['hearted'] === true) {
         find['hearted'] = false
-        setfavorite(removeitem)
+        setfavorite(removeitem.sort(function (a, b) {return b.timeheart - a.timeheart;}))
     } else {
         find['hearted'] = true
-        setfavorite([...favorite, find])
+        find['timeheart'] = Date.now()  
+        setfavorite([...favorite, find].sort(function (a, b) {return b.timeheart - a.timeheart;}))
     }
     // setdrugpagedata([...replace, find].sort(function (a, b) {return a.id - b.id;})) 
     }

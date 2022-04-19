@@ -199,7 +199,12 @@ export function Cartpage(props) {
 
               </div>
 
-                <p className='cart-product-prices'>{tofloat(item.price, 1)} ლ</p>
+              <div className='cart-product-panel-par'>
+
+              <div className='cart-product-panel'>
+
+
+                <p className='cart-product-prices price-margin'>{tofloat(item.price, 1)} ლ</p>
                 
                 <div className='cart-counter-par'>
                 <button className='cart-counter-button' onClick={ () => counter(item.customid, '-')}>-</button>
@@ -207,10 +212,14 @@ export function Cartpage(props) {
                 <button className='cart-counter-button' onClick={ () => counter(item.customid, '+')}>+</button>
                 </div>
 
+                </div>
+
                 
                 <div className='cart-right-product'>
                 <p className='cart-product-prices'>{tofloat(item.price * item.productcount, 2)} ლ</p>
                   <p className='cart-delete' onClick={() => remove(item.customid)}>წაშლა</p>
+                </div>
+
                 </div>
 
           </div>
