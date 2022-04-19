@@ -30,7 +30,7 @@ export function Hospitalpopup( { link, img, title, adress}) {
                     </div>
                 </div>
 
-             <div className='popup-par'>
+             <div className='hosp-popup-par'>
                 <img onMouseEnter={() => settogle(true)} onMouseLeave={() => settogle(false)} className='hosp-right-img' src={camera} alt="imgr" />
                 {
                     togle? 

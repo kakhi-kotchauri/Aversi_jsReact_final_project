@@ -201,6 +201,7 @@ const menuref = useRef()
         {
           togleburger ?
            <nav className='header2-nav'>
+    
              <ul className='header2-ul'>
 
               <li onClick={() => burgerclick('/')} className='header2-li'>
@@ -262,8 +263,8 @@ const menuref = useRef()
            
                </div>
                 : 
-                <li className='header2-li'>
-                <p onClick={() => setsignin(!signin)} className='header2-p noborder'>ავტორიზაცია</p>
+                <li onClick={() => setsignin(!signin)} className='header2-li'>
+                <p className='header2-p noborder'>ავტორიზაცია</p>
                </li>
               }
 

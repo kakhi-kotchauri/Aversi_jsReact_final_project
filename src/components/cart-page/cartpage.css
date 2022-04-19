@@ -169,12 +169,13 @@
 
 .cart-empty-par {
     width: 100%;
+    margin-top: -100px;
     display: flex;
     justify-content: center;
 }
 
 .cart-empty {
-    width: 80%;
+    width: 95%;
     height: 148px;
     background-color: white;
     border-radius: 10px;
@@ -611,6 +612,19 @@
 
     .cart-product-par-wrapper {
         width: 100%;
+    }
+
+    .cart-menu {
+        width: 90%;
+        height: 200px;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 8;
+        position: absolute;
     }
 
     .cart-product-par {

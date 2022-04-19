@@ -48,7 +48,7 @@
    display: flex;
    justify-content: space-between;
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 25px;
     align-items: center;
     border-bottom: 1px solid;
     position: relative;
@@ -109,3 +109,350 @@
      margin-bottom: 50px;
      margin-top: 30px;
  }
+
+
+
+
+@media only screen and (max-width: 1150px) {
+
+
+    .pharm-slot {
+        width: 80%;
+        margin-top: 10px;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+         padding-left: 15px;
+         padding-right: 25px;
+         align-items: center;
+         border-bottom: 1px solid;
+         position: relative;
+     
+     }
+
+
+     .pharm-popup {
+        position: absolute;
+        width: 275px;
+        background-color: white;
+        z-index: 10;
+        bottom: 100%;
+        margin-bottom: 10px;
+        border: solid 4px white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+
+
+
+
+
+
+@media only screen and (max-width: 950px) {
+
+
+    .pharm-slot {
+        width: 80%;
+        margin-top: 10px;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+         padding-left: 15px;
+         padding-right: 25px;
+         align-items: center;
+         border-bottom: 1px solid;
+         position: relative;
+     
+     }
+
+
+     .pharm-popup {
+        position: absolute;
+        width: 250px;
+        background-color: white;
+        z-index: 10;
+        bottom: 100%;
+        margin-bottom: 10px;
+        border: solid 4px white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 850px) {
+
+
+    .pharm-slot {
+        width: 80%;
+        margin-top: 10px;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+         padding-left: 15px;
+         padding-right: 35px;
+         align-items: center;
+         border-bottom: 1px solid;
+         position: relative;
+     
+     }
+
+
+     .pharm-popup {
+        position: absolute;
+        width: 250px;
+        background-color: white;
+        z-index: 10;
+        bottom: 100%;
+        margin-bottom: 10px;
+        border: solid 4px white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .popup-par {
+        margin-left: 15px;
+    }
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 800px) {
+
+
+    .pharm-slot {
+        width: 80%;
+        margin-top: 10px;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+         padding-left: 15px;
+         padding-right: 35px;
+         align-items: center;
+         border-bottom: 1px solid;
+         position: relative;
+     
+     }
+
+
+     .pharm-popup {
+        position: absolute;
+        width: 250px;
+        background-color: white;
+        z-index: 10;
+        bottom: 100%;
+        margin-bottom: 10px;
+        margin-right: 20px;
+        border: solid 4px white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 620px) {
+
+
+    .pharm-slot {
+        width: 80%;
+        margin-top: 10px;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+         padding-left: 15px;
+         padding-right: 35px;
+         align-items: center;
+         border-bottom: 1px solid;
+         position: relative;
+     
+     }
+
+
+     .pharm-popup {
+        position: absolute;
+        width: 250px;
+        background-color: white;
+        z-index: 10;
+        bottom: 100%;
+        margin-bottom: 10px;
+        margin-right: 35px;
+        border: solid 4px white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 540px) {
+
+
+    .pharm-slot {
+        width: 80%;
+        margin-top: 10px;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+         padding-left: 15px;
+         padding-right: 35px;
+         align-items: center;
+         border-bottom: 1px solid;
+         position: relative;
+     
+     }
+
+
+     .pharm-popup {
+        position: absolute;
+        width: 250px;
+        background-color: white;
+        z-index: 10;
+        bottom: 100%;
+        margin-bottom: 10px;
+        margin-right: 60px;
+        border: solid 4px white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pharm-slot-left-text-par {
+        margin-bottom: 10px;
+    }
+
+    .pharm-baner-text {
+        left: 20px;
+        top: 200px;
+    }
+
+    .pharm-baner {
+        height: 400px;
+    }
+
+
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 440px) {
+
+
+    .pharm-slot {
+        width: 80%;
+        margin-top: 10px;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+         padding-left: 15px;
+         padding-right: 35px;
+         align-items: center;
+         border-bottom: 1px solid;
+         position: relative;
+     
+     }
+
+
+     .pharm-popup {
+        position: absolute;
+        width: 250px;
+        background-color: white;
+        z-index: 10;
+        bottom: 100%;
+        margin-bottom: 10px;
+        margin-right: 60px;
+        border: solid 4px white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .popup-par {
+        display: flex;
+        justify-content: flex-end;
+        /* background-color: greenyellow ; */
+    }
+
+
+}
+
+
+
+
+
+
+@media only screen and (max-width: 420px) {
+
+
+    .pharm-slot {
+        width: 90%;
+        margin-top: 10px;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+         padding-left: unset;
+         padding-right: unset;
+         align-items: center;
+         border-bottom: 1px solid;
+         position: relative;
+     
+     }
+
+
+     .pharm-popup {
+        position: absolute;
+        width: 250px;
+        background-color: white;
+        z-index: 10;
+        bottom: 100%;
+        margin-bottom: 10px;
+        margin-right: 20px;
+        border: solid 4px white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}

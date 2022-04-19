@@ -73,8 +73,6 @@ a {
 
 
 .alert-content {
- 
-
 	width: 650px;
 	height: 180px;
 	background-color: white;
@@ -83,7 +81,6 @@ a {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
 }
 
 
@@ -92,7 +89,7 @@ a {
 	width: 45%;
 	height: 40px;
 	border: solid 1px gray ;
-	background-color: #5da201;
+	background-color: #253988;
 	border-radius: 20px;
 	margin-bottom: 15px;
 	color: white;
@@ -133,9 +130,10 @@ a {
 	position: fixed;
 	top: 0;
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	z-index: 10;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center; 
 	background-color: rgba(39, 36, 36, 0.459);
@@ -144,8 +142,6 @@ a {
 
 
 .register-content {
- 
-
 	width: 413px;
 	/* height: 413px; */
 	background-color: white;
@@ -155,7 +151,7 @@ a {
 	justify-content: flex-start;
 	align-items: center;
 	padding-top: 30px;
-
+	z-index: 11;
 }
 
 
@@ -240,5 +236,64 @@ a {
 }
 
 
+
+@media only screen and (max-width: 700px) {
+
+
+	.alert-content {
+		width: 90%;
+		height: 180px;
+		background-color: white;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.alert-button {
+		width: 65%;
+		font-size: 13px;
+	}
+
+}
+
+
+
+
+@media only screen and (max-width: 450px) {
+
+	.register-content {
+		width: 360px;
+		background-color: white;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		padding-top: 30px;
+	}
+
+	.register-name-input {
+		width: 45%;
+	}
+
+}
+
+
+@media only screen and (max-width: 400px) {
+
+	.register-content {
+		width: 350px;
+		background-color: white;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		padding-top: 30px;
+	}
+
+}
 
 
