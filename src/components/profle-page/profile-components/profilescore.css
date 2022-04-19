@@ -50,3 +50,32 @@
     text-align: center;
     line-height: 1.2;
 }
+
+
+
+
+
+@media only screen and (max-width: 1150px) {
+
+    .profscore-card-par {
+        display: flex;
+        justify-content: center;
+    }
+
+    .profscore-card {
+        width: 95%;
+    }
+    
+    }
+
+
+
+@media only screen and (max-width: 680px) {
+
+.profscore-card {
+    width: 95%;
+}
+
+}
+
+

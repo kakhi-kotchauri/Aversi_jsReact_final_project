@@ -161,3 +161,106 @@
     width: 80%;
 }
 
+
+
+
+@media only screen and (max-width: 650px) {
+
+    .scorebuy-product {
+        padding-right: 10px;
+    }
+
+    .scorebuy-image-par {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scorebuy-img {
+        width: 130px;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 570px) {
+
+    .scorebuy-product {
+        padding-right: 10px;
+    }
+
+    .scorebuy-image-par {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scorebuy-img {
+        width: 120px;
+    }
+
+    .scorebuy-image-par {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .scorebuy-button {
+        width: 80px;
+    }
+
+
+    .scorebuy-product-text-par {
+        max-width: 150px;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 400px) {
+
+    .scorebuy-product {
+        padding-right: 10px;
+    }
+
+    .scorebuy-image-par {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scorebuy-img {
+        width: 105px;
+    }
+
+    .scorebuy-image-par {
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 110px;
+    }
+
+    .scorebuy-button {
+        width: 70px;
+        font-size: 12px;
+    }
+
+
+    .scorebuy-product-text-par {
+        max-width: 100px;
+    }
+
+    .scorebuy-product-title {
+        font-size: 15px;
+    }
+
+    .scorebuy-product-text {
+        font-size: 13px;
+    }
+
+}
+
+
+

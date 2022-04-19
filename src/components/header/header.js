@@ -75,6 +75,11 @@ const menuref = useRef()
 
   }
 
+  function closeburger() {
+    settogleburger(!togleburger)
+    settogleprofile(false)
+  }
+
   // console.log(favorite)
 
 
@@ -188,7 +193,7 @@ const menuref = useRef()
         
         <div className='header-mobile' >
          <div className='header-burger-content'>
-          <img onClick={() => settogleburger(!togleburger)} className='header2-burger' src={burger} alt="burger" />
+          <img onClick={() => closeburger()} className='header2-burger' src={burger} alt="burger" />
 
         </div>
            

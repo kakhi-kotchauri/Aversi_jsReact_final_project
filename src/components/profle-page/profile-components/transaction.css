@@ -128,3 +128,162 @@
     margin-bottom: 50px;
     box-shadow: 0px 3px 6px #00000029;
 }
+
+
+
+
+
+@media only screen and (max-width: 700px) {
+
+.trans-img-par {
+    width: 140px;
+}
+
+.trans-img {
+    width: 130px;
+}
+
+.trans-product-text-par {
+    max-width: 140px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+}
+
+
+
+@media only screen and (max-width: 630px) {
+
+    .trans-image-par {
+        width: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: #6fe123; */
+    }
+    
+    .trans-img {
+        width: 130px;
+    }
+    
+    .trans-product-text-par {
+        max-width: 140px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .trans-value-par {
+        width: 30%;
+    }
+
+    .trans-product {
+        padding-right: 10px;
+    }
+    
+    }
+
+
+
+    
+@media only screen and (max-width: 500px) {
+
+    .trans-value {
+        margin-left: 10px;
+        text-align: center;
+    }
+
+    .trans-head-text {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .trans-product-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trans-image-par {
+        width: 120px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .trans-img {
+        width: 110px;
+    }
+    
+    .trans-product-text-par {
+        max-width: 110px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .trans-value-par {
+        width: 30%;
+    }
+
+    .trans-product {
+        padding-right: 10px;
+    }
+    
+    }
+
+
+
+     
+@media only screen and (max-width: 430px) {
+
+    .trans-value {
+        margin-left: 10px;
+        text-align: center;
+    }
+
+    .trans-head-text {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .trans-product-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trans-image-par {
+        width: 105px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .trans-img {
+        width: 100px;
+    }
+    
+    .trans-product-text-par {
+        max-width: 100px;
+        margin: unset;
+    }
+
+    .trans-product-title {
+        font-size: 18px;
+    }
+
+    .trans-product-text {
+        font-size: 13px;
+    }
+
+    .trans-value-par {
+        width: 30%;
+    }
+
+    .trans-value {
+        font-size: 14px;
+    }
+
+    .trans-product {
+        padding-right: 10px;
+    }
+    
+    }
