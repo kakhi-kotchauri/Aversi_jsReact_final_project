@@ -191,6 +191,7 @@
     color: #EA3339;
     margin-top: 25px;
     text-decoration: underline 1px #EA3339;
+    cursor: pointer;
 }
 
 .cart-right-product {
@@ -205,6 +206,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 100%;
 }
 
 .cart-product-panel {

@@ -355,6 +355,7 @@
       align-items: center;
       padding-left: 10px;
       border-bottom: solid 1px #2a2a2a;
+      cursor: pointer;
   }
 
   .header-user-par {
@@ -374,13 +375,14 @@
 
   .header2-user {
     width: 95%;
-    min-height: 37px;
+    min-height: 35px;
     margin-bottom: 2px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 5px;
+    padding-left: 10px;
     border-bottom: solid 1px #2a2a2a;
+    cursor: pointer;
   }
 
   .header2-circle {
@@ -407,7 +409,7 @@
 
   .header2-profileparam {
     width: 90%;
-    min-height: 37px;
+    min-height: 35px;
     margin-bottom: 10px;
     margin-left: 25px;
     display: flex;
@@ -415,6 +417,7 @@
     align-items: center;
     padding-left: 5px;
     border-bottom: solid 1px #2a2a2a;
+    cursor: pointer;
   }
 
   .header2-profileparam:hover .profileparam-text {
@@ -432,7 +435,7 @@
 
   .profileparam-text {
     color: white;
-    font-size: 18px;
+    font-size: 15px;
     transition-duration: 0.3s;
   }
 
@@ -452,11 +455,11 @@
 
   .header2-p {
     color: #fff;
-    font-size: 17px;
+    font-size: 15px;
     cursor: pointer;
     transition-duration: 0.3s;
-    margin-bottom: 8px;
-    margin-top: 8px;
+    margin-bottom: 6px;
+    margin-top: 6px;
   }
 
   .noborder {

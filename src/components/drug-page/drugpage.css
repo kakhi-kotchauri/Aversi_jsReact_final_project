@@ -153,15 +153,17 @@
     margin-bottom: 10px;
     width: 100%;
     padding-left: 3%;
-    height: 40px;
+    min-height: 40px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 
 .filtertag-par {
     margin-right: 20px;
+    margin-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
     height: 36px;
