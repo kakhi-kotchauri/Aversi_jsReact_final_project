@@ -104,7 +104,7 @@ const menuref = useRef()
         
 
           <div className='search-wrap'>
-          <input value={searchvalue}  onChange={(e) => setsearchvalue(e.target.value)} className='input' type="text" placeholder='წამლის ძებნა' />
+          <input value={searchvalue}  onChange={(e) => setsearchvalue(e.target.value)} className='input' type="text" placeholder={t('search')} />
           <img className='search' src={search} alt="search" />
           </div>
 
@@ -198,7 +198,7 @@ const menuref = useRef()
         </div>
            
            <div className='search-wrap'>
-          <input value={searchvalue}  onChange={(e) => setsearchvalue(e.target.value)} className='input' type="text" placeholder='წამლის ძებნა' />
+          <input value={searchvalue}  onChange={(e) => setsearchvalue(e.target.value)} className='input' type="text" placeholder={t('search')} />
           <img className='search' src={search} alt="search" />
           </div>
         </div>
@@ -230,11 +230,11 @@ const menuref = useRef()
               </li>
 
               <li onClick={() => burgerclick('favorites')} className='header2-li'>
-                <p className='header2-p noborder'>ფავორიტები</p>
+                <p className='header2-p noborder'>{t('favorites')}</p>
               </li>
 
               <li onClick={() => burgerclick('cart')} className='header2-li'>
-                <p  className='header2-p noborder'>კალათა</p>
+                <p  className='header2-p noborder'>{t('cart')}</p>
               </li>
 
               {
@@ -269,7 +269,7 @@ const menuref = useRef()
                </div>
                 : 
                 <li onClick={() => setsignin(!signin)} className='header2-li'>
-                <p className='header2-p noborder'>ავტორიზაცია</p>
+                <p className='header2-p noborder'>{t('signin')}</p>
                </li>
               }
 

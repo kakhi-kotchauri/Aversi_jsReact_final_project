@@ -1,15 +1,24 @@
 {
 
+ "comments" : "header",
+
     "home": "Home",
     "drugs" : "Medicine",
     "pharmacy" : "Pharmacies",
     "hospital" : "Hospitals",
     "about": "About us",
+    "favorites" : "Favorites",
+    "cart" : "Cart",
+    "signin" : "Signin",
 
     "logout" : "Log out",
     "profile" : "profile",
+    "search" : "Search drugs",
 
     
+
+ "comments" : "footer",
+
     "company" : "Company",
     "info" : "Info",
     "help" : "Help",
@@ -25,6 +34,8 @@
     "useragrement" : "Terms of service",
 
     "onlinehelp" : "Online help"
+
+    
 
   
 }
