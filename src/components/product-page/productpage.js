@@ -195,9 +195,15 @@ function hearthing(id) {
                 <div className='des-picture-content'>
 
                  { displayimg ?
-                    <div onClick={(e) => outside(e)} ref={displayref} className='des-displayimg-par'>
+                    <div onClick={(e) => outside(e)} ref={displayref} className='des-displayimg-par'>                       
 
                  <div onClick={(e) => outside(e)} ref={carouselref} className='des-showimg-carousel '>
+
+                  <div className='des-carousel-close-par'>
+                      <div onClick={() => setdisplayimg(false)} className='des-close'>x</div>
+                  </div>
+                     
+
                     <Swiper
                     loop={true}
                     pagination={{
@@ -265,7 +271,13 @@ function hearthing(id) {
                    { displayimg ?
                     <div onClick={(e) => outside(e)} ref={displayref} className='des-displayimg-par'>
 
+
                  <div onClick={(e) => outside(e)} ref={carouselref} className='des-showimg-carousel '>
+
+                 <div className='des-carousel-close-par'>
+                      <div onClick={() => setdisplayimg(false)} className='des-close'>x</div>
+                  </div>
+
                     <Swiper
                     loop={true}
                     pagination={{

@@ -364,6 +364,10 @@
         height: 400px;
     }
 
+    .pharm-slot-text {
+        line-height: 1.3;
+    }
+
 
 }
 
