@@ -23,6 +23,7 @@ body {
 
 .swiper-wrapper {
   height: 100%;
+  align-items: center;
 }
 
 .swiper-slide {

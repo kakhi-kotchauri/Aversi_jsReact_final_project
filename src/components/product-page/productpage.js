@@ -2,7 +2,7 @@ import './productpage.css'
 import { Pagehead } from "../product-head/pagehead";
 import testimg from './pictures/testpic.png'
 import { useParams } from "react-router-dom"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useContext } from 'react';
 import Cartcontext from '../../cartcontext';
 import white from './pictures/white.png'
@@ -22,7 +22,7 @@ import "swiper/css/navigation";
 import "..//.././styles.css";
 
 // import required modules
-import { Autoplay, Pagination } from "swiper";
+import { Autoplay, Pagination, Navigation } from "swiper";
 
 
 
@@ -35,7 +35,13 @@ const {favorite, setfavorite} = useContext(Favoritecontext)
 const {cartitem, setcartitem} = useContext(Cartcontext)
 
 const [pagestatus, setpagestatus] = useState(false)
+const [displayimg, setdisplayimg] = useState(false)
+const [display, setdisplay] = useState()
 const [res, setres] = useState(Resolution())
+
+const displayref = useRef()
+const carouselref = useRef()
+
 
 useEffect(() => {
    setpagestatus(true)
@@ -73,14 +79,6 @@ function addtocart(id) {
        setcartitem([...replace, newfind].sort(function (a, b) {return b.time - a.time;}))
      }
 
-    // if(find !== findcart) {
-    //         find['time'] = Date.now()  
-    //         find['productcount'] = productcount
-    //     setcartitem([...cartitem, find].sort(function (a, b) {return a.time - b.time;}))
-    // } else {
-    //     find['productcount'] = productcount
-    //     setcartitem([...replace, find].sort(function (a, b) {return a.time - b.time;}))
-    // }
 }
 
 
@@ -103,6 +101,17 @@ function count(ctype) {
 }
 
 
+function showimg(img) {
+    setdisplayimg(true)
+    setdisplay(img)
+}
+
+function outside(e) {
+    if(e.target === displayref.current || e.target.parentElement.parentElement.parentElement === carouselref.current) {
+        setdisplayimg(false)
+    }
+
+}
 
 
 useEffect(() => {
@@ -184,17 +193,55 @@ function hearthing(id) {
 
 
                 <div className='des-picture-content'>
+
+                 { displayimg ?
+                    <div onClick={(e) => outside(e)} ref={displayref} className='des-displayimg-par'>
+
+                 <div onClick={(e) => outside(e)} ref={carouselref} className='des-showimg-carousel '>
+                    <Swiper
+                    loop={true}
+                    pagination={{
+                    clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    >
+
+                    
+                        <SwiperSlide >
+                            <div className='showimg-slide'>
+                                <img className='showimg-carousel-img' src={display} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className='showimg-slide'>
+                              <img className='showimg-carousel-img' src={display === img1 ? productdata.img : img1} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className='showimg-slide'>
+                              <img className='showimg-carousel-img' src={display === img2 ? productdata.img : img2} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                  </Swiper>
+
+                </div> 
+                    </div> : null
+                 }
         
                 <div className='des-smallimages'>
 
                     <div className="des-smallimage-wrapper">
-                        <div onMouseEnter={() => setbigimg(img1)} className="des-smallimage-par">
+                        <div onClick={() => showimg(img1)} onMouseEnter={() => setbigimg(img1)} className="des-smallimage-par">
                             <img className="des-smallimage-pic" src={img1} alt="" />
                         </div>
                     </div>
 
                     <div className="des-smallimage-wrapper">
-                        <div  onMouseEnter={() => setbigimg(img2)} className="des-smallimage-par">
+                        <div onClick={() => showimg(img2)} onMouseEnter={() => setbigimg(img2)} className="des-smallimage-par">
                             <img className="des-smallimage-pic" src={img2} alt="" />
                         </div>
                     </div>
@@ -202,7 +249,7 @@ function hearthing(id) {
                 </div>
 
                     <div className="des-bigimage-wrapper">
-                        <div onMouseEnter={() => setbigimg(productdata.img)} className="des-big-image-par">
+                        <div onClick={() => showimg(bigimg)} onMouseEnter={() => setbigimg(productdata.img)} className="des-big-image-par">
                         <img className="des-bigimage" src={bigimg} alt="" />
                         </div>
                     </div>
@@ -212,6 +259,49 @@ function hearthing(id) {
                 : 
 
                <div className='productpage-carousel-par'>
+
+
+                   
+                   { displayimg ?
+                    <div onClick={(e) => outside(e)} ref={displayref} className='des-displayimg-par'>
+
+                 <div onClick={(e) => outside(e)} ref={carouselref} className='des-showimg-carousel '>
+                    <Swiper
+                    loop={true}
+                    pagination={{
+                    clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    >
+
+                    
+                        <SwiperSlide >
+                            <div className='showimg-slide'>
+                                <img className='showimg-carousel-img' src={display} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className='showimg-slide'>
+                              <img className='showimg-carousel-img' src={display === img1 ? productdata.img : img1} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className='showimg-slide'>
+                              <img className='showimg-carousel-img' src={display === img2 ? productdata.img : img2} alt="productimage" />
+                            </div>
+                        </SwiperSlide>
+
+                  </Swiper>
+
+                </div> 
+                    </div> : null
+                 }
+
+
+                 
               
                     <Swiper
                     loop={true}
@@ -223,19 +313,19 @@ function hearthing(id) {
 
                         <SwiperSlide>
                             <div className='productpage-slide'>
-                                <img className='productpage-carousel-img' src={productdata.img} alt="productimage" />
+                                <img onClick={() => showimg(productdata.img)} className='productpage-carousel-img' src={productdata.img} alt="productimage" />
                             </div>
                         </SwiperSlide>
 
                         <SwiperSlide>
                             <div className='productpage-slide'>
-                              <img className='productpage-carousel-img' src={productdata.img2} alt="productimage" />
+                              <img onClick={() => showimg(productdata.img2)} className='productpage-carousel-img' src={productdata.img2} alt="productimage" />
                             </div>
                         </SwiperSlide>
 
                         <SwiperSlide>
                             <div className='productpage-slide'>
-                              <img className='productpage-carousel-img' src={productdata.img3} alt="productimage" />
+                              <img onClick={() => showimg(productdata.img3)} className='productpage-carousel-img' src={productdata.img3} alt="productimage" />
                             </div>
                         </SwiperSlide>
 
