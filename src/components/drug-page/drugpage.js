@@ -22,7 +22,6 @@ import { Dropdown } from './dropdown';
 export function Drugpage(props) {
 
 
-
    useEffect(() => {
 
       window.scrollTo({
