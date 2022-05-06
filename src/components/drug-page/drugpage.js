@@ -19,7 +19,6 @@ import { Dropdown } from './dropdown';
 
 
 
-
 export function Drugpage(props) {
 
 
