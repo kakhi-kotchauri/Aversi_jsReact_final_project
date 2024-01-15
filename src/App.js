@@ -113,7 +113,7 @@ i18n
     
     useEffect(() => {
 
-      fetch('https://kakhi-kotchauri.github.io/fakedata.github.io/fakedata.json')
+      fetch('https://kakhi-kotchauri.github.io/fakedata/fakedata.json')
       .then( response => response.json())
       .then(response2 => {
         const finaldata = response2.Products.map((item, index) => ({...item, customid : index}))
@@ -123,7 +123,7 @@ i18n
         console.log(error)
       })
 
-      fetch('https://kakhi-kotchauri.github.io/fakedata.github.io//offers.json')
+      fetch('https://kakhi-kotchauri.github.io/fakedata/offers.json')
       .then( response => response.json())
       .then(response2 => setdata2(response2.offers))
       .catch((error) => {
